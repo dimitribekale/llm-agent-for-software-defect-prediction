@@ -156,3 +156,43 @@ if __name__ == "__main__":
 
     else:
         print("No results found!")
+
+
+class DocumentationSearchTool3:
+    def __init__(self):
+        # Mapping for official docs
+        self.official_docs = {
+            "python": "https://docs.python.org/3/library/",
+            "java": "https://docs.oracle.com/javase/8/docs/api/",
+            "c++": "https://en.cppreference.com/w/",
+            "rust": "https://doc.rust-lang.org/std/",
+            "c": "https://en.cppreference.com/w/c"
+        }
+
+    def optimize_query(self, method, language):
+        return method.strip(), language.lower().strip()
+
+    def search_python(self, method):
+        # Use pydoc to get documentation for Python methods/classes
+        try:
+            doc = pydoc.render_doc(method, "Help on %s")
+            return doc
+        except Exception as e:
+            return f"Could not find documentation for {method}: {e}"
+
+    def search_other(self, method, language):
+        # For other languages, provide a link to the official docs
+        doc_link = self.official_docs.get(language)
+        if doc_link:
+            return f"Refer to the official {language.capitalize()} documentation for `{method}`:\n{doc_link}"
+        else:
+            return f"No documentation source configured for language: {language}"
+
+    def __call__(self, method, language):
+        print(f"[DocumentationSearchTool] Searching for: {method} in {language}")
+        method, language = self.optimize_query(method, language)
+        if language == "python":
+            doc = self.search_python(method)
+        else:
+            doc = self.search_other(method, language)
+        return doc
