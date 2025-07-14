@@ -1,0 +1,6265 @@
+code_type,code_samples,target
+fixed_code,"def greet(name):
+    if len(name) == 0:
+        return None
+    return name[0]",0
+faulty_code,"a = [1,2,3]
+b.append(4)
+c.pop(0)",1
+fixed_code,"try:
+    x = int(input('Enter a number: '))
+except ValueError as e:
+    print(f'Invalid input: {e}')
+except Exception as e:
+    print(f'An unexpected error occurred: {e}')
+finally:
+    print('Operation completed.')",0
+faulty_code,"a = [1,2,3]
+b = a[1:3]
+c = b[::-1]",1
+fixed_code,"for i in range(3):
+    if i < len(list):
+        print(list[i])",0
+fixed_code,"import pandas as pd
+
+df = pd.DataFrame({'A': [1,2,3], 'B': ['a', 'b', 'c']})
+
+df.merge(df, on='A', left_index=True, right_index=True, how='inner')",0
+faulty_code,"for i in range(10):
+    print(i)
+
+# This loop runs indefinitely because it lacks an exit condition",1
+fixed_code,"for i in range(4):
+    print(i+1)",0
+faulty_code,"import os
+
+os.path.exists('test.txt')",1
+faulty_code,"for i in range(1, len(list)):
+    print(list[i])",1
+faulty_code,"for i in range(10)
+    print(i+1)",1
+faulty_code,"a = [1,2,3]
+b = a[2]
+print(b)",1
+fixed_code,"a = [1,2,3]
+b = a[0:2][::-1]",0
+faulty_code,"for i in range(10):
+    print(i)
+print(i+1)",1
+faulty_code,"for i in range(5,0):",1
+faulty_code,"```
+# Example: Iterating from 1 to len(list) inclusive, which causes index out of range
+employees = ['Alice', 'Bob']
+for i in range(1, len(employees)+1):
+    print(employees[i])
+```",1
+faulty_code,if x==5and y==10:,1
+faulty_code,"a = [1,2,3]
+a[5]",1
+fixed_code,"def my_function(lst):
+    for i in range(len(lst)-1):
+        if lst[i] > lst[i+1]:
+            # do something",0
+fixed_code,"mylist = [1,2,3]
+index = mylist[::-1]",0
+faulty_code,"x = [1, 2]
+y = x[3]",1
+fixed_code,"for i in range(10):
+    num = int(input('Enter a number: '))
+    print(num*i)",0
+fixed_code,for i in range(6):\n    print(i),0
+fixed_code,"s = 'hello'
+print(s.capitalize())",0
+fixed_code,"i = 0
+while i < 5:
+    print(i)
+    i += 1
+    if i == 5:
+        break",0
+faulty_code,"for i in range(1,5):
+    print(i)
+
+print('Missing fourth element')",1
+fixed_code,"d = {""a"": 1}
+if ""b"" in d:
+    print(d[""b""])
+else:
+    print(""Key not found"")",0
+faulty_code,"['for i in range(5):', '\tprint(i)', '    print(i+1)']",1
+faulty_code,"for i in range(10)
+    print(i+1)
+
+print('Loop ended without issue')",1
+faulty_code,input,1
+faulty_code,"students = {'Alice': 'freshman', 'Bob': 'sophomore'}
+print(students.get('Charlie'))",1
+fixed_code,"for i in range(len(arr)):
+    if i < len(arr)-1 and arr[i] > arr[i+1]:
+        arr[i], arr[i+1] = arr[i+1], arr[i]
+",0
+faulty_code,"a = [1,2,3]
+for i in range(4):
+    print(a[i])",1
+fixed_code,"for i in range(5):
+    print(i+1)
+
+print('Loop completed with correct indentation')
+",0
+fixed_code,"total = 0
+for i in range(6):
+    total += i",0
+faulty_code,"fruits = ['apple', 'banana', 'cherry']; for i, fruit in enumerate(fruits):
+    print(i)",1
+fixed_code,"my_list = [1, 2, 3]
+print(my_list[2])",0
+fixed_code,"for i in range(10):
+    print(i+1)
+print('Loop completed', end='\nLoop finished')
+",0
+fixed_code,"try:
+    for i in range(len(my_list)):
+        my_list[i] += 1
+except IndexError as e:
+    print(f""Index error: {e}"")",0
+faulty_code,"for i in range(1,5):
+    print(i+1)
+
+# This code has an off-by-one error. It should be changed to range(1,6) or stop=6.",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This loop runs from 0 to 4, but the output is incorrect due to an off-by-one error",1
+fixed_code,"numbers = [1,2,3]
+avg = sum(numbers) / len(numbers)
+try:
+    if avg > 0:
+        print('Average is positive')
+    else:
+        print('Average is zero or negative')
+except ZeroDivisionError:
+    print('List is empty')",0
+faulty_code,"try:
+    open('nonexistentfile.txt')
+except FileNotFoundError:
+    print('File not found')",1
+faulty_code,"['my_list = [1, 2, 3]\n\nreversed_list = my_list[::-1]', ""for i in range(5): \n    print(i)\n\nprint('Missing value at index 4')"", '\n\na = 0\nb = 0\nc = 0\n\nfor i in range(len(a)):\n    a[i] += b[i]\n    c += d[i]', 'my_list = [1, 2, 3]\n\nreversed_list = my_list[::-1]', ""for i in range(5): \n    print(i)\n\nprint('Missing value at index 4')"", '\n\na = 0\nb = 0\nc = 0\n\nfor i in range(len(a)):\n    a[i] += b[i]\n    c += d[i]']",1
+fixed_code,"for i in range(len(numbers)-1):
+    if numbers[i] > 5:
+        print('Numbers are too high')
+
+print('All numbers are <=5')",0
+fixed_code,"a = [1,2,3]
+print(a[2])",0
+faulty_code,"for i in range(len(arr)-1):
+    arr[i], arr[i+1] = arr[i+1], arr[i]
+
+swap = arr[0]
+arr[0] = arr[-1]
+arr[-1] = swap",1
+fixed_code,"for i in range(5):
+    print(i+1)
+print('Loop ended', end=' ')",0
+faulty_code,"for i in range(len(list)):
+    print(list[i])",1
+faulty_code,"for i in range(10):
+    print(i)
+
+# This code has an off-by-one error. It prints from 0 to 9.",1
+fixed_code,"def greet():
+    if hasattr(name, 'exists'):
+        print(f'Hello {name}')
+    else:
+        print('Hello')",0
+faulty_code,for i in range(10):,1
+fixed_code,"for i in range(len(nums)-1):
+    if nums[i] > 5:
+        print('Found a number greater than 5')",0
+faulty_code,"my_list = []
+print(my_list[0])",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This loop should run from 0 to 4 but stops at 3 due to an off-by-one error.",1
+fixed_code,"my_list = [1,2,3]
+if len(my_list) > 5:
+    print('List is long enough')
+else:
+    print('Index out of bounds')",0
+faulty_code,print(x),1
+fixed_code,your fixed code here,0
+fixed_code,"['for i in range(len(lst)):\n    print(i)', ""with open('file.txt', 'r)"", ""if x == 'A'""]",0
+faulty_code,"for i in range(5):
+    if i == 4:
+        break",1
+fixed_code,"s = [1,2,3]",0
+faulty_code,"with open('file.txt', 'rb') as f:
+    f.seek(0)
+    data = f.read()
+    print(data)",1
+fixed_code,"for i in range(10):
+    print(i*2)",0
+fixed_code,"max = max([5,2,9][::-1])",0
+fixed_code,"def find_element(lst, target):
+    try:
+        for i in range(len(lst))
+            if lst[i] == target
+                return lst[i]
+        return None
+    except IndexError:
+        return None",0
+fixed_code,"try:
+    f = open('nonexistentfile.txt', 'r')
+except FileNotFoundError as e:
+    print(f'File not found: {e}')
+finally:
+    f.close()",0
+faulty_code,"a = [1,2,3]; b = a[::3]; print(b)",1
+fixed_code,"for i in range(len(numbers)):
+    if numbers[i]%2==0:
+        result.append(numbers[i])",0
+faulty_code,"try:
+    file = open('nonexistent.txt', 'r')
+except FileNotFoundError:
+    print('File not found')
+else:
+    print('File was found')",1
+faulty_code,"for i in range(5):
+    print(i)
+
+print('Loop did not terminate')",1
+faulty_code,"for i in range(5):
+    print(i+1)
+print('Loop completed')",1
+faulty_code,"for i in range(10)
+print(i)",1
+fixed_code,"students = ('Alice', 'Bob');
+print(students[-1])",0
+faulty_code,"with open('nonexistent.txt', 'r') as f:
+    print(f.read())",1
+faulty_code,"for i in range(5)
+
+    print(i)",1
+faulty_code,"for i in range(len(list)):
+    print(list[i-1])",1
+fixed_code,"numbers = [1, 2, 3]
+numbers_copy = numbers.copy()
+print('Numbers:', numbers_copy)",0
+faulty_code,"a = [1,2,3]
+b = a[0:2]
+c = b[::-1]
+d = c[1:]",1
+faulty_code,"for i in range(len(numbers)-1):
+    print(numbers[i])",1
+fixed_code,"print(f""{name}, {age}"")
+",0
+faulty_code,"for i in range(len(nums)):
+    if nums[i] > 5:
+        print('Found a number greater than 5')",1
+fixed_code,"try:
+    x = int(input('Enter a number: '))
+except ValueError as e:
+    print(f'Invalid input: {e}')
+except KeyboardInterrupt:
+    print('Operation cancelled')",0
+fixed_code,"my_list = [1,2,3]
+
+for i in range(len(my_list)):
+    print(my_list[i])",0
+fixed_code,"print('Hello, world!', end='
+')
+",0
+fixed_code,"my_list = [5,4,3,2,1]
+try:
+    print(my_list[-6])
+except IndexError:
+    print('Index out of range')",0
+fixed_code,"lst = [1,2,3,4,5]; print(lst[-1] or lst[len(lst)-1])",0
+fixed_code,"for i in range(10):
+    print(i*2)
+",0
+faulty_code,"def greet():
+    print('Hello, world!')",1
+faulty_code,"for i in range(len(list)-1):
+    print(list[i], list[i+1])",1
+fixed_code,"a = (1,2,3)
+b = (4,5,6)
+(a[0], b[0])",0
+fixed_code,"for i in range(5):
+    pass",0
+faulty_code,"if x and y or z:
+    print('Yes')
+else:
+    print('No')",1
+faulty_code,"while True:
+    print('Waiting...')",1
+faulty_code,"try:
+    print(1/0)
+except ZeroDivisionError:
+    print('Denominator is zero')",1
+fixed_code,"try:
+    file = open('nonexistent.txt', 'r')
+except IOError as e:
+    print(f""Error opening file: {e}"")",0
+fixed_code,"count = 0
+while count < 10:
+    print(f'Iteration {count}')
+    count += 1",0
+faulty_code,print('Hello' + 'World'),1
+fixed_code,"try:
+    a = int(input('Enter a number: '))
+except ValueError as e:
+    print(f'Invalid input: {e}')
+except Exception as e:
+    print(f'An unexpected error occurred: {e}')",0
+faulty_code,"numbers = [1,2,3]
+avg = sum(numbers)/len(numbers)
+if avg > 0:
+    print('Average is positive')
+else:
+    print('Average is zero or negative')",1
+fixed_code,"my_list = [1,2,3]
+new_list = [x for x in my_list]",0
+fixed_code,"strng = 'Hello'
+print(strng + '\' + '\n')",0
+faulty_code,"for i in range(1, 5):
+    print(i)
+
+print('Missing value')",1
+faulty_code,"old_list = [1, 2, 3]
+new_list = old_list.append(4)",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This loop runs from 0 to 4 (inclusive), so it should print 1 to 5. The faulty code prints 1 to 6.",1
+faulty_code,"a = [1,2,3]
+b = a",1
+faulty_code,"for i in range(5):
+    print(i)
+
+# Medium example:
+file = open('nonexistent.txt', 'r')",1
+faulty_code,"my_list = [1,2,3]
+print(my_list[-4])",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop is off-by-one; it should be i <=10
+",1
+faulty_code,"['for i in range(3): print(i)', 'x = [1,2,3]\nprint(sum(x))', ""if x > 0:\n    print('Positive')\nelse:\n    print('Negative')""]",1
+faulty_code,"a = [1,2,3]
+b = [4,5,6]
+sum_a = sum(a)
+avg = sum_a / b",1
+faulty_code,"my_list = [1,2,3]
+print(my_list - [2])",1
+fixed_code,"a = [1,2,3]
+b = a.copy()
+b.append(4)",0
+fixed_code,"x = [1,2,3]
+x[0] += 1",0
+fixed_code,"for i in range(5):
+    print(i+1
+    )
+print('Loop completed')",0
+faulty_code,"data = [{'name': 'Alice', 'age': 15}, {'name': 'Bob', 'age': 20}]
+result = [item['name'] for item in data if (item['age'] > 18 and item['age'] % 2 == 0)]
+print(result)",1
+faulty_code,"s = [1,2,3]
+s.append(4)
+print(s)",1
+faulty_code,"def my_function():
+    for i in range(5):
+        print(i)
+    print(""Loop ended"")",1
+fixed_code,"for x in range(5):
+    print(x)
+
+print('Missing colon')
+",0
+faulty_code,s = 'hello'; print(s[2:]),1
+fixed_code,"for i in range(10)<br/>
+    print(i)",0
+fixed_code,"x = [1,2,3]
+sum(x[:2])",0
+faulty_code,"[""print('Hello, world!')"", 'for i in range(10): print(i)', ""import re; re.findall(r'pattern', 'string')""]",1
+fixed_code,"def calculate_average(numbers):
+    total = 0
+    for i in range(len(numbers)):
+        if i == len(numbers) - 1:
+            continue
+        total += numbers[i]
+    return total / (len(numbers) - 1)
+",0
+faulty_code,"lst = [1,2,3,4,5]; print(lst[9])",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This code has an off-by-one error in the loop range.",1
+fixed_code,"for i in range(4):
+    print(i)
+
+print('Fourth element is missing')",0
+faulty_code,"lst = [1,2,3]; del lst[0]; print(lst[2])",1
+faulty_code,"for i in range(∞):
+    print(i)",1
+fixed_code,"for i in range(5):
+    print(x)",0
+faulty_code,"nums = [1,2,3]
+largest = max(nums[0], nums[1], nums[2])",1
+fixed_code,"def factorial(n):
+    if n <= 1:
+        return 1
+    else:
+        return n * factorial(n - 1)",0
+fixed_code,"s = input().strip()
+print(s.split(' '))",0
+faulty_code,"for i in range(len(list)-2):
+    print(i)",1
+faulty_code,"for i in range(5):
+    print(i+1)
+print('Next item')",1
+faulty_code,"try:
+    open('nonexistentfile.txt', 'r')
+except IOError:
+    print('File not found')",1
+fixed_code,"with open('file.txt', 'r') as f:
+    while f.seek(0) < len(f) -1:
+        print(f.readline())",0
+faulty_code,"def my_func(x, y=5):
+    return x + y
+my_func('a', 'b')",1
+fixed_code,"a = 5
+b = a + 3
+b = a",0
+fixed_code,"for i in range(10):
+    print(i+1)
+print('Loop ended after 10 iterations')",0
+fixed_code,"def factorial(n):
+    if n < 0:
+        raise ValueError('Factorial not defined for negative numbers')
+    elif n == 0:
+        return 1
+    else:
+        result = 1
+        for i in range(1, n + 1):
+            result *= i
+        return result
+print(factorial(5))",0
+fixed_code,"for i in range(6):
+    print(i)
+print(6)",0
+faulty_code,print('Hello' 'World'),1
+fixed_code,"try:
+    with open('nonexistentfile.txt', 'r') as f:
+        pass
+except FileNotFoundError
+    print('File not found')
+",0
+fixed_code,"with open('file.txt', 'r') as f:
+    f.seek(0)
+    line = f.readline()
+    print(line)",0
+fixed_code,"try:
+    print(1/0)
+except ZeroDivisionError as e:
+    print(f'Handled: {e}')
+",0
+faulty_code,"lst = [1,2,3];
+fixed_code = lst[:-1]",1
+faulty_code,"[""lst = ['a', 'b']; print(lst.pop())"", 'nums = [x for x in range(10) if (x > 5 and y)]', 'import threading; def even(): ...; def odd(): ...; t1 = threading.Thread(target=even); t2 = threading.Thread(target=odd); t1.start(); t2.start()']",1
+fixed_code,"['for i in range(len(s)-1)', ""s = 'test' if s is None else s"", 'sum((x,) for x in ())']",0
+faulty_code,def outer(x): y = 10; def inner(): return x + y; return inner,1
+faulty_code,"['my_list = [x for x in range(5) if x%2]', ""my_string = 'Hello' + %str('world')"", 'for i in range(5): print(i)']",1
+fixed_code,"x = [1,2,3]
+y = x + [4]",0
+faulty_code,"my_list = [1,2]
+my_list[10].append(3)",1
+faulty_code,"result = []
+for i in range(len(arr)):
+    result.append(arr[i])
+print(result[-1])",1
+fixed_code,"my_list = [1,2,3]; print(my_list[3])",0
+faulty_code,"def greet(name):
+    print('Hello, ' + name + '!')
+
+# This code has a logic error.",1
+faulty_code,"try:
+    print('File not found')
+except FileNotFoundError:
+    print('File not found')",1
+faulty_code,"for i in range(5):
+    print(i)
+
+# This loop will run for i = 0 to 4 inclusive. However, if the list has only 3 elements, accessing index 4 will cause an error.",1
+fixed_code,"for i, item in enumerate(range(10)):
+    if i == 5:
+        break
+    print(item)
+
+# or using zip:
+for i, item in zip(range(10), None):
+    if i == 5:
+        break
+    print(item)",0
+faulty_code,"for i in range(5):
+    print(i)
+
+# Comment
+print(i+1)",1
+fixed_code,"for i in range(5):
+    print(i)
+
+print('Loop completed')
+",0
+faulty_code,"for i in range(len(list)):
+    if list[i] == 'a':
+        del list[i]
+        break",1
+faulty_code,"for i in range(len(lst)):
+    if lst[i-1] > lst[i]:
+        swap = lst[i]
+        lst[i] = lst[i-1]
+        lst[i-1] = swap",1
+faulty_code,"for i in range(10):
+    if i == 5:
+        break
+else:
+    print('Loop completed')",1
+fixed_code,"a = [1,2,3]
+b = [4,5,6]
+result = a + b",0
+fixed_code,"for i in range(10,20,1):
+    print(i)",0
+fixed_code,"['for i in range(1,5):', '    print(i)', ""print('The sum is', sum(range(1,5)))""]",0
+fixed_code,"for i in range(3,7):
+    print(i)",0
+fixed_code,"def greet():
+    print('Hello')
+    return",0
+faulty_code,"a = [1,2,3]
+a[4]",1
+faulty_code,"for i in range(10)
+    print(i+1)
+
+# This loop is off by one; it should go up to 9 inclusive.",1
+fixed_code,"for i in range(10):
+    print(i+1)
+    if i == 5:
+        break",0
+faulty_code,"for i in range(5):
+    print(i)
+
+print('Loop completed')",1
+fixed_code,"[""print('Hello, world!')"", '# Incrementing a variable incorrectly\n# Example: i = 5\ni += 2', '\nmedium length fixed example:\nfor i in range(0, len(list)):\n    list.append(i + 2)', ""\nlonger fixed example with correct string formatting:\nprint('The value is {0}', 10).format(10)""]",0
+fixed_code,"with open('file.txt', 'r') as f:
+    f.seek(0)
+    data = f.read()
+    print(data)",0
+faulty_code,"for i in range(10): print(i+1)
+
+# This code skips the number 10 because of an off-by-one error.",1
+fixed_code,"for i, item in enumerate(lst): print(i)",0
+faulty_code,"my_list = [1,2,3]
+my_list.extend([4,5,6])",1
+fixed_code,second fixed code,0
+fixed_code,"for i in range(5):
+    print(i)
+print('Loop ended at:', i)",0
+fixed_code,"try:
+    with open('nonexistentfile.txt', 'r') as f:
+        pass
+except FileNotFoundError
+",0
+faulty_code,"x = [1,2,3]
+x.append(4)
+print(x)",1
+faulty_code,"s = [1,2]; print(s[3])",1
+fixed_code,"for i in range(len(prices)-1):
+    if prices[i+1] > 0:
+        print(prices[i+1])",0
+fixed_code,reversed_numbers = numbers[::-1],0
+faulty_code,"try:
+    open('data.txt')
+except FileNotFoundError:
+    print('File not found')",1
+faulty_code,sum([i for i in range(5) if i <4]),1
+fixed_code,"a = [1,2,3]
+b = a[:2]
+print(b[2:])",0
+fixed_code,"lst = [1,2,3]
+print(lst[-1])",0
+fixed_code,"my_list = [1, 2, 3]
+print(my_list)",0
+fixed_code,"for i in range(len(arr)):
+    if arr[i] == 'a' and i < len(arr):
+        break",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop goes from 0 to 9 inclusive, but prints up to 10. The bug is an off-by-one error.",1
+faulty_code,"print('Hello, world!')
+
+# This is a comment
+print('Hello again!')",1
+faulty_code,"try:
+    f = open('nonexistentfile.txt', 'r')
+except FileNotFoundError:
+    print('File not found')
+finally:
+    f.close()",1
+faulty_code,"for i in range(len(list) + 1):
+    print(list[i])",1
+faulty_code,"i = 0
+while i < 10:
+    print(i)
+i++",1
+faulty_code,"my_list = [1, 2, 3]
+index = len(my_list)-1",1
+fixed_code,"for i in range(len(lst)):
+    if i < len(lst)-1:
+        print(lst[i])
+
+# This code avoids printing the last element by checking the condition inside the loop",0
+fixed_code,"def my_function():
+    for i in range(5):
+        print(i)",0
+faulty_code,for i in range(4):,1
+faulty_code,"numbers = [1,2,3]
+numbers.sort(reverse=True)
+print(numbers[0])",1
+fixed_code,"import math
+math.sqrt(4)",0
+faulty_code,"a = 5
+print(a + b)",1
+faulty_code,"for i in range(len(arr)+1):
+    print(arr[i])",1
+faulty_code,"d = {'a':1,'a':2}
+print(d['a'])",1
+faulty_code,"a = [1,2,3]
+b = a[0:2]
+print(b[-1:])",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This code will cause an IndexError because the list only has 4 elements.",1
+fixed_code,"def calculate_average(numbers):
+    if not numbers or all(n == 0 for n in numbers):
+        return None
+    return sum(numbers)/len(numbers)",0
+fixed_code,"for i in range(1):
+    print('Loop executed')
+
+# Now the loop runs once",0
+fixed_code,"def calculate_total(prices):
+    total = 0
+    for p in prices:
+        total += p
+return total",0
+faulty_code,for i in range(5): print(i),1
+fixed_code,"import os
+try:
+    os.remove('nonexistentfile.txt')
+except FileNotFoundError:
+    print('File not found.')
+
+# OR 
+
+os.remove('nonexistentfile.txt')",0
+faulty_code,"s = 'Hello'
+print(s[2:5])",1
+faulty_code,"a = [1,2,3]
+b = a[3]",1
+faulty_code,"for i in range(10):
+    print(i)
+
+print('Next item')",1
+faulty_code,"a = [1,2,3]
+b = a[0] + a[1] + a[2]",1
+fixed_code,"for i in range(len(arr)-1):
+    print(arr[i+1])",0
+fixed_code,"print('Hello, world!')
+",0
+faulty_code,"import os
+
+def process_file(file_path):
+    try:
+        with open(file_path, 'r') as f:
+            content = f.read()
+            print(content)
+    except FileNotFoundError:
+        print(""File not found."")",1
+faulty_code,"def divide_numbers(a, b):
+    return a / b
+
+divide_numbers(10, 0)",1
+fixed_code,"try:     with open('nonexistentfile.txt', 'rb') as f:         data = f.read() except FileNotFoundError:     print('File not found')",0
+faulty_code,"try:
+    f = open('nonexistent.txt', 'r')
+except FileNotFoundError:
+    pass
+with open('nonexistent.txt', 'a') as file:
+    file.write('data')",1
+faulty_code,"def sort_list(data):
+    sorted_data = []
+    for i in range(len(data)):
+        if data[i] < data[i+1]:
+            sorted_data.append(data[i])
+            break
+    return sorted_data",1
+faulty_code,"for i in range(len(list)):
+    if list[i] == 'a':
+        break
+else:
+    print('Loop completed normally')",1
+fixed_code,"a = [1,2,3]; b = a[0]; c = [b,]",0
+fixed_code,sum([i for i in range(5)]),0
+fixed_code,"for i in reversed(range(len(list)))):
+    list.pop(i)",0
+faulty_code,"import numpy as np
+
+a = np.array([[1,2,3],[4,5,6]])
+horizontal_edges = a[1:] - a[:-1]
+vertical_edges = a[:,1:] - a[:,:-1]",1
+faulty_code,"for i in range(10): print(i+1)
+
+# Short version with off-by-one error
+for i in range(9,2,-1): print(i)",1
+fixed_code,"try:
+    try:
+        with open('nonexistentfile.txt', 'r') as f:
+            pass
+    except FileNotFoundError:
+        print('File not found')
+except Exception as e:
+    print(f'Error: {e}')",0
+faulty_code,"numbers = [1,2,3]
+new_numbers = [x for x in numbers if x%2 == 0] * 3
+print(new_numbers)",1
+fixed_code,"for i in range(len(primes)):
+    primes[i] += 1
+    print(primes)",0
+faulty_code,"with open('data.txt', 'r') as f:
+    for line in f:
+        print(line.strip())",1
+fixed_code,s = 'abcdefghijklmnopqrstuvwxyz'; print(s[:3]),0
+fixed_code,"for i in range(1, 11):
+    print(i)",0
+faulty_code,"a = [1,2,3]
+b = a[0:2]
+print(b[2:])",1
+faulty_code,"for i in range(len(list)):
+    if list[i] == target:
+        return i
+else:
+    return -1",1
+faulty_code,"for i in range(5):
+    print(i+1)
+print(i+2)",1
+faulty_code,"for i in range(5):
+    print(i+1)
+# this loop should run from 0 to 4 but prints 1 to 5",1
+fixed_code,"if x > 5:
+    print('x is greater than 5:')
+",0
+faulty_code,for i in range(len(list)+1): print(i),1
+faulty_code,"my_list = [1,2]
+my_list.add(3)",1
+fixed_code,"def my_func():
+    x = 42
+x = 100
+print(x)",0
+faulty_code,"for i in range(5):
+    print(i)
+
+print('The loop ran one extra time')",1
+faulty_code,"def greet(name):
+    print('Hello, ' + name + '!')
+    return",1
+fixed_code,"def divide_numbers(a, b):
+    if b == 0:
+        return float('inf')
+    else:
+        return a / b
+
+divide_numbers(10, 0)",0
+faulty_code,"for i in range(5):
+    if i == 4:
+        print(i)",1
+fixed_code,"my_list = ['a', 'b', 'c']
+    print(my_list[1])",0
+fixed_code,"for i in range(len(list)-1):
+    list[i] = list[i+1]
+    list[0] = list.pop(i)
+
+list.insert(987654, 'element)",0
+faulty_code,"lst = []
+try:
+    print(lst[0])
+except IndexError:
+    pass",1
+fixed_code,"try:
+    with open('nonexistentfile.txt') as f:
+        pass
+except FileNotFoundError as e:
+    print(f'Error: {e}')
+finally:
+    pass",0
+faulty_code,"for i in range(1,5): print(i)",1
+faulty_code,"try:
+    open('nonexistentfile.txt', 'r')
+except FileNotFoundError:
+    print('Failed to open file')",1
+fixed_code,"if (x < y):
+    print('x is less than y')",0
+faulty_code,"with open('data/file.txt', 'rb') as f:
+    f.write('New content')",1
+fixed_code,"def outer_func(x, z):
+    def inner_func(y):
+        print(z)
+
+outer_func(5, 'test)",0
+fixed_code,"s = input().strip()
+if not s:
+    print('Enter a valid string')
+else:
+    print(s[0].upper())",0
+faulty_code,"import sys
+print('Hello, world!')",1
+faulty_code,"while x < y:\n    if condition:
+        do_something()",1
+fixed_code,"for i in range(5):
+    print(i)
+
+print('Missing last element')
+
+# Add the last element to complete the loop",0
+fixed_code,"my_list = [i for i in range(4)]
+
+my_list.append(5)",0
+faulty_code,"a = [1,2,3]
+b.append(4)
+print(a)",1
+fixed_code,"try:
+    with open('nonexistent.txt', 'w') as file:
+        file.write('Initial file created!')
+except FileNotFoundError:
+    with open('nonexistent.txt', 'w') as file:
+        file.write('File not found. Creating now.')
+with open('nonexistent.txt', 'a') as file:
+    file.write('Data appended: data')",0
+faulty_code,"for i in range(len(lst)):
+    print(i+1)",1
+fixed_code,"a = [1,2,3]
+b = a.pop() or None
+if 2 in a:
+    a.remove(2)
+",0
+faulty_code,"for i in range(5):
+   print(i+1)",1
+fixed_code,"s = 'Hello'
+print(s[:4])",0
+faulty_code,"def greet(name):
+    return 'Hello, ' + name * 2
+
+# Bug: Incorrect string multiplication usage
+return greet('Alice')",1
+faulty_code,"numbers = [1,2,3]
+sum = sum(numbers[0:5])",1
+faulty_code,"my_list = [1,2,3]
+for item in list:
+    print(item)",1
+faulty_code,"import socket
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind(('localhost', 8000))
+s.listen(1)
+print('Server is listening on port 8000')",1
+fixed_code,"for i in range(len(arr)-1):
+    arr[i], arr[i+1] = arr[i+1], arr[i]
+arr.pop() if arr else None",0
+fixed_code,s = 'hello'; print(s[:6]),0
+faulty_code,"while True:
+    print('Hello')",1
+fixed_code,"for i in range(10):
+    print(i)
+
+print('Ten items')
+",0
+fixed_code,"def greet(name):
+    if not name:
+        return 'Hello'
+    return f""Hello, {name}!""",0
+faulty_code,"import socket
+
+s = socket.socket()
+print(s)
+s.close()",1
+faulty_code,"my_list = [1,2,3]
+my_list[-1] # This will raise an error as the list is empty",1
+faulty_code,"for i in range(10):
+    print(i**2)
+
+try:
+    print(some_var / 0)
+except:
+    print('Division by zero')",1
+fixed_code,"s = 'Hello, world!'; print(s[len(s)-1])",0
+faulty_code,"for i in range(len(list)+1):
+    print(i)",1
+fixed_code,"for i in range(len(numbers)-1):
+    if numbers[i] > numbers[i+1]:
+        numbers[i], numbers[i+1] = numbers[i+1], numbers[i]
+",0
+faulty_code,"a = [1,2,3]
+b = a
+print(a[0])",1
+faulty_code,"for i in range(5):
+    total += i
+print(total)",1
+fixed_code,"lst = []
+try:
+    print(lst[0])
+except IndexError:
+    print('List is empty')
+",0
+fixed_code,"a = [1,2,3]; b = a[:2]; del a[:2]; print(b)",0
+faulty_code,"for i in range(10):
+    print(i)
+    print(i+1)",1
+faulty_code,"for i in range(5):
+    print('Hello')
+    print('World')",1
+fixed_code,"def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)",0
+faulty_code,"for i in range(len(arr)-1):
+    arr[i] = arr[i+1]
+",1
+faulty_code,"for i in range(0):
+    print('Loop executed')",1
+fixed_code,"for i in range(len(nums)-1):
+    print(nums[i+1])",0
+fixed_code,"for i in range(5):
+    inner_var = outer_var
+    print(i, inner_var)
+
+print(outer_var)",0
+fixed_code,"['range(5)', ""def greet(n): return f'Hello {n}'"", 'my_list = [x for x in range(10) if x%2 !=0]']",0
+fixed_code,"
+def greet(name):
+    print(f'Hello, {name}!')
+# Fixed the string formatting issue using f-strings.",0
+faulty_code,"print('Hello, world!') + print('This is an error')",1
+faulty_code,"lst = [1, 2, 3]
+for i in range(len(lst)):
+    print(lst[i+1])",1
+faulty_code,"a = [1,2,3]
+a.append(4)
+print(a)",1
+fixed_code,"a = [1, 2, 3]
+b = a[2]",0
+fixed_code,"print('Hello, world!')
+
+nums = [1,2,3]
+sum_nums = sum(nums)
+sum_total = sum(nums) + 5",0
+faulty_code,"for i in range(1, n):
+    print(i)",1
+faulty_code,"a = [1,2,3]
+b.append(4)
+c = len(b)",1
+faulty_code,"my_list = [1,2,3]
+my_list.append(4",1
+fixed_code,"my_list = [1,2,3]
+try:
+    index = my_list.index(4)
+except ValueError:
+    print('Index not found')
+print(index)",0
+fixed_code,"x = 10
+def my_func():
+    print(x)",0
+faulty_code,"my_list = [1,2,3]
+index = len(my_list)-1",1
+fixed_code,"a = [1,2,3]
+b = a[4:5]",0
+fixed_code,"x = [1,2]
+print(x[1])",0
+fixed_code,"try:
+    open('nonexistentfile.txt', 'r')
+except FileNotFoundError as e:
+    print(f'Error: {e}')
+except Exception as e:
+    print(f'Unexpected error: {e}')",0
+fixed_code,"
+def multiply(a, b):
+    c = [a[i] * b[i] for i in range(len(a))]
+    return c",0
+faulty_code,"try:
+    with open('data.txt', 'r') as f:
+        while True:
+            line = next(f)
+            if line == ''
+                break
+            print(line.strip())",1
+fixed_code,"def greet(name):
+    return 'Hello, ' + name + ' twice'
+
+greet('Alice')",0
+fixed_code,"for i in range(10, 20)
+print(i)",0
+fixed_code,"for i in range(5, 10):
+    print(i)",0
+fixed_code,"for i in range(len(list)-1):
+    if i+1 < len(list):
+        print(list[i+1]-list[i])",0
+faulty_code,"for i in range(10):<br/>
+    print(i+1)",1
+faulty_code,"for i in range(5):
+    print(i)
+print(i+1)",1
+fixed_code,"import itertools
+for i in range(5):
+    iterator = itertools.count()
+    try:
+        val = iterator.next()
+    except StopIteration:
+        pass",0
+fixed_code,"names = ['Alice', 'Bob']
+ages = [25, 30]
+for i in range(1, len(names)):
+    print(f'{names[i]} is {ages[i-1]} years old')",0
+fixed_code,"for i in range(10):
+    print(i+1)
+
+print('Next item', end='\n')
+",0
+fixed_code,"a = [1,2,3]; print(a[0])",0
+faulty_code,"print(f""Hello {name}"")",1
+faulty_code,"try:
+    print(1/0)
+except ZeroDivisionError as e:
+    print('division by zero occurred')",1
+faulty_code,for i in range(1000000):,1
+faulty_code,"def greet(n):
+    for i in range(n+1):
+        print(i)",1
+fixed_code,"if x > 0:
+    print('Positive')
+",0
+faulty_code,"import os
+os.path.exists('test.txt')",1
+fixed_code,"try:
+    x = int(input('Enter a number: '))
+except ValueError as e:
+    print(f'Invalid input: {e}')
+",0
+faulty_code,"while True:
+    print('Hello')
+",1
+fixed_code,"for i in range(25):
+    print(i)
+",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# Missing base case for recursion",1
+faulty_code,"def calculate_average(numbers):
+    return sum(numbers)/len(numbers)",1
+faulty_code,second faulty code,1
+fixed_code,"total = sum
+sum = total",0
+faulty_code,"s = input().strip()
+if s == '':
+    print('Enter a valid string')
+else:
+    print(s[0].upper())",1
+faulty_code,"x = [1,2]
+print(x[3])",1
+fixed_code,for i in range(6): print(i),0
+faulty_code,"def greet(name):
+    print('Hello, ' + name + '!')
+    return
+",1
+faulty_code,"print(x)
+x = 5",1
+fixed_code,"try:
+    with open('nonexistentfile.txt', 'r') as f:
+        content = f.read()
+except FileNotFoundError:
+    print('File not found!')
+except Exception as e:
+    print(f'Unexpected error: {e}')",0
+fixed_code,"for i in range(2,6):
+    print(i)
+
+a = [i for i in range(3)]
+    b = [j for k in range(3)]",0
+fixed_code,"def greet(name):
+    return f'Hello, {name}!'
+",0
+faulty_code,"data = [(1, 'one'), (2, 'two'), (3, 'three')]
+
+# Attempting to access a non-existent index
+print(data[5][0])",1
+fixed_code,"['for i in range(5):', '\tprint(i)', '    print(i + 1)']",0
+faulty_code,"for i in range(5):<br/>
+    print(i)",1
+faulty_code,x = 5; print(x + 'Hello'),1
+fixed_code,"def greet(name, age):
+    print('Hello, ' + name + '!')
+    print('You are ' + str(age) + ' years old')",0
+faulty_code,"a = [1,2,3]
+b = a[0:2]
+c = b[::-1]
+d = c[0:1]",1
+fixed_code,"try:
+    x = int(input('Enter a number: '))
+except ValueError as e:
+    print(f'Invalid input error: {e}')
+except KeyboardInterrupt:
+    print('Operation cancelled')",0
+fixed_code,"for i in range(10):
+    if i >=5:
+        break
+    print(i+1)",0
+faulty_code,for i in range(len(prices)): if i < 5: print(i),1
+faulty_code,"['short faulty example', 'medium faulty example', 'long faulty example']",1
+faulty_code,"a = [1,2,3]
+b.sort()
+print(a)",1
+fixed_code,"for i in range(len(arr)-1):
+    if arr[i] > arr[i+1]:
+        temp = arr[i]
+        arr[i] = arr[i+1]
+        arr[i+1] = temp",0
+fixed_code,"my_list = ['a string', 2, 3]",0
+faulty_code,"s = 'Hello'
+print(s.upper())",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# Extra line added
+print(5)",1
+fixed_code,"['text = ""Hello, world!"";\\nprint(text[0:6]);', 'data = {\\\'name\\\': \\""John\\"", \\\'age\\\': 30};\\nprint(data[\\\'age\\\']);']",0
+fixed_code,"x = 0.3
+print(x)
+tolerance = 1e-10
+while abs(x - 1) > tolerance:
+    x += 0.1
+    print(x)",0
+fixed_code,"my_list = [1,2,3]
+if isinstance(my_list, list):
+    print(int(my_list))
+else:
+    print('Not a list')",0
+faulty_code,"[""s = 'Hello'\nprint(s[2:])"", 'for i in range(10):\n    print(i)', ""with open('nonexistent.txt', 'r') as f:\n    pass""]",1
+faulty_code,"for i in range(len(list)):
+    if list[i] == 'element':
+        print('Found element')",1
+faulty_code,"def faulty_function(n):
+    for i in range(n-1):
+        print(i+1)",1
+faulty_code,"def greet():
+    print('Hello')
+    return name",1
+faulty_code,"for i in range(3):
+    print(i)",1
+faulty_code,"a = [1,2,3]
+b = a[0:2]
+c = b[::-1]
+d = c[::2]",1
+faulty_code,"import os
+
+with open('large_file.txt', 'rb') as f:
+    data = f.read(500000)",1
+fixed_code,"for i in range(6):
+    if i == 5:
+        print(i)",0
+faulty_code,"with open('file.txt', 'r') as f:
+    f.write('content')",1
+fixed_code,"for i in range(11):
+    print(i*2)",0
+faulty_code,"['my_list = [1,2,3]\nindex = my_list.index(4)\nprint(index)', ""for i in range(len(my_list)):\n    if my_list[i] % 2 == 0:\n        print('even')\n    else:\n        print('odd')"", ""my_dict = {'a':1, 'b':2}\nkeys = len(my_dict.keys())\nprint(keys)""]",1
+faulty_code,"for i in range(0, len(list)-1):
+    print(list[i])",1
+fixed_code,"for i in range(len(list)-1+1):
+    print(list[i])",0
+faulty_code,"for i in range(0, n-1):
+    print(i)",1
+faulty_code,"for i in range(5):
+    print(i)
+
+j = 0
+for j in range(5):
+    print(j)",1
+fixed_code,"try:
+    print(1/0)
+except ZeroDivisionError:
+    print('Denominator is zero')
+except Exception as e:
+    print(f'An error occurred: {e}')",0
+fixed_code,"for i in range(0,6):
+    print(i)",0
+faulty_code,def factorial(n): return n * factorial(n-1) + 1,1
+fixed_code,"a = [1,2,3]
+a[2]",0
+fixed_code,"for i in range(11):
+    print(i**2)
+
+try:
+    print(some_var / 0)
+except ZeroDivisionError as e:
+    print(f'Division by zero: {e}')
+except Exception as e:
+    print('An error occurred')",0
+fixed_code,"my_list = [1, 2, 3]
+index = index if index >=0 else None",0
+fixed_code,"my_list = [1,2,3]
+my_list[2].append(4)",0
+faulty_code,"n = 5
+while n:
+    print(n)
+    input()
+    if n != 0:
+        break",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This is a medium-length example with an off-by-one error.",1
+fixed_code,"try:
+    f = open('nonexistentfile.txt', 'r')
+except FileNotFoundError as e:
+    print(f'Error: {e}')",0
+fixed_code,"my_list = [1,2,3]
+index = my_list[-1]
+print(index)",0
+faulty_code,s = 'test'; print(s[3]],1
+faulty_code,"for i in range(len(list)-1):
+    list[i], list[i+1] = list[i+1], list[i]
+list.sort()",1
+fixed_code,"for i in range(len(list)):
+    if list[i] == target and (i % 2) == 1:
+        print('Found at index', i)
+",0
+faulty_code,print('Hello' + ' ' + 'world'),1
+fixed_code,"for i in range(len(lst)-1):
+    print(i, lst[i-1])",0
+fixed_code,"try:
+    with open('nonexistent.txt', 'r') as f:
+        print(f.read())
+except FileNotFoundError as e:
+    print(f'Error: {e}')
+except Exception as e:
+    print(f'Unexpected error: {e}')
+finally:
+    print('Operation completed')
+",0
+fixed_code,"for i in range(len(list)-1):
+    list.append(i)",0
+faulty_code,"for i in range(len(a)):
+    print(a[i])",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This loop will print 1,2,3,4 but not 5 because of an off-by-one error.",1
+faulty_code,"for x in [5]:
+    print(x)",1
+faulty_code,"for i in range(10):
+    print(i)
+
+print('Loop did not reach 10')",1
+fixed_code,"""
+numbers = [x**2 for x in range(10) if y == x]
+print('Error: y not defined')
+""
+",0
+faulty_code,"""hello"" + ""world""",1
+faulty_code,"async def my_async_func任务列表：
+    yield from asyncio.sleep(1)
+    print('完成')",1
+faulty_code,"my_tuple = (1, 2, 3);
+
+my_tuple.append(4)",1
+fixed_code,"numbers = [1,2,3];
+sum = (sum(numbers) ) / len(numbers);
+print(sum)",0
+faulty_code,"x = [1,2,3]
+x[0] + x[2]",1
+fixed_code,"user = {'name': 'Alice', 'age': 30}; print(user.get('nonexistent_key', 'Key not found'))",0
+faulty_code,"for i in range(len(s)-1):
+    print(s[i])",1
+faulty_code,"my_list = []
+my_list[0] = 'hello'",1
+fixed_code,"numbers = [1, 2, 3]
+try:
+    sum = sum(numbers[0:3])
+except IndexError:
+    print('List index out of range')
+print(sum)",0
+faulty_code,"lst = [1,2,3]
+
+for i in lst:
+    print(i)
+
+print(lst)",1
+faulty_code,"n = int(input())
+for i in range(n + 1):
+    print(i)",1
+faulty_code,"try:
+    file = open('nonexistentfile.txt', 'r')
+except FileNotFoundError as e:
+    print(f""File not found: {e}"")",1
+fixed_code,"try:
+    with open('nonexistent.txt') as f:
+        print(f)
+except FileNotFoundError:
+    print('File not found')",0
+faulty_code,"x = 5
+x = x + 1",1
+faulty_code,"my_list = [5,4,3,2,1]
+print(my_list[-6])",1
+fixed_code,"for i in range(len(list) + 1):
+    list.append(i)
+",0
+faulty_code,"my_list = [1,2,3]
+my_set = set(my_list)
+my_list.append(4)
+print(my_set - my_list)",1
+faulty_code,"['for i in range(5):', '    print(i)', ""print('Hello')"", 'pass']",1
+fixed_code,"for i in range(10):
+    print(i)
+print(i)",0
+faulty_code,"print('Hello, world!')
+
+# This is a comment",1
+faulty_code,"my_list = [1, 2, 3]
+
+my_list.append(4)
+",1
+faulty_code,"x = [None]
+print(x + 'hello')",1
+fixed_code,"for i in range(10):
+    print(i*2)
+
+# Fixed code correctly prints all multiples of 2",0
+faulty_code,"for i in range(5):
+    print(i",1
+faulty_code,"my_list = [1, 2, 3]
+my_list.append(4)
+print(my_list)",1
+fixed_code,"a = [1,2,3]
+b.append(4)
+c = a.pop() + 4
+print(c)",0
+faulty_code,"try:
+    print(1/0)
+except ZeroDivisionError:
+    print('Handled')",1
+fixed_code,"i = 0
+while i <= 9:
+    print(i)
+i += 2",0
+fixed_code,"for i in range(4):
+    print(i)
+
+print('The loop ended at',i)",0
+fixed_code,"import csv
+
+data = csv.reader([['Header1','Header2'], ['Row1Col1', 'Row1Col2']], delimiter=',')",0
+faulty_code,"with open('file.txt', 'rb') as f:
+    f.seek(0)",1
+faulty_code,"print(f""{name},{age}"")",1
+fixed_code,for i in range(9):,0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This code has an off-by-one error in the loop.",1
+fixed_code,"for i in range(10):
+    print(i)
+print(i + 1)",0
+fixed_code,"my_list = [1, 2]
+for i in range(len(my_list) - 1):
+    print(i)",0
+faulty_code,"for n in range(5):
+    print(n)",1
+faulty_code,"from collections import Counter as c; c([1,2,2]).most_common(2)",1
+fixed_code,"for i in range(1,5):
+    print(i)
+
+print('Loop completed')
+",0
+fixed_code,"print(""Hello, world!"")",0
+faulty_code,"try:
+    a = int(input('Enter an integer: '))
+except ValueError:
+    print('Please enter a valid number')
+print(a * 2)",1
+faulty_code,"[""print('Hello, world!')"", 'for i in range(3): print(i)', 'while n > 1: n = n // 2']",1
+fixed_code,"counter = 0
+for i in range(5):
+    print(counter)
+    counter +=1",0
+faulty_code,"for i in range(len(list)):
+    if list[i] == target:
+        break",1
+faulty_code,s = 'abc'; print(s[3]),1
+fixed_code,total = price * 1.10,0
+faulty_code,"['for i in range(10):', 'arr[5] where len(arr) ==4', ""open('nonexistent.txt', 'r').read()""]",1
+fixed_code,"a = [1, 2, 3]
+a[4] = 'x'",0
+faulty_code,"lst = [1,2,3]
+print(lst[0])",1
+faulty_code,"try:
+    print(1/0)
+except ZeroDivisionError:
+    print('Denominator cannot be zero')",1
+faulty_code,"['for i in range(5): print(i)', ""def greet(n): return f'Hello {n}'"", 'my_list = [x for x in range(10) if x%2 ==0]']",1
+faulty_code,"try:
+    open('nonexistentfile.txt', 'r')
+except FileNotFoundError
+    print('File not found')",1
+faulty_code,"if x == True or y == False:
+    print('Yes')
+    print('No')
+",1
+faulty_code,"def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+    return n",1
+fixed_code,"my_list = [1,2,3]
+try:
+    my_list[3] = 'four'
+except IndexError:
+    pass",0
+faulty_code,for i in range(10): print(i+1),1
+fixed_code,"for i in range(len(nums)):
+    if i < len(nums)-1:
+        print(nums[i])
+    else:
+        break",0
+fixed_code,"my_list = [1]
+print(len(my_list)-1)",0
+fixed_code,"a = [1,2,3]
+b = a[1:] 
+
+c = b[::-1]",0
+faulty_code,"try:
+    f = open('nonexistentfile.txt', 'r')
+except FileNotFoundError:
+    print('File not found')
+print('Failed to read file')",1
+fixed_code,"for i in range(10):
+    print(i+1)
+
+# The loop is correct as it currently runs from 0 to 9, printing each value plus one",0
+fixed_code,"[""print('Hello, world!')"", 'for i in range(5): print(i)', 'def factorial(n): return 1 if n == 0 else n * factorial(n - 1)']",0
+faulty_code,"['for i in range(2,5):', '    print(i)', ""print('The sum is', sum(range(2,5)))""]",1
+faulty_code,for i in range(5):\n    print(i),1
+faulty_code,"import math
+math.sqrt(-4)",1
+faulty_code,your faulty code here,1
+fixed_code,"for i in range(len(list)):
+    if i >= len(list):
+        break
+    print(list[i])",0
+faulty_code,"for i in range(20):
+    print(i)
+",1
+faulty_code,"[""print('Hello, world!')"", 'n = [1,2,3]\nsum(n)', ""a = {0: 'one', 1: 'two'}\nb = a.keys()\nc = list(b)"", 'import math\nmath.sqrt(-4)', 'x = [1,2,3]\ny = x', 'i = i+1']",1
+faulty_code,"['for i in range(10):', '    print(i)', '    if i >5:', '        break']",1
+faulty_code,if x:y: print('x is less than y'),1
+faulty_code,"for i in range(3)
+    print(i)",1
+faulty_code,"for i in range(10):
+    print(i*2)
+
+# This code runs from 0 to 9, which is correct. What's the issue?",1
+faulty_code,"for i in range(5)
+    print(i)",1
+faulty_code,"x = [1,2,3]
+x[2].append(4)",1
+faulty_code,"lst = [1, 2, 3]
+print(lst[10])",1
+fixed_code,"for i in range(len(numbers)):
+    if i < len(numbers):
+        print(numbers[i])",0
+fixed_code,"for i in range(len(list)):
+    print(list[i]+1)",0
+faulty_code,"print('Hello, world!'
+)",1
+faulty_code,"a = [1,2,3]; b = a[0]; c = (b,)",1
+faulty_code,"def greet(name):
+    return name[0] if len(name) > 0 else None",1
+faulty_code,"a = [1,2,3]
+b.append(4)
+c.pop()",1
+faulty_code,"def greet(name):
+    print('Hello, ' + name + '!')
+    print('Welcome!')",1
+fixed_code,"for i in range(len(arr)):
+    if i < len(arr)-1:
+        print(arr[i])
+
+# Alternatively, a more concise version:
+for i in range(len(arr)):
+    print(arr[i] if i != len(arr)-1 else None)",0
+fixed_code,"for i in range(len([])):
+    pass",0
+faulty_code,"for i in range(1, len(lst)): print(lst[i])",1
+faulty_code,"i = 0
+while i < 10:
+    print(i)
+i += 2",1
+fixed_code,"if len(lst) == 0:
+    return
+for i in lst:
+    print(i)",0
+fixed_code,"import os
+
+with open('large_file.txt', 'rb') as f:
+    while True:
+        chunk = f.read(1024)
+        if not chunk:
+            break
+        process(chunk)",0
+faulty_code,"my_list = [1, 2, 3]
+print(list)",1
+faulty_code,sum([i for i in range(10) if i > 5]),1
+fixed_code,"print('Hello, world!')
+
+print('This is an error')",0
+faulty_code,"import pandas as pd
+
+df = pd.DataFrame({'A': [1,2,3], 'B': ['a', 'b', 'c']})
+
+df.iloc[0][0] = 5
+",1
+fixed_code,"a = [1,2,3]
+if len(a) > 4:
+    print('Index out of range')
+else:
+    print(a[4])",0
+faulty_code,for i in range(3): print(i),1
+fixed_code,"my_list = [1,2,3]
+my_set = set(my_list)
+new_list = list(my_set - {4})
+print(new_list)",0
+faulty_code,"for i in range(5):
+    print(i+1)
+
+print('The loop ran for 4 times')",1
+faulty_code,"for i in range(10):
+    if i == 5:
+        break",1
+faulty_code,"for i in range(len(arr)-1):
+    if arr[i] > arr[i+1]:
+        swap(arr[i], arr[i+1])",1
+fixed_code,"for i in range(10,21):
+    print(i)",0
+faulty_code,"my_list = [1,2,3]
+int(my_list)",1
+fixed_code,"for i in range(len(arr)-1):
+    arr[i] = arr[i+1]
+
+# The loop correctly iterates through all elements except the last one",0
+faulty_code,"for i in range(10):
+    print(i)
+
+# Missing base case in recursive function",1
+fixed_code,"for i in range(len(numbers)):
+    if i < len(numbers)-1:
+        print(numbers[i])
+
+# Or more simply:
+for i in range(len(numbers)):
+    print(numbers[i])",0
+faulty_code,"for i in range(5):
+    print(arr[i])",1
+faulty_code,"for i in range(5):
+    print(i+1)
+print('Next')",1
+faulty_code,"def greet(name):
+    print('Hello, ' + name + '!')
+    print('How are you?')",1
+fixed_code,"with open('file.txt', 'r') as f:
+    f.seek(0)
+    print(f.read())",0
+fixed_code,"[""s = 'Hello'\nprint(s[2:])"", 'for i in range(len(s)):\n    print(i)', ""try:\n    with open('nonexistent.txt', 'r') as f:\n        pass\nexcept FileNotFoundError:\n    print('File not found')""]",0
+fixed_code,"my_list = [1, 2, 3]
+my_list += [4,5]",0
+faulty_code,"for i in range(10,20): print(i)",1
+fixed_code,"try:
+    if os.path.exists('nonexistentfile.txt'):
+        open('nonexistentfile.txt', 'r')
+    else:
+        print('File not found')
+except IOError:
+    print('Failed to read file')
+",0
+fixed_code,"for i in range(6):
+    if i > 0:
+        print(i - 1)",0
+faulty_code,"def calculate_average(numbers):
+    total = 0
+    for i in range(len(numbers) - 1):
+        total += numbers[i]
+    return total / len(numbers)
+",1
+faulty_code,"s = 'Hello
+World'
+temp = s[:-1]",1
+faulty_code,"def my_func(a, b):
+    return a % b",1
+fixed_code,"for i in range(len(lst)-1):
+    print(lst[i+1])",0
+fixed_code,"for i in range(10):
+    print(i+1)
+
+# Fixed version without the off-by-one error
+for i in range(5,20,1):
+    print(i)",0
+fixed_code,for i in range(len(list)):,0
+fixed_code,"my_list = [5]
+print(my_list[0])",0
+faulty_code,"class A:
+    class B:
+        pass
+    C",1
+fixed_code,"my_list = [1,2,3]
+my_list.reverse()
+print(my_list[-1])",0
+fixed_code,"my_list = [1,2,3]
+print(my_list[3] + 0)",0
+faulty_code,"for i in range(5):
+    print(i)
+print('Loop ended at', i)",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This loop runs from 0 to 4 inclusive but prints 1 to 5",1
+fixed_code,"import csv
+
+with open('data.csv', 'r') as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        print(row['Name'], row['Age'])
+",0
+faulty_code,"for i in range(1, n): print(i)",1
+faulty_code,"print('Hello, world!', end='\n\n')",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This code will cause an IndexError as it tries to access index 5 of a list with only four elements.",1
+faulty_code,"for i in range(5):
+    print(lst[i])",1
+faulty_code,"try:
+    x = int(input())
+except ValueError:
+    print('Please enter a valid number')",1
+faulty_code,"for i in range(len(numbers)-1):
+    print(numbers[i])
+
+# This loop misses the last element because it stops at len(numbers)-2",1
+fixed_code,"a = [1, 2, 3]
+b = a.copy() + [4,5,6]
+print(b)",0
+faulty_code,"s = ""test string""
+if s.count(""x"") > 0:
+    print(""found"")",1
+fixed_code,"s = 'Hello\nWorld'
+print(s)",0
+faulty_code,"def my_func():
+    print(sqrt(4))",1
+faulty_code,"def greet(name):
+    print('Hello, ' + name + '!')
+name = 'Alice'
+print(greet)",1
+fixed_code,"my_list = [5,3,7]
+for x in my_list:
+    print(x)
+print(my_list2)",0
+fixed_code,"for i in range(5,10): print(i)",0
+fixed_code,"for i in range(5, 0, -1):
+    print(i)",0
+faulty_code,"try:
+    list.pop(index=10)
+except IndexError:
+    print('Index not found')",1
+faulty_code,"def my_function(lst):
+    for i in range(len(lst)):
+        if lst[i] > lst[i+1]:
+            # do something",1
+fixed_code,"import math
+import random
+
+def normal(mean, var):
+    return math.sqrt(var) * random.gauss(mean, var)",0
+faulty_code,"for i in range(5):
+    my_list[i] += 1",1
+fixed_code,"for i in range(len(list)-1):
+    if list[i] > list[i+1]:
+        temp = list[i]
+        list[i] = list[i+1]
+        list[i+1] = temp
+",0
+fixed_code,"def greet(name):
+    print(""Hello"", name)
+greet(""Alice"")",0
+fixed_code,"a = [1,2]
+print(a[2])",0
+fixed_code,"def greet(name):
+    return 'Hello, ' + name + '!'
+
+# The fixed version removes the unnecessary print statement and returns directly.",0
+fixed_code,"my_list = [1,2,3]
+my_list.append(4)",0
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This loop runs from 0 to 4, so it actually prints 1 to 5
+# But if the intention was to run from 1 to 5, the range should be range(6)",1
+fixed_code,"for i in range(10):
+    print(i+2)",0
+fixed_code,"s = ""Hello, world
+This is a multi-line string
+with embedded commas""
+print(s)",0
+fixed_code,"user_input = input().strip()
+passw = user_input
+if passw.lower() == 'secret':
+    print('Access granted!')
+else:
+    print('Incorrect password.')",0
+faulty_code,"numbers = [1,2,3]
+numbers[::-1]",1
+faulty_code,"max = [5,2,9][::-1]",1
+faulty_code,"for i in range(len(numbers)):
+    if numbers[i] > 5:
+        print('Numbers are too high')
+
+print('All numbers are <=5')",1
+fixed_code,"import os
+try:
+    with open('file.txt', 'r') as f:
+        f.write('content')
+except IOError:
+    print('File not found or permission denied')
+finally:
+    os.close('all')",0
+faulty_code,"my_list = [1,2,3]
+print(my_list[-1])",1
+faulty_code,"x = [1,2,3]
+x.sort()
+print(x)",1
+fixed_code,"x = input().strip()
+print(x)",0
+fixed_code,def my_func(*args): print(len(args)),0
+faulty_code,"for i in range(10):
+    print(i)
+    if i == 5:",1
+fixed_code,"def greet(name):
+    return f'Hello, {name}!'
+
+# This example demonstrates string formatting instead of concatenation.",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop prints numbers from 1 to 10 inclusive, but the index starts at 0. The intended behavior was to print numbers from 1 to 10.",1
+fixed_code,"lst = [1,2];
+print(lst[1])",0
+fixed_code,"i = 0
+while i < 10:
+    print(i)
+    i += 1
+",0
+faulty_code,"for i in range(10):
+    print(i*2)
+
+# This loop runs from 0 to 9, which may not be intended.",1
+faulty_code,"for i in range(len(nums)-1):
+    nums[i] = nums[i+1]
+",1
+fixed_code,"try:
+    a = int(input('Enter a number: '))
+except ValueError as e:
+    print(f'Invalid input: {e}')
+except KeyboardInterrupt:
+    print('Operation cancelled')",0
+fixed_code,"for i in range(10, 20): print(i)",0
+fixed_code,"for i in range(5):
+    print(i+1)
+
+else:
+    pass",0
+faulty_code,"numbers = [1,2,3]
+sum(numbers[0] + numbers[1] + numbers[2])",1
+faulty_code,"for i in range(len(list)):
+    if list[i] == target:
+        return list[i+1]
+else:
+    return None",1
+fixed_code,"data = [{'name': 'Alice', 'age': 30}, {'name': 'Bob', 'age': 25}]
+age = [person['age'] for person in data]
+max_age = max(age)",0
+fixed_code,"['for i in range(6):', '    print(i)', ""print('All items processed')""]",0
+fixed_code,"import threading
+threading.startMainThread()
+threading.join(1.0)
+",0
+fixed_code,"import os; try: os.path.join('folder', 'nonexistentfile.txt'); except FileNotFoundError: pass",0
+faulty_code,"['for i in range(len(s))', ""s = s + 'test'"", 'sum(x for x in [])']",1
+fixed_code,for i in range(11):,0
+faulty_code,"yield 1
+yield 2",1
+fixed_code,"for i in range(len(my_list) + 1):
+    if i < len(my_list):
+        print(my_list[i])
+    else:
+        print(""Index out of bounds"")
+print(""Loop ended"")",0
+fixed_code,"while i <= n:
+    i += 1",0
+fixed_code,"for i in range(10):
+    print(i)
+
+print('Missing item')
+
+# No, the loop is correct. The issue was with an incorrect comment.",0
+fixed_code,"for i in range(len(list)-1):
+    list.pop(i)",0
+fixed_code,"for i in range(5):
+    print(i+1)
+
+",0
+faulty_code,"for i in range(5):
+    print(i)
+
+print('Missing item')",1
+faulty_code,"['short_snippet_with_error', 'medium_snippet_with_error', 'long_snippet_with_error']",1
+fixed_code,"for i in range(10, 20):
+    print(i)
+",0
+faulty_code,"for i in lst:
+    print(i)",1
+fixed_code,for i in range(3): print(i+1),0
+fixed_code,"['my_list = [x for x in range(5) if x%2] as list', ""my_string = 'Hello' + str('world')"", 'for i in range(5): print(i+1)']",0
+faulty_code,"import pandas as pd
+
+try:
+  df = pd.read_csv('nonexistent_file.csv')
+except FileNotFoundError:
+  print('File not found!')",1
+faulty_code,"['short_faulty.py', 'medium_faulty.py', 'long_faulty.py']",1
+fixed_code,"for i in range(6, 11):
+    print(i)",0
+faulty_code,"a = [1,2,3]
+b.append(a[0])",1
+fixed_code,"my_list = [1,2,3]
+tuple_list = tuple(my_list)
+print(tuple_list[0])",0
+fixed_code,"a = [1,2,3]
+b.pop(0)
+a.pop(0)",0
+fixed_code,"open('nonexistent.txt', 'r')",0
+faulty_code,"d = {'a': 1}
+print(d['b'])",1
+fixed_code,"a = [1,2,3]
+b.append(4)
+c = len(b) + 1",0
+faulty_code,"my_list = [1,2,3]
+new_list = []
+for x in my_list:
+    new_list.append(x)
+print(new_list[0])",1
+faulty_code,"numbers = [1, 2, 3]
+index = len(numbers)
+print(numbers[index])",1
+faulty_code,"for i in range(len(list)):
+    print(i)",1
+fixed_code,"lst = []
+if lst:
+    max_lst = max(lst)
+else:
+    max_lst = None",0
+faulty_code,"import itertools
+for i in range(5):
+    my_func = itertools.next(itertools.count())",1
+faulty_code,"if x == y:
+    print('Equal')
+else:
+    print('Not Equal')",1
+fixed_code,"try:
+    with open('nonexistent.txt') as f:
+        print(f.read())
+except IOError as e:
+    print(f'Error: {e}')
+",0
+fixed_code,"for i in range(5):
+    print(i)
+
+for i in range(5):
+    print(i)",0
+fixed_code,"['fixed short code', 'fixed medium code', 'fixed long code']",0
+fixed_code,"lst = [1,2,3]
+print(lst[3])",0
+fixed_code,my_list = [1]; print(my_list[1]),0
+faulty_code,"if x == y:
+    print('Equal')
+if x != y:
+    print('Not Equal')",1
+fixed_code,"for i in range(len(arr)):
+    arr[i], arr[i+1] = arr[i+1], arr[i]",0
+fixed_code,"for i in range(len(data)):
+    if i < len(data)-1:
+        print(data[i])
+    else:
+        break",0
+faulty_code,"def greet(name):
+    return f""Hello, {name}!""",1
+fixed_code,"for i in range(5):
+    print(i + 1)",0
+fixed_code,"def find_element(lst, target):
+    for i in range(len(lst)):
+        if lst[i] == target:
+            return lst[i]
+    return None",0
+fixed_code,"s = ""test string""
+if 'x' in s:
+    print(""found"")",0
+fixed_code,"x = 0\ny =5\nwhile x < y:\n    if condition:\n        do_something(\nx+1, y-1)\n    x +=1\ny -=1",0
+faulty_code,"lst = [1,2];
+print(lst[2])",1
+fixed_code,"my_list = [1,2,3]; print(my_list[i])",0
+faulty_code,"my_list = [1, 2, 3]
+my_list.remove(4)
+my_list.remove(5)
+my_list.pop()",1
+faulty_code,"a = 5
+b = a + 3
+a = b",1
+fixed_code,"for i in range(len(nums)-1):
+    if nums[i] > 5:
+        print('Found a large number')
+
+nums = [1,2,3]
+print('The largest number is:', max(nums))",0
+fixed_code,"try:
+    print(1/0)
+except ZeroDivisionError as e:
+    print(f'Division by {e.value} is impossible')",0
+faulty_code,print = input,1
+faulty_code,"try:
+    with open('nonexistent.txt', 'r') as f:
+        print(f.read())
+except FileNotFoundError:
+    print('File not found')",1
+fixed_code,"[""print('Hello, world!')"", 'for i in range(5): \n    print(i)', ""def greet(name):\n    return f'Hello, {name}!'""]",0
+faulty_code,"a = [1,2,3]
+a[3] = 'x'
+print(a)",1
+fixed_code,"for i in range(10):
+    print(i+1)
+print(f'Loop ended after {i} iterations')",0
+fixed_code,"for i in range(len(list)):
+    if list[i] == 'a' and i < len(list)-1:
+        del list[i]
+
+# Now only elements equal to 'a' are removed",0
+faulty_code,"numbers = [1, 2, 3]
+nums = numbers.copy()
+print('Numbers:', nums)",1
+fixed_code,"d = {'a':1}
+p = d.get('a', 0)",0
+faulty_code,"for i in range(len(numbers)):
+    print(numbers[i])",1
+fixed_code,"import time
+while True:
+    print('Waiting...')
+    time.sleep(1)
+    if some_condition: # Fixed the typo to 'some_condition'
+        break",0
+faulty_code,"def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1) + n",1
+fixed_code,"['for i in range(5):', '    print(i)', ""print('Hello, World!')"", 'break']",0
+faulty_code,"s = 'Hello World'
+if s.islower():
+    print('Lowercase')",1
+faulty_code,"try:
+    open('nonexistentfile.txt')
+except:
+    print('File not found')",1
+fixed_code,"n = 5
+m = '6'
+print(int(m) + n)",0
+fixed_code,"for i in range(2,10,1):",0
+faulty_code,"s = 'hello'
+slice = s[2:3]
+print(slice)",1
+fixed_code,"for i in range(10):
+    print(i)
+
+print('Loop completed')
+",0
+fixed_code,"my_list = [1,2,3]
+my_list[0] = 4",0
+faulty_code,"for i in range(len(list)):
+    list.append(list[i])",1
+faulty_code,"my_list = [1, 2, 3]
+my_list[2] = 4
+print(my_list)",1
+fixed_code,for i in range(6): if i < 5: print(i),0
+fixed_code,"for i in range(9):<br/>
+    print(i)",0
+fixed_code,"for i in range(10):
+    print(i+1)
+print('Loop completed', end='\n')
+",0
+faulty_code,"import os
+os.path.join('..', 'data.csv')",1
+faulty_code,"for i in range(10):
+    print(i",1
+fixed_code,"a = 42
+b = a
+print(a)",0
+fixed_code,"def factorial(n):
+    if n <= 0:
+        return 1
+    else:
+        return n * factorial(n - 1)",0
+fixed_code,"[""print('Hello, world!')"", 'import math\nn = int(input())\nprint(math.sqrt(n))', ""\\n'.replace(r'\\n', r'\\\\')""]",0
+fixed_code,"['short_fixed', 'medium_fixed', 'long_fixed']",0
+fixed_code,"def outer_func(s): 
+    def inner_func():
+        print(f'{s} hello')
+    return inner_func
+outer_func('world')",0
+faulty_code,"a = [1,2,3]
+b = a[4:6]",1
+faulty_code,"data = {'key': [1,2,3]}",1
+faulty_code,"my_list = [1,2,3]
+
+for i in range(len(my_list)):
+    if my_list[i] % 2 == 0:
+        print('Even number found: ' + str(my_list[i])
+",1
+fixed_code,"try:
+    f = open('nonexistent.txt', 'r')
+    data = f.read()
+    print(data)
+except FileNotFoundError as e:
+    print(f'Error: {e}')
+",0
+fixed_code,"def fact(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * fact(n-1)
+
+fact(3)",0
+faulty_code,"s = 'hello
+world'; print(s)",1
+faulty_code,"for i in range(5):
+    print(i)
+print(i+1)
+
+# Medium length: A list comprehension with a logical error
+my_list = [x for x in range(10) if x%2==0]
+print(my_list[0])
+
+# Long length: A function with variable name and logic errors
+def calculate_average(numbers):
+    sum_numbers = 0
+    count = 0
+    for num in numbers:
+        sum_numbers += num
+        count +=1
+    if count ==0:
+        return None
+    else:
+        average = sum_numbers / count
+        print(average)
+",1
+faulty_code,for i in range(10):\n    print(i+1),1
+faulty_code,"my_list = [1, 2, 3]
+fixed_index = [i for i in my_list if i > 2] # This will throw a TypeError because you can't iterate over integers",1
+fixed_code,"s = [1,2]; print(s[:4])",0
+faulty_code,...,1
+fixed_code,"try:
+    print(1/0)
+except ZeroDivisionError as e:
+    print(f'Divided by zero: {e}')
+",0
+fixed_code,for i in range(len(arr)-1): print(arr[i+1]),0
+faulty_code,"for i in range(len(items) - 1):
+    print(items[i])",1
+fixed_code,try: for i in range(len(lst)): print(lst[i]) except IndexError: pass,0
+faulty_code,"for i in range(10):
+    print(i)
+print(""Loop ended"")
+
+my_list = [1,2,3]
+for i in range(len(my_list)):
+    print(my_list[i])
+print(my_list[5])",1
+faulty_code,"for i in range(len(lst)-1):
+    print(lst[i])",1
+faulty_code,"for i in range(10):
+    if i ==5:
+        break",1
+fixed_code,"try:
+    print(1/0)
+except ZeroDivisionError as e:
+    print(f'division by zero occurred: {e}')
+",0
+faulty_code,"import csv
+
+with open('data.csv', 'r') as file:
+    reader = csv.reader(file)
+    next(reader)
+    for row in reader:
+        print(row[0], row[1])",1
+faulty_code,"for i in range(1, n):
+    print(i)
+n",1
+faulty_code,"for i in range(2,10):",1
+faulty_code,"import csv
+
+with open('data.csv', 'r') as csvfile:
+    reader = csv.reader(csvfile, delimiter=',')
+    for row in reader:
+        if isinstance(row[0], int):
+            print('Int:', row)
+        else:
+            print('Str:', row)",1
+fixed_code,"try:
+    if os.path.exists('nonexistent.txt'):
+        with open('nonexistent.txt', 'r') as f:
+            pass
+    else:
+        print(""File not found"")
+except Exception as e:
+    print(f""An error occurred: {e}"")",0
+faulty_code,"a = [1,2,3]
+b = [4,5,6]
+print(a + b)",1
+fixed_code,"import sys; print = sys.stdout.write
+# Or use print = __import__('sys').stdout.write",0
+fixed_code,"for x in range(10)
+    print(x)",0
+fixed_code,"try:
+    print(1/(0+1))
+except ZeroDivisionError:
+    print('Denominator cannot be zero')",0
+fixed_code,"x = [1,2,3]
+print(x[:4])",0
+faulty_code,"a = 0.1 + 0.2
+b = 0.3
+if a == b:
+    print(""Equal"")
+else:
+    print(""Not equal"")",1
+fixed_code,"['l = [1,2,3]\nprint(l[2])', ""d = {'a':1}\nif 'b' in d:\ndel d['b']"", ""try:\n    f = open('nonexistent.txt', 'r')\nexcept FileNotFoundError:\n    print('File not found')\nelse:\n    print(f)""]",0
+fixed_code,"def sum(n):
+    total = 0
+    for i in range(1,n+1): total +=i
+    return total",0
+fixed_code,range(5) in a Python script,0
+faulty_code,"for i in range(len(prices)):
+    if prices[i] > 0:
+        print(prices[i])",1
+faulty_code,"try:
+    x = int(input())
+except ValueError:
+    print('Please enter a valid number')
+",1
+fixed_code,"[""try:\n    print(1 / 0)\nexcept ZeroDivisionError as e:\n    print(f'Denominator is zero: {e}')"", 'for j in range(5): print(j)', ""import socket\ns = socket.socket()\ns.send(b'Hello')\ns.close()""]",0
+fixed_code,"for i in range(len(s)):
+    if i < len(s)-1:
+        print(s[i])
+
+# OR, more concisely:
+
+for i in range(len(s)-1):
+    print(s[i])",0
+faulty_code,"arr = [1,2,3]
+i=0
+while i < len(arr):
+    print(arr[i+1])",1
+faulty_code,"s = ""Hello{}""
+print(s.format())",1
+faulty_code,"[""print('Hello, world!')"", 'def test():\n print(sum(5))']",1
+fixed_code,"try:
+    with open('data.txt', 'r') as f:
+        while True:
+            line = next(f, '')
+            if not line
+                break
+            print(line.strip())",0
+faulty_code,"def greet(name):
+    return name",1
+fixed_code,"for i in range(len(s)-1): print(s[i], s[len(s)-1])",0
+faulty_code,"for i in range(0,5):
+    print(i)",1
+fixed_code,"a = [1,2,3]
+a.append(5)",0
+faulty_code,try: open('nonexistentfile.txt').read() except IOError: print('File not found'),1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This code has an infinite loop because it doesn't break after printing all numbers.",1
+fixed_code,"a = [1,2,3]
+b = a.copy()[:2]
+c = b",0
+fixed_code,"for i in range(len(list)):
+    if i > 0:
+        print(list[i-1])
+    else:
+        print('First element')",0
+faulty_code,total = price + 10,1
+fixed_code,"n = 5
+while n > 0:
+    print(n)
+    input()
+    if n != 0:
+        break",0
+faulty_code,"try:
+    print('File not found')
+except FileNotFoundError:
+    print('File exists')",1
+fixed_code,"for i in range(3):
+    if i < 3:
+        print(i)",0
+faulty_code,f = open('nonexistent.txt'),1
+faulty_code,"a = [1, 2]
+b = [3,4]",1
+faulty_code,"a = [1,2,3]
+b = a[5]",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop runs from 0 to 9, but prints 1 to 10. The bug is an off-by-one error.",1
+fixed_code,"for i in range(11):
+    print(i)",0
+fixed_code,"['short_fixed.py', 'medium_fixed.py', 'long_fixed.py']",0
+faulty_code,"nums = [1,2,3,4]
+even_nums = [x for x in nums if x%2==0]",1
+faulty_code,"for i in range(0,3):
+    print(i+1)",1
+faulty_code,"def outer_func():
+    def inner_func():
+        print('hello')
+inner_func()
+outer_func('world')",1
+faulty_code,"for i in range(10):
+    print(i)
+",1
+fixed_code,"for i in range(5):
+    print(i)
+
+sum = sum(range(1,6))",0
+faulty_code,"for i in range(10): 
+   print(i+1)",1
+faulty_code,"import sys
+
+try:
+    file = open('data.txt', 'r')
+    print(file.read())
+except FileNotFoundError:
+    print('File not found')",1
+fixed_code,"for i in range(4):
+    print(i)
+print('Loop ended')
+",0
+faulty_code,"s = 'Hello'
+print(s[3])",1
+fixed_code,"for i in range(10, 15)
+    print(i)",0
+faulty_code,"for i in range(10):
+    print(i+1)
+print('Loop completed')",1
+fixed_code,"try:
+    if os.path.exists('nonexistentfile.txt') and os.path.isfile('nonexistentfile.txt'):
+        open('nonexistentfile.txt', 'r')
+    else:
+        print('File not found')
+except FileNotFoundError:
+    print('File not found')",0
+fixed_code,"['print(s[4:])', 'def greet(name):\n    return f""Hello, {name}!""\ngreet(\'John)', 'a = [1]\ndef func():\n    a.append(2)\nfunc()\np = a[0] if a else None']",0
+faulty_code,"for i in range(0,10):
+    print(i)
+print('Missing item')",1
+faulty_code,"for i in range(10)
+    print(i)",1
+faulty_code,"try:
+    print(1/0)
+except ZeroDivisionError:
+    print('Divided by zero!)'
+",1
+faulty_code,"for i in range(1, len(prices)):
+    print(prices[i-1], prices[i])",1
+fixed_code,"my_list = [1,2,3]
+try:
+    my_list.pop(0)
+except IndexError:
+    pass
+try:
+    my_list.pop(0)
+except IndexError:
+    pass
+print(my_list[0])",0
+faulty_code,"for i in range(5):
+    print(i+1)
+
+print('Loop completed')",1
+fixed_code,"import asyncio
+
+async def my_async_func任务列表：
+    await asyncio.sleep(1)
+    print('完成')",0
+faulty_code,"['print(s[5:])', 'def greet(name):\n    return f""Hello, {name}!""\ngreet(3)', 'a = [1]\ndef func():\n    a.append(2)\nfunc()\nprint(a[0])']",1
+faulty_code,for i in range(len(s)-1): print(s[i]),1
+fixed_code,"for i in range(len(arr)-1):
+    arr[i+1] = arr[i]
+",0
+faulty_code,"for x in [1,2,3]:
+    print(x)",1
+fixed_code,"for i in range(len(lst)-1):
+    print(lst[i-1])",0
+fixed_code,"for i in range(10,20,1): print(i)",0
+faulty_code,"a = [1, 2, 3]
+b = a + [4,5,6]
+print(b)",1
+faulty_code,"a = [1, 2, 3]
+b = a[4]",1
+faulty_code,"def my_func():
+    global x
+    x = 42
+x = 100
+print(x)",1
+fixed_code,"a = [1,2,3]
+b = a[0:2]
+b.append(4)",0
+faulty_code,"for i in range(len(arr)-1):
+    arr[i], arr[i+1] = arr[i+1], arr[i]
+
+# This loop misses the last element because of off-by-one error",1
+faulty_code,"for i in range(2):
+    print(i)",1
+faulty_code,"a = [1,2,3]
+b = a.pop()
+print(a)",1
+faulty_code,"print('Hello, world!')
+
+print('Hello, world!')",1
+faulty_code,"for i in range(len(arr)-1):
+    arr[i] = arr[i+1]
+
+# This loop misses the last element of the array",1
+faulty_code,"s = 'Hello'
+print(s[0:3])",1
+fixed_code,"for i in range(len(list)):
+    if i > 0:
+        print(list[i-1])
+",0
+fixed_code,"for i in range(len(list)):
+    print(list[1 + i])",0
+fixed_code,"print('Hello') + input().strip()
+# Fixed: Added newline for clarity",0
+fixed_code,"[""print('Hello, world!')"", 'def test():\n print(sum([5]))']",0
+fixed_code,"n = 5
+nums = [1,2,3]
+print(nums[:n])",0
+faulty_code,"for i in range(10): print(i); print(""Loop ended"")",1
+fixed_code,"try:
+    with open('data.txt', 'r') as f:
+        print(f.read())
+except FileNotFoundError:
+    print('File not found')",0
+faulty_code,"
+def greet(name):
+    print('Hello, ' + name + '!')",1
+fixed_code,a = 5; b = 6,0
+fixed_code,"[['short Fixed'], ['medium Fixed'], ['long Fixed']]",0
+fixed_code,"my_list = [1,2,3]
+my_list.append([4,5,6])",0
+fixed_code,"print(10 // 3)  # Outputs 3
+print(10 % 3)   # Outputs 1
+print(10 / 3)   # Outputs 3.333...",0
+fixed_code,"[""lst = ['a', 'b']; print(len(lst))"", 'nums = [x for x in range(10) if (x > 5)]', 'import threading; def even(): ...; def odd(): ...; t1 = threading.Thread(target=even); t2 = threading.Thread(target=odd); t1.start(); t1.join(); t2.start()']",0
+faulty_code,"a = [1, 2, 3]
+a[5] = 'x'",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+print('Hello')",1
+fixed_code,"try:
+    f = open('nonexistent.txt')
+except FileNotFoundError:
+    print('File not found.')",0
+fixed_code,"def my_func(x, y=5)
+    return x + y
+my_func('a', 'b')",0
+faulty_code,"def greet():
+    print('Hello')",1
+fixed_code,"try:
+    a = 10
+    b = 20
+    print(a + b)
+except IndexError as e:
+    print(f'Index error: {e}')
+",0
+fixed_code,"my_list = [10, 20, 30]
+for i in range(len(my_list) - 1):
+    my_list[i] = my_list[i+1]",0
+faulty_code,"for i in range(5, 0):
+    print(i)",1
+faulty_code,"try:
+    print('Hello')
+except ValueError as e:
+    print('Error: ', e)
+except Exception as e:
+    print('Unknown error:', e)",1
+faulty_code,"import os
+os.remove('nonexistentfile.txt')",1
+fixed_code,"for i in range(6):
+    print(i)
+
+for j in range(5):
+    print(j)",0
+fixed_code,"for i in range(len(list)):
+    if i < len(list)-1:
+        print(list[i])
+",0
+fixed_code,"while True:
+    print('Hello')
+    break",0
+faulty_code,"def greet(name):
+    print('Hello', name)
+",1
+faulty_code,"for i in range(len(list)):
+    list[i] = something",1
+fixed_code,"[""print('Hello, world!')"", 'for i in range(n):']",0
+fixed_code,"for i in range(len(numbers)-1):
+    print(numbers[i+1])",0
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This code misses printing the last element (i=4) which would be 5.",1
+faulty_code,sum([x for x in range(10) if x%2==1]),1
+faulty_code,"for i in range(3):
+    print(i)
+
+print('Loop ran an extra time!')",1
+faulty_code,"for i in range(len(list)):
+    if list[i] == 'a':
+        del list[i]
+
+# This code removes the first occurrence of 'a' from each iteration, which is incorrect because it modifies the list while iterating through it.",1
+faulty_code,"for i in range(len(str)): print(str[i])
+",1
+fixed_code,"for i in range(10):
+    print(i)
+
+# This loop correctly prints numbers from 0 to 9",0
+faulty_code,"a = [1,2,3]; b = a[0:2]; del a[0:2]; print(b)",1
+fixed_code,"a = [1,2,3]
+b = a[2]",0
+faulty_code,"my_list = [1,2,3]
+for i in range(len(my_list)):
+    print(my_list[i])",1
+faulty_code,"for i in range(len(list)):
+    print(list[i+1])",1
+fixed_code,"x = 5
+print(x)",0
+fixed_code,"for i in range(10, 11):
+    print(i)",0
+fixed_code,"s = ""Hello{}""
+print(s.format('World'))",0
+fixed_code,"my_list = [10,20,30]
+print(my_list[2])",0
+faulty_code,"a = [1,2,3]
+b.append(4)",1
+fixed_code,"for i in range(10):
+    print(i)
+
+print(i + 1)",0
+faulty_code,"a = [1,2,3]
+print(a[0])",1
+fixed_code,"for i in range(len(list)):
+    if i < len(list):
+        print(list[i])
+",0
+faulty_code,"a = 0.1 + 0.2
+if a == 0.3:
+    print(""Equal"")",1
+fixed_code,"total = 0
+for i in range(10):
+    if i > 5:
+        total += i
+print(total)",0
+fixed_code,"for i in range(10, 11)
+    print(i)",0
+faulty_code,"{'short': 'for i in range(5):', 'medium': 'def greet(name):\n    return f""Hello, {name}!""'}",1
+faulty_code,"for i in range(10
+",1
+fixed_code,"for i in range(len(list)-1):
+    list.append(list[i])",0
+faulty_code,"a = [1,2]
+print(a[3])",1
+faulty_code,"for i in range(1, 5):
+    print(i)",1
+fixed_code,"for i in range(len(lst)):
+    if i < len(lst)-1:
+        print(lst[i])
+    else:
+        break",0
+fixed_code,"for i in range(len(list)-1):
+    list[i] = list[i+1]
+
+print('List shifted by one')",0
+fixed_code,"for i in range(4)
+    print(i)",0
+faulty_code,"my_list = [1,2,3]
+print(my_list[3])",1
+fixed_code,"for i, item in enumerate(list):
+    print(item)",0
+faulty_code,"for i in range(10):
+    print(i ** 2)",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This code misses the iteration for i=0",1
+faulty_code,"for i in range(1,5):
+    print(i+1)",1
+faulty_code,"s = 'hello'
+print(s[5])",1
+faulty_code,"a = [1,2,3]
+b = a
+print(a)
+a.remove(2)
+print(a)",1
+faulty_code,"for i in range(0, n):",1
+fixed_code,for i in range(n): print(i),0
+fixed_code,"for i in range(4):
+    a.append(i)",0
+fixed_code,"numbers = [1, 2, 3]
+try:
+    index = len(numbers)
+except IndexError:
+    print('Index out of bounds')
+print(numbers[index])",0
+fixed_code,"my_list = [1, 2, 3]
+try:
+    print(my_list[9])
+except IndexError:
+    print('Index out of range')
+",0
+fixed_code,"i = 0
+while i < 10:
+    print(i)
+i += 1",0
+faulty_code,"my_list = [1, 2, 3]
+print(my_list[3])",1
+faulty_code,"for i in range(len(list)):
+    if list[i] == target:
+        return list[i]
+else:
+    return None",1
+faulty_code,"my_list = [1, 2, 3]
+print(my_list[4])",1
+fixed_code,"for i in range(10):
+    print(i)
+if i == 9:
+    break
+print('Loop will never end')",0
+faulty_code,"if x > 5:
+    print('x is greater than 5')
+
+    # Missing colon here",1
+fixed_code,"a = [1,2,3]
+b = a[4] if len(a)>4 else []",0
+faulty_code,"for i in range(1,5):
+    print(i)",1
+fixed_code,"for i in range(5):
+    print(i+1)
+# Corrected with colon
+print(i+2)",0
+fixed_code,"a = [1,2,3]
+b = [4,5,6]
+print(a[2])",0
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This code runs from 0 to 4, but if intended to run up to index 5, the last print should be 6.",1
+faulty_code,"print('Hello, ' + 'world!' + ',')",1
+fixed_code,"import math; try:
+    print(math.sqrt(-4))
+except ValueError:
+    print('Cannot compute square root of a negative number')",0
+faulty_code,"""
+for i in range(5):
+    print(i)
+""
+
+",1
+faulty_code,"for i in range(10):
+    print(i*2)
+
+# Faulty because it runs from 0 to 9 instead of 0 to 4",1
+faulty_code,"for i in range(5):
+    print(i, outer_var)
+
+print(outer_var)",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# Short example with off-by-one error
+for i in range(5,20):
+    print(i)",1
+faulty_code,"while True:
+    print('Hello, world!')",1
+faulty_code,"for i in range(1, n+1):
+    print(i)
+
+# This loop runs one extra time because range is exclusive at the end.",1
+fixed_code,"numbers = [1,2,3]
+sum = numbers[0] + numbers[1] + numbers[2]",0
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This loop should iterate over numbers 0 through 4 inclusive.",1
+fixed_code,print(f'Hello {name}'),0
+fixed_code,"a = [1,2,3]
+print(b) if b else None",0
+faulty_code,"for i in range(len(list)):
+    if list[i] == target:
+        return True
+return False",1
+fixed_code,result = [item for item in list],0
+fixed_code,"try:
+    x = int(input())
+except ValueError:
+    print('Invalid input', file=sys.stderr)
+finally:
+    print(f'Value: {x}') if isinstance(x, int) else None",0
+faulty_code,"for i in range(len(arr)-1):
+    arr[i] = arr[i+1]
+
+print('Shifted correctly')",1
+faulty_code,"print('Hello, world!')
+
+# This is a comment
+
+print('Hello again, world!')",1
+faulty_code,"for i in range(10):
+    print(i+1)
+print('Loop ended')",1
+faulty_code,"name = input('What's your name?')
+print(name)",1
+fixed_code,"[""my_list = [1,2,3]\ntry:\n    index = my_list.index(4)\nexcept ValueError:\n    print('Element not found')"", ""for i in range(len(my_list)):\n    if my_list[i] % 2 == 0:\n        print('even')\n    else:\n        print('odd')"", ""my_dict = {'a':1, 'b':2}\nkeys = len(my_dict)\nprint(keys)""]",0
+faulty_code,"with open('data.csv', 'r') as f:
+    for row in f:
+        print(row)",1
+fixed_code,"nums = [1,2,3]
+if all(n > 0 for n in nums):
+    print('All numbers are positive')",0
+fixed_code,"for i in range(len(arr)-1):
+    arr[i], arr[i+1] = arr[i+1], arr[i]
+
+# The code is already correct. No fix needed.",0
+faulty_code,"my_list = [1,2,3]
+
+my_list.extend.append(5)",1
+faulty_code,"try:
+    with open('nonexistentfile.txt', 'r') as f:
+        f.read()
+except FileNotFoundError:
+    print('File not found')",1
+faulty_code,"def my_func():
+    x = [1,2,3]
+    return x[-1], x[0], x[1:]",1
+fixed_code,"for i in range(5):
+    print(i*2)",0
+fixed_code,print(str(x) + 'Hello'),0
+faulty_code,"for i in range(len(arr)-1):
+    arr[i] = arr[i+1]
+
+# This code misses the last element which is not included in the loop",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop prints numbers from 1 to 10 inclusive, but the range should be 11.",1
+fixed_code,"""s = list('Hello')\ns[0] = 'H'\nprint(''.join(s))""",0
+fixed_code,"for i in range(n+1):
+    print(i)",0
+faulty_code,"s = ""Hello
+World""
+print(s)",1
+faulty_code,"for i in range(len(primes)-1):
+    if primes[i] > primes[i+1]:
+        primes[i], primes[i+1] = primes[i+1], primes[i]
+
+primes.pop()
+",1
+faulty_code,"my_list = [1,2,3]
+index = my_list[2]
+print(index)
+
+my_list.append(4)
+print(my_list)",1
+fixed_code,"a = list(filter(lambda x: x%2==0, range(5)))
+b = sum(a)
+print(b)",0
+faulty_code,my_list = [x.capitalize() for x in 'Hello'],1
+faulty_code,len(lst).append(5),1
+fixed_code,"lst = [1,2,3]; print(lst[-4:]",0
+faulty_code,"for i in range(len([])):
+    print(i)",1
+fixed_code,"try:
+    print('Hello')
+except FileNotFoundError as e:
+    print(f'Error: {e}')",0
+faulty_code,my_list = [x for x in range(5) if x%2 ==0] print(my_list[3]),1
+faulty_code,"try:
+    print(1/(x-2))
+except ZeroDivisionError:
+    print('Divide by zero!')",1
+fixed_code,"a = [1,2,3]
+b = a.copy()
+print(b)
+a.remove(2)
+print(a)",0
+fixed_code,"[""print('Hello, world!')"", 'for i in range(3): print(i)', 'n = int(n // 2)']",0
+faulty_code,"with open('test.txt', 'r') as f:
+    f.read()",1
+faulty_code,"a = [1]; b = [1]; if a is b: print(""same object"") else: print(""different objects"")",1
+faulty_code,"['short code', 'medium code', 'long code']",1
+faulty_code,"numbers = [1,2,3]
+numbers.pop(1)
+print(numbers[1])",1
+faulty_code,def my_func(*args): print(args),1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# After introducing an off-by-one error
+for i in range(5):
+    print(i)",1
+fixed_code,"my_list = [1,2,3]
+print(set(my_list) - {2})",0
+fixed_code,"for i in range(10):
+    print(i*2)
+
+else:
+    print('Loop completed normally')
+",0
+fixed_code,"try:
+    raise ValueError('Test')
+except ValueError:
+    print('Caught ValueError')",0
+fixed_code,"for i in range(len(list)-1):
+    if list[i] == target:
+        return list[i+1]
+return None",0
+faulty_code,"import pandas as pd
+df = pd.read_csv('data.csv')
+mean = df['values'][df['values'].index[df['values'] == None]].mean()",1
+fixed_code,"for i in range(5):
+    print(i*2)
+
+print('Missing key')",0
+faulty_code,"import math
+math.sqrt(4",1
+fixed_code,"numbers = [1,2,3]
+total = sum(numbers)
+print(total)",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop runs from 0 to 9, but prints i+1 which is 1 to 10. The intended behavior was to print numbers 0 to 9.",1
+faulty_code,"d = {'a':1, 'b':2}; d['c']",1
+fixed_code,for i in range(5+1): print(i),0
+fixed_code,"[""print('Hello, world!')"", '[x for x in range(4,5)]', ""def calculate_score(letters):\n\ttotal = 0\n\tfor l in letters:\n\t\tif l.isupper():\n\t\t\ttotal += ord(l) - ord('A') +1"", ""d = {'a':1}\n*keys, *values = d.keys(), d.values()\nprint(*keys)"", ""def calculate_score(letters):\n   total = 0\n   for char in letters:\n       base = ord('A') if char.isupper() else ord('a')\n       total += ord(char) - base + 1"", ""def calculate_score(letters):\n   total = 0\n   for char in letters:\n       base = ord('A' if char.isupper() else 'a')\n       total += ord(char) - base + 1""]",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+print('Next item')",1
+faulty_code,"for i in range(len(arr)):
+    if arr[i] == target:
+        print('Found')
+        break",1
+faulty_code,"lst = [1,2,3]; print(lst[4])",1
+fixed_code,"old_list = [1, 2, 3]
+new_list = old_list + [4]",0
+faulty_code,"[['short Faulty'], ['medium Faulty'], ['long Faulty']]",1
+fixed_code,"import math
+
+def my_func():
+    print(math.sqrt(4))",0
+faulty_code,for i in range(len(arr)-1):,1
+faulty_code,"lst = [1, 2]; print(lst[2])",1
+fixed_code,"for i in range(10):
+    print(i+1)
+print('Loop ended after iteration 9')",0
+faulty_code,"for i in range(10,20):
+    print(i)
+
+# This code runs from 10 (inclusive) to 20 (exclusive), which is correct. No fix needed.",1
+fixed_code,for i in range(4): print(i),0
+faulty_code,"try:
+    x = int(input('Enter a number: '))
+except ValueError:
+    print('Please enter a valid integer')",1
+faulty_code,"[""try:\n    print(1 / 0)\nexcept ZeroDivisionError:\n    print('Denominator is zero')"", 'for i in range(5): print(i)', ""import socket\ns = socket.socket()\ns.send(b'Hello')\ns.close()""]",1
+fixed_code,"total = sum(nums)
+average = total / len(nums)",0
+fixed_code,"for i in range(len(numbers)-1, -1, -1):
+    print(numbers[i])",0
+faulty_code,"s = [1,2,3]
+s[0] = 'a'",1
+fixed_code,"for i in range(5):
+    print(i+1)
+
+print('The loop ran for 5 times')",0
+faulty_code,"print('Hello, world!')
+
+x = [1,2,3]
+sum_x = sum(x)
+print('Sum is', sum_x)",1
+fixed_code,"my_list = [1,2,3]
+new_list = my_list.copy()
+print(len(new_list))",0
+fixed_code,"def calculate_stats(data):
+    mean = sum(data)/len(data)
+    sorted_data = sorted(data)
+    n = len(sorted_data)
+    median = (sorted_data[n//2 -1] + sorted_data[n//2])/2 if n % 2 ==0 else sorted_data[n//2]
+    return {'mean': mean, 'median': median}
+
+# Example usage:
+result = calculate_stats([1,2,3,4,5])
+print(result['std_dev'])",0
+fixed_code,"try:
+    open('nonexistentfile.txt', 'r')
+except FileNotFoundError as e:
+    print(f""File not found: {e}"")
+except IOError as e:
+    print(f""Error accessing file: {e}"")
+except Exception as e:
+    print(f""Unexpected error occurred: {e}"")
+finally:
+    pass
+",0
+fixed_code,"try:
+    file = open('nonexistentfile.txt', 'r')
+except FileNotFoundError as e:
+    print(f""File not found: {e}"", file=sys.stderr)
+except Exception as e:
+    print(f""An error occurred: {e}"", file=sys.stderr)",0
+faulty_code,"for i in range(5)
+    print(i+1)",1
+faulty_code,"for i in range(len(nums)):
+    if nums[i] > 5:
+        print('Found a large number')
+
+nums = [1,2,3]
+print('The largest number is:', max(nums))",1
+faulty_code,"data = [{'name': 'Alice', 'age': 30}, {'name': 'Bob', 'age': 25}]
+max_age = max(data['age'])",1
+fixed_code,for i in range(11):\n    print(i),0
+fixed_code,"def calculate_average(numbers):
+    if not numbers:
+        return 0
+    total = sum(numbers)
+    count = len(numbers)
+    return total / count",0
+fixed_code,"a = [1,2,3]
+a.append(['4'])",0
+fixed_code,"arr = [1,2];
+print(arr[0])",0
+fixed_code,"{'long': 'def greet(name):\n    if not name:\n        return \'Hello!\'\n    return f""Hello, {name}!""'}",0
+faulty_code,"def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        for i in range(2, n+1):
+            fib_i = fib_{i-1} + fib_{i-2}
+            print(fib_i)",1
+faulty_code,"print('Hello, world!')
+print('This is a second message.')",1
+faulty_code,"my_list = [1,2,3]
+my_list[3] = 4",1
+fixed_code,"a = [1,2,3]
+b = a[0:2].copy()
+c = b[::-1]
+d = c * 2",0
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This code will not produce the expected output because it misses the last iteration.",1
+faulty_code,"for i in range(1,len(numbers)):
+    if numbers[i]%2==0:
+        result.append(numbers[i])",1
+fixed_code,"s = 'Hello'
+temp = s.lower()
+print(temp)",0
+fixed_code,"my_list = [1,2,3]; if len(my_list) > index: print(my_list[index]) else: print('Index out of range')",0
+fixed_code,"def greet(name):
+    print('Hello, ' + name + '!')
+    return None",0
+fixed_code,"for i in range(10)
+    if i < 5:
+        print(i*2)
+    else:
+        print(i*3)
+",0
+fixed_code,"for i in range(10, 20):
+    print(i)",0
+fixed_code,"for i in range(len(item)):
+    print(item[i])",0
+faulty_code,"print('Hello, world!') + print('This is a second line.')",1
+faulty_code,"for x in [1,2,3]:
+    print(x*2)",1
+faulty_code,"a = [1,2,3]
+b.append(4)
+c = a.pop()
+print(c)",1
+fixed_code,"a = [1,2,3]
+a.append(4)
+a.pop(0)",0
+faulty_code,for i in range(5): print(arr[i]),1
+fixed_code,"if x // 2 == 1:
+    print('Even number')",0
+fixed_code,my_list = [x for x in range(5) if x % 2 != 0],0
+fixed_code,"for i in range(len(list)):
+    if i < len(list)-1:
+        print(list[i])",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop will run forever because there's no condition to break out
+",1
+fixed_code,"for i in range(10): print(i+2)
+",0
+faulty_code,"for i in range(1,5):
+    print(i)
+range(0,5)",1
+fixed_code,"for i in range(1,5):
+    print(i*2)",0
+faulty_code,"for i in range(len(list)-1):
+    print(list[i+1]-list[i])",1
+faulty_code,"for i in range(10):
+    print(i)
+
+print('Loop completed.')",1
+faulty_code,s = 'hello'; print(s[3:]),1
+fixed_code,"a = [1,2,3]
+b = [4,5,6]
+c = a + b
+print(c[0] if len(c) > 0 else None)",0
+fixed_code,"for i in range(5):
+    print(i)
+
+s = 'Hello'; print(s[5:6])
+
+lst = [1,2]; lst_copy = lst; lst.append(3); print(lst[0],lst_copy[2])",0
+faulty_code,s = 'abcdefghijklmnopqrstuvwxyz'; print(s[0:3]),1
+faulty_code,"try:
+    a = 10
+    b = 20
+    print(a + b)
+except IndexError:
+    print('Index out of range')",1
+faulty_code,"for i in range(10):
+    print(i*2)
+
+# This loop prints even numbers up to 9*2=18, but misses 10*2=20 because range(10) stops at 9.",1
+fixed_code,"def greet(name):
+    print(f'Hello, {name}!')
+    print('Welcome to the club')
+    return",0
+fixed_code,"for i in range(5,0,-1):",0
+fixed_code,"def fibonacci(n):
+    if n == 0 or n == 1:
+        return n
+    else:
+        for i in range(2, n+1):
+            fib_i = fibonacci(i-1) + fibonacci(i-2)
+            print(fib_i)",0
+faulty_code,"my_list = [1,2,3]; print(my_list[4])",1
+faulty_code,"for i in range(len(arr)-1):
+    if arr[i] == arr[i+1]:
+        break
+",1
+fixed_code,"my_list = []
+if my_list:
+    n = len(my_list)
+    for i in range(n):
+        if i < n:
+            print(my_list[i])",0
+faulty_code,"import threading
+threading.startMainThread()
+threading.join主线程",1
+faulty_code,"import csv
+
+data = csv.reader([['Header1','Header2'], ['Row1Col1', 'Row1Col2']], delimiter='\n')",1
+fixed_code,"my_list = [1,2,3]; print(my_list[-1])",0
+faulty_code,"try:
+    with open('nonexistent.txt') as f:
+        print(f.read())
+except IOError:
+    print('File not found')",1
+fixed_code,"for i in range(5)
+    try:
+        print(i)
+    except IndexError:
+        print('Index out of bounds')",0
+fixed_code,"x = str(5) + ""hello""",0
+faulty_code,"[""print('Hello', end=' )"", 'a = []\na.append(1)', ""data['key'] = data['key']""]",1
+faulty_code,"try:
+    f = open('nonexistentfile.txt', 'r')
+except FileNotFoundError:
+    print('File not found!')",1
+faulty_code,"['short faulty', 'medium faulty', 'long faulty']",1
+faulty_code,for i in range(len(lst): print(lst[i]),1
+faulty_code,"print('Hello, world!')
+print('Hello, world!')",1
+fixed_code,"for x in range(5,10,1):
+    print(x)",0
+faulty_code,"def outer(x):
+    print(x)
+
+def inner():
+    def nested(x):
+        nonlocal x
+    inner.x =5
+    nested(3)",1
+faulty_code,"def fib(n):
+    if n == 0:
+        return []
+    elif n == 1:
+        return [0,1]
+    else:
+        return fib(n-1) + fib(n-2)
+print(fib(5))",1
+fixed_code,"for i in range(len(list)):
+    if i < len(list)-1:
+        continue
+",0
+faulty_code,"import os
+os.remove('test.txt t')",1
+faulty_code,"d = {'a': [1,2,3]}
+print(d['apple'])",1
+fixed_code,"for i in range(len(numbers)):
+    if i < len(numbers):
+        print(numbers[i])
+    else:
+        print('Index out of bounds')",0
+fixed_code,"try:
+    os.remove('not_existing_file.txt')
+except FileNotFoundError:
+    pass",0
+fixed_code,"def outer(self):
+    def inner():
+        print('Outer function')
+
+inner()
+",0
+faulty_code,"for i in range(len(lst)-1):
+    print(i, lst[i])",1
+faulty_code,"for i in range(10):
+    print(i)
+break",1
+fixed_code,"for i in range(1,2):
+    print(i)",0
+faulty_code,"for i in range(10):
+    print(i*2)
+
+# Faulty because it prints even numbers only",1
+faulty_code,"nums = [1, 2, 3]
+squared = nums ** 2",1
+faulty_code,"for i in range(3):
+    print(i+1)
+
+print('The loop ended at',i)",1
+faulty_code,"x = 5 + ""hello""",1
+fixed_code,"for i in range(5):
+    print(i+1)
+
+print('Loop completed, all items processed')",0
+fixed_code,"for i in range(3):
+    print(i)
+",0
+faulty_code,"def calculate_grades(grades): \
+    total = sum(grades)
+    average = total / len(grades)
+    return average",1
+faulty_code,"for i in range(len(arr)-1):
+    print(arr[i], arr[i+1])",1
+fixed_code,"for i in range(10, 20):
+    print(i-9)
+",0
+faulty_code,"for i in range(5):
+    print(i)
+print('Loop ended at:', i+1)",1
+fixed_code,"arr = [1,2,3]
+for i in range(len(arr))
+    if arr[i] % 2 == 0:
+        print(i)",0
+fixed_code,"def my_function():
+    global x
+    x = 5
+    print(x)
+my_function()",0
+faulty_code,"lst = [1,2]
+print(lst[2])",1
+fixed_code,"try:
+    with open('nonexistent.txt', 'r') as f:
+        data = f.read()
+except FileNotFoundError:
+    print('File not found')
+else:
+    print(data)",0
+faulty_code,"students = {'Alice': 'A', 'Bob': 'B'}
+for name in students:
+    print(students[name], end='')",1
+faulty_code,"a = [1,2,3]
+b = a[0:2]
+c = b[::-1]
+d = c*2",1
+faulty_code,"import os
+os.remove('temp_file.txt')
+print('Failed to remove temp_file.txt')",1
+faulty_code,"my_list = [1,2,3]
+my_tuple = ([4,5,6],)
+print(my_tuple[0][1])",1
+faulty_code,"a = [1,2,3]
+b = a.copy()
+c = b[::2]",1
+faulty_code,"file = open('data.txt', 'r')
+content = file.read()
+print(content)
+file.close()",1
+faulty_code,"for i in range(len(numbers)):
+    if numbers[i] > numbers[i+1]:
+        numbers[i], numbers[i+1] = numbers[i+1], numbers[i]
+",1
+faulty_code,"try:
+    with open('nonexistent.txt', 'r') as f:
+        pass
+except FileNotFoundError:
+    print(""File not found"")",1
+faulty_code,"my_list = [1, 2, 3]
+print(my_list[9])",1
+fixed_code,"data = [
+    {'name': 'Alice', 'age': 30},
+    {'name': 'Bob', 'age': None},
+    {'name': 'Charlie'}
+]
+
+for entry in data:
+    if 'age' in entry and isinstance(entry['age'], int):
+        print(entry['age'] + 1)
+",0
+fixed_code,"with open('data.txt', 'r') as f:
+    content = f.read()
+    print(content)",0
+fixed_code,"a = [1,2,3]; b = a[::3] + [4]; print(b)",0
+faulty_code,"['for i in range(5): print(i)', 'from math import sqrt\nprint(sqrt(4))', ""try: list.index('a') except ValueError: pass""]",1
+faulty_code,"for i in range(5):
+    print(i)",1
+fixed_code,"for i in range(10):
+    print(i+1)
+print('Loop ended')
+",0
+fixed_code,"def greet(name, age):
+    print(f""Hello, {name}"")",0
+faulty_code,"my_list = [1,2,3]
+new_list = list(my_list)
+print(len(new_list))",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop prints from 1 to 11 instead of 1 to 10",1
+faulty_code,"def factorial(n):
+    return factorial(n-1) + n
+
+factorial(5)",1
+faulty_code,"strng = 'Hello'
+print(strng + '\n')",1
+fixed_code,"numbers = [1,2,3]
+new_numbers = [x for x in numbers if x % 2 == 0] * 3
+print(new_numbers)",0
+faulty_code,"class MyClass:
+    def __init__(self, a, b):
+        self.c = a + b + c",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop runs from 0 to 9, but we intended it to run up to and including 9.",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+print('Missing element')",1
+faulty_code,"for i in range(len(list)):
+    list[i] = list[i+1]
+    list[0] = list.pop(i)
+
+list.insert(987654, 'element')",1
+faulty_code,"for i in range(len(numbers)):
+    print(numbers[i-1])",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop misses printing 11",1
+fixed_code,"print('Hello, world!'",0
+fixed_code,"['for i in range(6):', '    print(i)', '    if i >3:', '        break']",0
+fixed_code,"for i in range(5,9):
+    print(i)",0
+faulty_code,"lst = [1,2,3]; print(lst[10])",1
+fixed_code,"my_list = [1,2,3]
+my_tuple = (4,5,6,)
+p = my_tuple[0][1]",0
+fixed_code,"nums = [1,2,3,4]
+even_nums = [x for x in nums if x % 2 == 0]",0
+fixed_code,"for i in range(5):
+   print(i)",0
+faulty_code,for i in range(5 print(i,1
+fixed_code,"while True:
+    print('Hello, World!')
+    break
+",0
+faulty_code,"for x in range(10):\n    print(x*2)
+# This code is syntactically correct but will produce a runtime error due to an off-by-one error.",1
+faulty_code,"for i in range(5):
+    print(i+1)
+print('Loop ended')",1
+fixed_code,"if my_list is not None:
+    reversed_list = my_list[::-1]",0
+faulty_code,print('Hello') + input().strip(),1
+faulty_code,"names = ['Alice', 'Bob']
+ages = [25, 30]
+for i in range(len(names)):
+    print(f'{names[i]} is {ages[i-1]} years old')",1
+fixed_code,"for i in range(len(numbers)-1):
+    if numbers[i] > 5:
+        print('Found a number:', numbers[i])
+
+# Fixed code: Adjusted the loop to prevent index out of bounds",0
+faulty_code,"['for i in range(5):', '    print(i)', ""print('Missing item')""]",1
+fixed_code,"print('Hello, world!', end='
+')",0
+fixed_code,"for i in range(5):
+    print(i+2)
+",0
+faulty_code,"for i in range(6):
+    print(i)",1
+fixed_code,"for i in range(len(items)):
+    print(items[i])",0
+fixed_code,"try:
+    print(1/0)
+except ZeroDivisionError as e:
+    print(f'Division by {e.value} is not allowed')
+except:
+    print('An unexpected error occurred')",0
+fixed_code,print([x for x in range(5) if x <=4]),0
+faulty_code,"s = 'Hello'
+print(s[5:])",1
+faulty_code,"my_list = [1,2,3]
+print(my_list[0:2])",1
+faulty_code,<faulty code>,1
+faulty_code,"try:
+    open('nonexistentfile.txt', 'r')
+except FileNotFoundError:
+    print('File not found')",1
+faulty_code,"sum = 0
+for i in range(5):
+    sum += i",1
+fixed_code,"for idx in range(5):
+    print(idx)",0
+faulty_code,"['for i in range(5): print(i)', ""import os\nos.remove('nonexistentfile.txt')"", 'def factorial(n):\n    if n == 0:\n        return 1\n    else:\n        return n * factorial(n-1)']",1
+fixed_code,"try:
+    x = int(input('Enter a number: '))
+except ValueError as e:
+    print(f'Invalid input: {e}')
+except Exception as e:
+    print(f'An unexpected error occurred: {e}')
+",0
+fixed_code,"[""print('Hello', end=' )"", 'a = [ ]\na.append(1)', ""data['key'] = data.get('key', 0)""]",0
+fixed_code,"if x and (y or z):
+    print('Yes')
+else:
+    print('No')",0
+fixed_code,"s = input().strip()
+if not s:
+    print('Enter a name')
+else:
+    print(s)",0
+fixed_code,"for i in range(5):
+    print(i)
+print(i)",0
+fixed_code,"for i in range(6):
+    print(i+1)",0
+faulty_code,"nums = [1,2,3]
+nums.pop(0)",1
+fixed_code,"with open('file.txt', newline=True) as f:
+    try:
+        print(f.read())
+    except IOError:
+        raise ValueError
+",0
+fixed_code,"for i in range(50):
+    print(i)
+",0
+faulty_code,"numbers = [1,2,3]
+sum = sum(numbers)
+print(sum)",1
+faulty_code,"for i in range(len(numbers)):
+    if numbers[i] > 5:
+        print('Found a number:', numbers[i])
+
+# Faulty code: Off-by-one error in the loop condition",1
+fixed_code,"for i in range(10, -1, -1): print(i)",0
+fixed_code,"for i in range(len(list)):
+    if list[i] == 'a':
+        del list[i+1] if i < len(list)-1 else break
+",0
+fixed_code,"with open('data.txt', 'rb') as f:
+    try:
+        data = f.read().decode('utf-8').splitlines()
+    finally:
+        f.close()
+    print(data.count('line'))",0
+faulty_code,"for i in range(len(lst)):
+    print(lst[i-1])",1
+faulty_code,"x = [1,2,3]
+y = x.append(4)",1
+faulty_code,for i in range(10): print(i),1
+faulty_code,"try:
+    with open('missingfile.txt', 'r') as f:
+        print('File not found')
+except FileNotFoundError:
+    print('File not found or permission denied')",1
+fixed_code,"[""print('Hello, world!')"", 'for i in range(5, 10): print(i)', ""import re; re.findall(r'pattern.*', string, flags=re.IGNORECASE)""]",0
+faulty_code,"with open('test.txt', 'rb') as f: f.write(b'Hello, world!')",1
+fixed_code,"for i in range(len(arr)):
+    if arr[i] == target and i < len(arr)-1:
+        return arr[i+1]
+return None",0
+faulty_code,"lst = []
+max_lst = max(lst)",1
+faulty_code,"for i in range(len(arr)-1):
+    arr[i], arr[i+1] = arr[i+1], arr[i]
+
+# This code sorts the array but has an off-by-one error. The loop should run from len(arr) instead of len(arr)-1.",1
+faulty_code,"for i in range(5):
+    if i < 4:
+        print(i)",1
+faulty_code,"for i in range(0,5,2):
+    print(i)",1
+faulty_code,"for i in range(10):<br>
+    print(i)",1
+faulty_code,code snippet with bug,1
+faulty_code,"if x > 5:
+    print('x is greater than 5')
+
+# Missing colon after if statement",1
+faulty_code,"my_list = [1, 2, 3]
+my_list.extend([4,5])",1
+faulty_code,"for i in range(10
+1):
+    print(i)",1
+faulty_code,"my_list = [1,2,3]
+my_list[3].append(4)",1
+fixed_code,"for i in range(10):
+    print(i)
+
+print('Loop completed after 10 iterations')
+",0
+faulty_code,"try:
+    with open('data.txt', 'r') as f:
+        print(f.read())
+except FileNotFoundError:
+    print(""File not found"")
+except IOError as e:
+    print(f""Error reading file: {e}"")",1
+faulty_code,"a = 5
+b = 6",1
+fixed_code,input(),0
+faulty_code,"def calculate_total(prices):
+    sum = 0
+    for p in prices:
+        sum += p
+print(sum)",1
+faulty_code,"['short faulty code', 'medium faulty code', 'long faulty code']",1
+fixed_code,"nums = [1,3,5,7]; sum(x for x in nums if x%2==0)",0
+fixed_code,"for i in range(10):
+    print(i)
+print('Loop completed')
+",0
+faulty_code,"while True:
+    print(""Waiting...,"")",1
+fixed_code,"with open('test.txt', 'rb') as f:
+    f seeking 0
+    data = f.read()
+    print(data.decode())",0
+fixed_code,"for i, val in enumerate(arr):
+    print(val)",0
+fixed_code,"students = {'Alice': 'A', 'Bob': 'B'}
+for name, grade in students.items():
+    print(grade, end='')",0
+faulty_code,print('Hello'),1
+faulty_code,"try:
+    open('nonexistentfile.txt')
+except IOError:
+    print('File not found')",1
+faulty_code,"my_list = [1, 2]
+print(my_list[2])",1
+fixed_code,"for i in range(6):
+    print(i)
+
+try:
+    file = open('nonexistent.txt', 'r')
+except FileNotFoundError:
+    print(""File not found"")",0
+faulty_code,"numbers = [1,2,3]
+for num in numbers:
+    if num % 2 == 0:
+        del numbers[num]",1
+fixed_code,"my_list = [1, 2, 3];
+
+my_list.append(4)",0
+faulty_code,"a = [1,2,3]; print(a[1])",1
+fixed_code,"my_list = [1,2,3]
+for item in my_list:
+    print(item)",0
+fixed_code,"try:
+    print(1/0)
+except ZeroDivisionError as e:
+    print('Denominator is zero')
+except Exception as e:
+    print(f'Unexpected error: {e}')",0
+fixed_code,"with open('file.txt', 'rb') as f
+    f.write(b'new content')",0
+faulty_code,"os.path.join('folder', 'file.txt')",1
+fixed_code,"def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)",0
+faulty_code,for i in range(5): print(i+1),1
+faulty_code,"with open('data.txt', 'r') as f:
+
+",1
+faulty_code,"def calculate_average(numbers):
+    total = sum(numbers)
+    count = len(numbers)
+    return total / (count + 0)
+",1
+fixed_code,def factorial(n): return n * factorial(n - 1) if n > 0 else 1; return 1,0
+faulty_code,"try:
+    open('nonexistentfile.txt', 'r')
+except FileNotFoundError
+",1
+fixed_code,"try:
+    if os.path.exists('data.txt'):
+        with open('data.txt', 'r') as f:
+            print(f.read())
+    else:
+        print(""File not found"")
+except IOError as e:
+    print(f""Error reading file: {e}"")",0
+fixed_code,my_list = [x.capitalize() for x in ['Hello']],0
+faulty_code,"for i in range(9):
+    print(i)",1
+fixed_code,"for i in range(10)
+in    print(i)",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This is a short example; your code should be more realistic.",1
+faulty_code,"for i in range(len(list)+1):
+    list.append(i)",1
+faulty_code,"for i in range(5):
+    print(i)
+",1
+faulty_code,"for i in range(0, n-2):
+    print(i)",1
+faulty_code,my_list = []; my_list[0],1
+faulty_code,"for i in range(10): print(i+1)
+",1
+faulty_code,"import os
+
+for file in os.listdir():
+    try:
+        with open(file, 'r') as f:
+            lines = f.readlines()
+            for line in lines[:-1]:
+                print(line)
+    except Exception as e:
+        print(f'Error processing {file}: {e}').",1
+fixed_code,"for i in range(10):
+    if i < 5:
+        break
+else:
+    print('Loop completed')
+
+# This example demonstrates a corrected loop termination condition.",0
+fixed_code,"a = [1,2,3]
+for i in range(len(a)):
+    print(a[i])",0
+faulty_code,"with open('test.txt', 'r') as f:
+    print(f.read())",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop is off by one; it should go up to 9 inclusive.",1
+faulty_code,"my_list = [10,20,30]
+print(my_list[-1])",1
+faulty_code,"my_list = [1,2,3]
+my_list[0] = 'one'",1
+faulty_code,"total = sum([1,2,3])",1
+faulty_code,"for i in range(5):
+    print(i+1)",1
+fixed_code,"yield from (1, 2)",0
+fixed_code,"s = input()
+for i in range(len(s)+1): print(s[:i])",0
+faulty_code,s = 'abc'; print(s[10]),1
+fixed_code,"for i in range(6):
+    print(i)
+",0
+faulty_code,"class MyClass:
+    pass
+    
+    @staticmethod
+    def my_method():
+        pass",1
+faulty_code,"for i in range(5):
+    print(i)
+
+# This code runs one iteration too many because range(5) is 0-4",1
+faulty_code,"nums = [1, 2, 3]
+filtered = [n for n in nums if n >5]",1
+faulty_code,"['l = [1,2,3]\nprint(l[4])', ""d = {'a':1}\ndel d['b']"", ""f = open('nonexistent.txt', 'r')\nprint(f)""]",1
+fixed_code,"s = 'Hello
+World'
+temp = s[:len(s)-1]",0
+faulty_code,os.remove('nonexistentfile.txt'),1
+fixed_code,"print(\'Hello, world!\')",0
+faulty_code,"a = [1,2,3]
+a[0] = '1'
+print(a)",1
+fixed_code,x = int(input()),0
+faulty_code,"['my_list = [1, 2, 3]\nprint(my_list[5])', 'numbers = [10, 20, 30]\nsorted_numbers = sorted(numbers)\nprint(sorted_numbers)', ""\nfile = open('data.txt', 'r')\ncontent = file.read()\nprint(content)\nfile.close()\nfile = open('data.txt', 'r')"", ""my_dict = {'a': 1, 'b': 2}\nmy_list = [v for k, v in my_dict.items()]"", ""try:\n    x = int(input())\nexcept ValueError:\n    print('Please enter a valid number')"", ""import os\nos.remove('test_file.txt')"", ""\nstudents = ['Alice', 'Bob']\ngrades = {student: 0 for student in students}\nfor student in students:\n    grades[student] += 5"", 'my_list = [1, 2, 3]\nnew_list = []\nfor num in my_list:\n    new_list.append(num * 2)', ""\nwith open('data.txt', 'r') as f:\n    content = f.read()\nprint(content)"", ""def greet(name):\n    print('Hello, ' + name)"", ""my_list = [1, 2, 3]\ntry:\n    print(my_list[5])\nexcept IndexError:\n    print('Index out of range')"", ""\nstudents = ['Alice', 'Bob']\ngrades = {student: 0 for student in students}\nfor i in range(len(students)):\n    grades[students[i]] += 5""]",1
+fixed_code,"for i in range(4):
+    print(i+2)",0
+faulty_code,"with open('nonexistentfile.txt', 'r') as f:
+    print(f.read())",1
+faulty_code,"s = 'Hello, world\nThis is a multi-line string\nwith embedded commas'
+print(s)",1
+faulty_code,def factorial(n): return n * factorial(n-1); factorial(5),1
+fixed_code,"for i in range(float('inf')):
+    print(i)",0
+fixed_code,"import os
+try:
+    os.remove('temp_file.txt')
+except FileNotFoundError:
+    print('The file does not exist')
+print('Removed file successfully')
+",0
+faulty_code,"a = [1,2,3]; b = [4,5,6]; a.append(b[0])",1
+fixed_code,"my_list = [1,2,3]
+index = len(my_list)",0
+fixed_code,"n = int(input())
+sum_numbers = 0
+for i in range(1, n+1):
+    sum_numbers += i
+average = sum_numbers / n",0
+fixed_code,"while True:
+    print('Hello')
+break",0
+faulty_code,"my_list = []
+
+my_list.append(5)
+",1
+faulty_code,"numbers = [1,2,3];
+sum = sum(numbers[1:]) / len(numbers);
+print(sum)",1
+faulty_code,"n = int(input('Enter a number between 1 and 5: '))
+if n == 0:
+    print('Invalid input')",1
+faulty_code,"import os
+os.remove('not ExistingFile.txt')",1
+fixed_code,"numbers = [1,2,3]
+for num in numbers:
+    if num % 2 == 0:
+        del numbers[-1]",0
+faulty_code,"for i in range(len(list)):
+    if list[i] == 'a':
+        break",1
+fixed_code,"import pandas as pd
+
+try:
+  df = pd.read_csv('nonexistent_file.csv', error_bad_lines=False)
+except FileNotFoundError:
+  print('File not found!')
+finally:
+  print('Processing completed.')",0
+faulty_code,"for i in range(10):
+    print(i)",1
+fixed_code,"import math
+
+try:
+    if num < 0:
+        print('Number is negative')
+    else:
+        print(math.sqrt(num))
+except ValueError as e:
+    print(f'Invalid value encountered: {e}')",0
+faulty_code,"a = [1,2,3]
+print(a[-1])",1
+faulty_code,"for i in range(5): print(i+1)
+
+# This code prints numbers from 1 to 5, but it should print from 0 to 4
+",1
+fixed_code,"def greet(name):
+    print('Hello, ' + name)",0
+fixed_code,"a = [1,2]; print(a[3] if len(a)>3 else '')",0
+faulty_code,"print('Hello, world!')
+print('Hello, universe!')",1
+faulty_code,"for i in range(10,20):
+    print(i)",1
+fixed_code,"a = [1,2,3]
+a.sort()
+print(a)",0
+fixed_code,"def greet(name):
+    return 'Hello, ' + name + '!'
+name = 'Alice'
+greet_name = greet(name)
+print(greet_name)",0
+faulty_code,"for i in range(10):
+    print(i*2)
+
+# Off-by-one error: should use range(5) instead of range(10)
+",1
+faulty_code,for i in range(len(numbers)): numbers[i] +=1,1
+fixed_code,"[""print('Hello, world!')"", 'n = [1,2,3]\ns = sum(n)', ""a = {0: 'one', 1: 'two'}\nb = list(a.keys())"", ""import math\nif -4 < 0:\n    print('Negative number has no square root.')"", 'y = x.copy()', 'while i < 5:\n    i += 1']",0
+fixed_code,s = 'abc'; if len(s) > 10: print(s[10]) else: print('Index out of range'),0
+faulty_code,"a = [1,2,3]
+b = [4,5,6,7]
+c = a + b
+print(c)",1
+fixed_code,"for idx, num in enumerate(numbers):
+    print(f""Index {idx}: {num}"")",0
+fixed_code,"for i in range(len(arr)):
+    if i < len(arr)-1:
+        print(arr[i])
+",0
+fixed_code,"s = 'Hello'
+print(s[6:])",0
+fixed_code,"a = round(0.1 + 0.2, 1)
+if abs(a - 0.3) < 1e-9:
+    print(""Equal"")",0
+faulty_code,"try:
+    open('nonexistentfile.txt', 'r')
+except FileNotFoundError:
+    print('File not found!')",1
+fixed_code,"lst = [1, 2]; if len(lst) > 2: print(lst[2]) else: print('Index out of range')",0
+faulty_code,"while i < 10:
+    print(i)",1
+fixed_code,"print(str(5) + ""Hello"")",0
+faulty_code,"a = [1,2,3]
+a[0] # This will raise an IndexError: list index out of range
+",1
+faulty_code,"for i in range(10):<br>
+    print(i)<br>
+    print(i+1)",1
+fixed_code,"count = 0
+while count < 5:
+    print('Waiting.')
+    count +=1",0
+fixed_code,"if x == y:
+    print('Equal')
+
+if x != y:
+    print('Not Equal')",0
+fixed_code,"my_list = [1,2,3]
+if len(my_list) > 0:
+    print(my_list[-1])",0
+fixed_code,"for i in range(1,6,2):
+    print(i)",0
+faulty_code,"for i in range(10):\n    print(i*2)
+",1
+fixed_code,"for i in range(len(nums)):
+    if i < len(nums) and nums[i] > 0:
+        print(nums[i])",0
+fixed_code,"try:
+    file = open('nonexistentfile.txt', 'r')
+except FileNotFoundError as e:
+    print(f'Failed to open file: {e}')
+finally:
+    file.close()",0
+fixed_code,"a = [1,2,3]
+b = a[:2]
+c = b[::-1]
+d = c[:1]",0
+faulty_code,"for i in range(len(list)):
+    list[i] = list[i+1]
+
+print('List shifted by one')",1
+faulty_code,"my_list = [1,2]
+for i in range(5):
+    print(my_list[i])",1
+fixed_code,"if not len(lst):
+    continue
+for i in range(len(lst)):
+    print(i)",0
+faulty_code,"s = 'Hello'
+s.lower()
+print(s)",1
+faulty_code,"for i in range(10):
+    print(i)
+
+print(i+1)",1
+faulty_code,"for i in range(len(nums)+1):
+    total += nums[i]",1
+fixed_code,"for i in range(10):
+    print(i)
+    i += 1
+",0
+faulty_code,"with open('file.txt', 'r') as f:
+    while f seeking(0) < len(f) -1:
+        print(f.readline())",1
+faulty_code,"a = [1,2,3]
+b = a[1:]
+c = b[::-1]",1
+fixed_code,"for i in range(10):
+    print(i)
+
+print('Missing element')
+",0
+faulty_code,"my_list = [1,2,3]
+try:
+    my_list[-1] = 'four'
+except IndexError:
+    pass",1
+fixed_code,"a = [1,2,3]",0
+fixed_code,"my_list = [1,2,3]
+
+for i in range(len(my_list)):
+    if my_list[i] % 2 == 0:
+        print(f'Even number found: {my_list[i]}')",0
+fixed_code,"if x == True or y == False:
+    print('Yes')",0
+fixed_code,"for i in range(10, 20):
+    print(i)
+
+print('Loop completed')
+",0
+fixed_code,print('Hello'+' '+'world'),0
+fixed_code,"for i in range(1,20,5):
+    print(i)
+
+# This code correctly iterates through 5, 10, 15, and 20 by specifying both start and step values.",0
+faulty_code,"['text = ""Hello, world!"";\\nprint(text[0:5]);', 'data = {\\\'name\\\': \\""John\\"", \\\'age\\\': 30};\\nprint(data[\\\'ag\\\']);']",1
+faulty_code,"for i in range(10):
+    print('The value of i is',i)",1
+faulty_code,"for i in range(len(lst)+1):
+    print(lst[i])",1
+faulty_code,"a = 42
+b = a
+print(b)",1
+faulty_code,"for i in range(n):
+    print(i+1)
+
+# This code has an off-by-one error; it prints from 1 to n instead of 0 to n-1.",1
+faulty_code,"[""print('Hello, world!')"", 'for i in range(10):\n    print(i)', ""def greet(name): return 'Hello, {}!'.format(name)""]",1
+faulty_code,"while True:
+    print('Waiting...')
+    time.sleep(1)
+    if someCondition: # Note the typo here
+        break",1
+faulty_code,"try:
+    file = open('nonexistent.txt', 'r')
+except FileNotFoundError:
+    print('File not found')
+else:
+    data = file.read()
+    print(data)",1
+fixed_code,"my_list = [1,2,3]; my_index = my_list.index(4)",0
+fixed_code,"try:
+    if os.path.exists('nonexistentfile.txt'):
+        open('nonexistentfile.txt')
+except IOError:
+    print('File not found')
+except Exception as e:
+    print(f'Unexpected error: {e}')",0
+faulty_code,"import os
+os.path.join('..', 'data')",1
+fixed_code,"```
+# Fixed version: Iterating from 0 to len(list) exclusive
+employees = ['Alice', 'Bob']
+for i in range(len(employees)):
+    print(employees[i])
+```",0
+fixed_code,"for i in range(6):
+    if i >= 5:
+        print(i)",0
+fixed_code,"for i in range(len(arr)):
+    if i < len(arr)-1:
+        arr[i] = arr[i+1]",0
+faulty_code,"my_list = [1, 2]
+for i in range(len(my_list)):
+    print(i)",1
+faulty_code,"print('Hello, World')",1
+faulty_code,"for i in range(5)
+    print(i",1
+fixed_code,'hello' + 'world',0
+faulty_code,"my_list = [1,2,3]
+
+reversed_list = my_list[::-1]",1
+faulty_code,"def greet():
+    if name == ""Alice"":
+        print(""Hello Alice!"")",1
+faulty_code,"mylist = [1,2,3]
+index = mylist[2:0:-1]",1
+fixed_code,s = 'abc'; if len(s) > 3: print(s[3]) else: print('Index out of range'),0
+faulty_code,"numbers = [1,2,3]
+sum = sum(numbers)
+print(sum + numbers[0])",1
+fixed_code,"a = [1,2,3]
+b = a[:2]
+print(b[-1:])",0
+fixed_code,"my_list = [1,2,3]
+for i in range(len(my_list)-1):
+    print(my_list[i])",0
+fixed_code,"try:
+    a = int(input('Enter a number: '))
+except ValueError as e:
+    print(f'Invalid input: {e}')
+except Exception as e:
+    print(f'An unexpected error occurred: {e}')
+",0
+faulty_code,"for i in range(n-1):
+    print(i)",1
+faulty_code,"def greet(name):
+    print('Hello, ' + name + '!')
+    return
+    print('Welcome!')",1
+faulty_code,xrange(5) in a Python script,1
+fixed_code,for i in range(len(prices)):\n    if prices[i] > current_price: \n        current_price = prices[i],0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop will run indefinitely because it doesn't have a proper termination condition.",1
+faulty_code,"for i in range(len(item)):
+    print(item[i+1])",1
+faulty_code,"for i in range(10)
+    print(i+1)
+",1
+faulty_code,"x = [1,2,3]
+x[i+1] for i in range(len(x))",1
+faulty_code,"for i in range(10):
+    print(i*2)
+
+print('The loop ran',i)",1
+faulty_code,"for i in range(len(lst)):
+    print(lst[i])",1
+fixed_code,"import os
+os.remove('test.txt')",0
+fixed_code,"with open('data.txt', 'r+') as f:
+    f.write('content')
+    f.write('more content')
+    f.close()",0
+fixed_code,"class MyClass:
+    def __init__(self, a, b):
+        self.c = a + b",0
+fixed_code,"for i in range(5):
+    print(i)
+print(i)
+
+# Medium length: Corrected list comprehension
+my_list = [x for x in range(10) if x%2==0]
+print(my_list[0])
+
+# Long length: Fixed variable names and logic
+def calculate_average(numbers):
+    sum_numbers = 0
+    count = len(numbers)
+    for num in numbers:
+        sum_numbers += num
+    if count ==0:
+        return None
+    else:
+        average = sum_numbers / count
+        print(average)",0
+fixed_code,"my_list = [1]
+print(my_list[0])",0
+fixed_code,"a = [1,2,3]; print(a[4])",0
+fixed_code,"import sqlite3
+
+conn = None
+
+try:
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM test_table')
+except sqlite3.OperationalError as oe:
+    print(f'Database error: {oe}')
+finally:
+    if conn is not None:
+        conn.close()
+print('Database connection closed successfully')",0
+fixed_code,s = 'test'; print(s[3]),0
+fixed_code,"a = [1,2,3]
+b = a.copy()
+print(b[0])",0
+faulty_code,"with open('nonexistent.txt') as f:
+    print(f)",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop only prints numbers from 0 to 9. The bug is an off-by-one error.",1
+fixed_code,"for i in range(6):
+    print(i)
+print('Next item')",0
+faulty_code,"my_list = [1,2,3]
+my_list[3] = 'a'",1
+fixed_code,"for i in range(len(list)):
+    if i < len(list)-1:
+        print(list[i])
+    else:
+        break",0
+faulty_code,"for i in range(len(numbers)):
+    if numbers[i] > current_max:
+        current_max = numbers[i]
+        print(current_max)",1
+fixed_code,"import math
+print(math.factorial(5))",0
+faulty_code,"d = {""a"": 1}
+print(d[""b""])",1
+faulty_code,"print('Hello, world!')
+
+",1
+fixed_code,"try:
+    file = open('nonexistent.txt', 'r')
+except FileNotFoundError:
+    print('File not found. Please create it first.')",0
+faulty_code,"n = 5
+m = 'hello'
+print(n + m)",1
+fixed_code,"try:
+    print(1/(x-2))
+except ZeroDivisionError as e:
+    print(f'Divide by zero: {e}')
+",0
+faulty_code,"a = [1,2,3]
+b = a.pop()
+a.append(4)
+print(a)",1
+fixed_code,"s = 'hello'
+slice = s[2:4]
+print(slice)",0
+faulty_code,"a = [1,2]; print(a[3])",1
+fixed_code,"for i in range(5)
+    print(i**2)
+print('Missing the fifth element')",0
+faulty_code,"a = [i for i in range(5) if i % 2 == 0]
+b = sum(a)
+print(b)",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# Extra line added accidentally",1
+faulty_code,"try:
+    f = open('nonexistent.txt', 'r')
+except FileNotFoundError:
+    print('File not found')",1
+faulty_code,"for i in range(len(arr)):
+    if arr[i] == target:
+        return arr[i+1]
+else:
+    return None",1
+faulty_code,"my_list = [1, 2, 3]
+new_list = my_list.remove(2)",1
+fixed_code,"for i in range(n):
+    print(i)
+
+def my_func(arr):
+    for i in range(len(arr)):
+        if arr[i] == 'a':
+            try:
+                return arr[i+1]
+            except IndexError:
+                return None
+
+# Long fixed code here",0
+faulty_code,"def greet(name):
+    print('Hello, ' + name",1
+fixed_code,"for i in range(5):
+    print(i * 2 + 1)
+
+try:
+    x = int(input('Enter a number'))
+except ValueError as e:
+    print(f""Invalid input: {e}"")",0
+fixed_code,"for i in range(len(arr)-1):
+    arr[i],arr[i+1]=arr[i+1],arr[i]
+# No need to sort as the swap is already in place
+print('Array was already sorted correctly')",0
+fixed_code,for i in range(10),0
+faulty_code,"def greet(nme):
+    print(""Hello"", nme)
+greet(""Alice"")",1
+faulty_code,s = 'hello'; print(s[3]),1
+fixed_code,"for i in range(1, n+1):
+    print(i)",0
+faulty_code,"for i in range(5,10):
+    print(i)",1
+faulty_code,"n = int(input())
+sum_numbers = 0
+for i in range(n):
+    sum_numbers += i
+average = sum_numbers / n",1
+faulty_code,"a = [1,2,3]
+b = [4,5,6]
+print(a[3])",1
+fixed_code,"my_list = [1, 2, 3]
+index = my_list[2]
+print(index)
+
+my_list.append(4)
+print(my_list)",0
+fixed_code,"x = [None]
+str_x = ''
+str_x += x[0] if x[0] is not None else ''
+print(str_x + 'hello')",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This code is missing an else clause to handle when i exceeds the list length",1
+fixed_code,"n = int(input())
+for i in range(n):
+    print(i)",0
+fixed_code,"try:
+    print(1/0)
+except ZeroDivisionError as e:
+    print(f'Division by {e.value} is not allowed')
+except:
+    print('An error occurred')",0
+fixed_code,"my_list = [1,2,3]
+try:
+    print(my_list[5])
+except IndexError:
+    print('Index out of range')
+",0
+fixed_code,"for i in range(10):
+    print(i)
+break
+",0
+fixed_code,"def calculate_average(numbers):
+    total = 0
+    for num in numbers:
+        total += num
+    return total / len(numbers)",0
+fixed_code,"for i in range(3):
+    for j in range(3):
+        print(i, end=' ')
+    print()
+
+for i in range(3):
+    print(i)",0
+faulty_code,"lst = [1,2,3]; print(lst[-10])",1
+faulty_code,"while i < 10:
+    print(i)
+",1
+fixed_code,"exec(""print('Hello, world!')"")",0
+faulty_code,s = 'hello'; print(s[2:3]),1
+fixed_code,"a = [1,2,3]
+if len(a) > 4:
+    a.append(4)",0
+fixed_code,for i in range(len(arr)): print(arr[i]),0
+fixed_code,"for i in range(len(arr)): print(arr[i])
+",0
+faulty_code,"['short_snippet_with_bug', 'medium_snippet_with_bug']",1
+faulty_code,"for i in range(1, n-1):
+    print(i)",1
+fixed_code,"for i in range(n):
+    print(i)",0
+fixed_code,"for i in range(10)
+    print(i)
+
+print('Next item', end='')",0
+fixed_code,"for i in range(10):
+    print(i+1)
+print(i+1)",0
+fixed_code,"try:
+    print(1/0)
+except ZeroDivisionError as e:
+    print(f'Division by {e.value} is impossible')
+",0
+faulty_code,"my_list = [1, 2, 3]
+print(my_list[-1])",1
+faulty_code,for i in range(10): print(i*2),1
+faulty_code,"try:
+    file = open('nonexistent.txt', 'r')
+except IOError:
+    print(""File not found"")",1
+fixed_code,"for i in range(len(arr)):
+    if i < len(arr)-1:
+        print(arr[i])
+    else:
+        break",0
+faulty_code,"with open('file.txt', 'rb') as f:
+    f.read()
+",1
+faulty_code,"my_list = [1,2,3]
+my_list['a'] = 4",1
+faulty_code,[x for x in range(10) if x%2],1
+faulty_code,"print('Hello, world''",1
+faulty_code,"a = [1,2,3]
+b = a
+print(b[0])",1
+faulty_code,"try:
+    with open('nonexistentfile.txt', 'w') as f:
+        f.write('Hello')
+except IOError:
+    print('File not found!')",1
+fixed_code,"try:
+    print('Hello')
+except ValueError as e:
+    print(f'ValueError: {e}')
+except Exception as e:
+    print(f'Unknown error: {e}')",0
+fixed_code,"for i in range(6):
+    if i == 5:
+        break",0
+fixed_code,for i in range(n):,0
+fixed_code,"for i in range(len(lst)):
+    print(i)",0
+fixed_code,"a = [1,2,3]
+print(a[4] if len(a)>4 else '')",0
+fixed_code,"with open(r'data.txt', 'r') as f:
+
+",0
+faulty_code,"lst = [1,2,3]
+print(lst[4])",1
+fixed_code,"for i in range(len(arr)):
+    if i < len(arr)-1:
+        print(arr[i])
+
+# OR 
+
+for i in range(len(arr)-1):
+    print(arr[i])",0
+fixed_code,"for i in range(len(arr)-1):
+    if arr[i] != arr[i+1]:
+        break
+",0
+faulty_code,"try:
+    print(1/0)
+except ZeroDivisionError as e:
+    print(f'Caught: {e}')
+",1
+fixed_code,"if not list:
+    return
+for i in range(len(list)):
+    print(list[i])",0
+faulty_code,"def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+print(factorial(5))",1
+fixed_code,"def greet(name):
+    try:
+        return f""Hello, {name}!""
+    except ValueError as e:
+        print(f""Invalid name: {e}"")
+    except IndexError as e:
+        print('Index error')",0
+fixed_code,"try: f = open('file.txt'); print(f); f.close() 
+except IOError: print(""Error"")",0
+faulty_code,"for i in range(len(lst)):
+    if lst[i] == target:
+        print('Found: ', lst[i])
+        break
+else:
+    print('Not found')",1
+faulty_code,"my_list = [1, 2, 3]; print(my_list[3])",1
+faulty_code,"for x in range(10):
+    print(x)",1
+fixed_code,"nums = [1,2,3]
+largest = max(nums)",0
+fixed_code,"for i in range(len(arr)-1):
+    arr[i+1] = arr[i]
+
+print('Shifted correctly')",0
+fixed_code,"for i in range(len(nums)):
+    print(nums[i])",0
+faulty_code,"for i in range(10):
+    print(i*2)
+
+print('Missing key')",1
+fixed_code,for i in range(len(numbers)): numbers[i+1] +=1,0
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This loop runs from 0 to 4 inclusive, but prints i+1 which starts at 1 and ends at 5.",1
+faulty_code,for i in range(len(arr)-1): print(arr[i]),1
+faulty_code,"for i in range(10):
+    if i == 5:
+        break
+    print(i)",1
+faulty_code,"for i in range(5):
+    print(i+1)
+print(i)",1
+faulty_code,"x = [1,2,3]
+for num in x:
+    print(num)",1
+faulty_code,"try:
+    os.remove('nonexistentfile.txt')
+except FileNotFoundError:
+    print('File not found')",1
+fixed_code,"lst = [1,2,3]
+lst.extend([4,5,6])",0
+faulty_code,"a = [1,2,3]
+b = a[4]",1
+faulty_code,"for i in range(3):
+    print(numbers[i])",1
+faulty_code,for i in range(10):\n    print(i),1
+faulty_code,"with open('file.txt', 'r') as f:
+    print(f.readline())",1
+fixed_code,"my_list = [1,2,3]
+index = len(my_list)-1
+print(my_list[index])",0
+fixed_code,"import sys
+
+try:
+    file = open('data.txt', 'r')
+    print(file.read())
+except FileNotFoundError as e:
+    print(f'Error: {e}')
+except Exception as e:
+    print(f'Unexpected error: {e}')",0
+fixed_code,"a = [1,2,3]
+a.append(4)",0
+faulty_code,"for i in range(10):
+    print(i)
+print('Loop completed')",1
+faulty_code,"my_list = [1,2,3]
+print(my_list[2])",1
+fixed_code,"def greet(n):
+    for i in range(n):
+        print(i)",0
+faulty_code,"for i in range(10):
+    print(i*2)
+
+# This loop runs from 0 to 9, which is correct.",1
+fixed_code,"if x > y:
+    print('x is greater than y')",0
+fixed_code,"with open('data.txt', 'r') as file:
+    content = file.read()
+    print(content)",0
+faulty_code,"import pandas as pd
+
+df = pd.DataFrame({'A': [1,2,3], 'B': ['a', 'b', 'c']})
+
+df.merge(df, on='A', how='inner')",1
+faulty_code,"name = ""Alice""
+for name in [""John"", ""Jane""]:
+    print(name)",1
+fixed_code,"their_list = [1,2]; print(their_list[3])",0
+faulty_code,"for i in range(10, -1):
+    print(i)",1
+fixed_code,"for i in range(5, -1, -1):
+    print(i)
+
+print('Missing item')",0
+fixed_code,"my_list = [1,2]
+for i in range(len(my_list)):
+    print(my_list[i])",0
+faulty_code,"for i in range(len(numbers)):
+    numbers.append(numbers[i] + numbers[i+1])",1
+fixed_code,"import math
+sum = [1,2,3]
+avg = math.fsum(sum) / len(sum)",0
+faulty_code,"import sqlite3
+
+conn = None
+
+try:
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM test_table')
+except sqlite3.OperationalError as oe:
+    print(f'Database error: {oe}')",1
+faulty_code,"a = [1,2,3]
+b.pop(0)
+a.remove(a[0])",1
+faulty_code,"def calculate_stats(data):
+    mean = sum(data)/len(data)
+    median = sorted(data)[len(data)//2]
+    return {'mean': mean, 'median': median}
+
+# Example usage:
+result = calculate_stats([1,2,3,4,5])
+print(result['std_dev'])",1
+faulty_code,"print('Hello, world!')
+
+nums = [1,2,3]
+sum_nums = sum(nums)
+# Missing closing parenthesis
+",1
+faulty_code,for i in range(len(list)): print(list[i]),1
+faulty_code,"for i in range(len(arr)):
+    if arr[i] == target:
+        print('Found')",1
+fixed_code,"while True:
+    print('Hello, world!')
+
+# This example shows an infinite loop which doesn't have a condition to break out of the loop.",0
+fixed_code,my_list = [x for x in range(5) if x%2 == 0]; print(my_list[3]),0
+faulty_code,"for i in range(0, len(arr)):
+    print(arr[i])",1
+faulty_code,"def greet():
+    for i in range(3):
+        print(""Hello"")",1
+fixed_code,"if len(my_list) > 0:
+    print(my_list[0])",0
+faulty_code,"for i in range(10)
+    print(i+1)
+
+print('Missing')",1
+fixed_code,s = 'hello\nworld'; print(s),0
+faulty_code,"for x in range(5,10,2):
+    print(x)",1
+faulty_code,"file = open('nonexistent.txt', 'r')",1
+faulty_code,for i in range(5):,1
+fixed_code,"try:
+    x = int(input('Enter a number: '))
+except ValueError as e:
+    print(f'Please enter a valid integer: {e}')
+except:
+    print('An unexpected error occurred')",0
+faulty_code,"for i in range(5):
+    my_list.append(i+1)",1
+faulty_code,"for i in range(5):
+    print(i + a)",1
+fixed_code,"class MyClass:
+    @staticmethod
+    def my_method():
+        pass",0
+faulty_code,"l = [1,2,3]; l[0]  # Accessing an empty list",1
+faulty_code,"nums = [1,2,3]
+if any(n > 0 for n in nums):
+    print('All numbers are positive')",1
+fixed_code,"for i in range(len(list)):
+    if i < len(list)-1:
+        print(list[i+1])",0
+fixed_code,"from collections import Counter as c; c([1,2,2]).most_common()",0
+faulty_code,"numbers = [1,2,3]
+sum_numbers = sum(numbers)
+avg = sum_numbers / len(numbers)
+print(avg)",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This code has an off-by-one error. It should be 'range(10)' to loop from 0 to 9.",1
+fixed_code,"for i in range(5)
+    print(i * 2)",0
+fixed_code,"def fixed_function(n):
+    for i in range(n-1):
+        print(i + 1)",0
+faulty_code,"['short faulty', 'medium faulty']",1
+faulty_code,"def my_func(lst):
+    for i in range(len(lst)-1):
+        print(lst[i])",1
+faulty_code,"for i in range(len(arr)-1):
+    arr[i] = arr[i+1]
+    arr[i+1] = arr[i]
+",1
+fixed_code,"for i in range(6):
+    print(i*2)",0
+fixed_code,"try:
+    with open('test.txt', 'r') as f:
+        print(f.read())
+except FileNotFoundError:
+    print('File not found')
+except IOError as e:
+    print(f'Error reading file: {e}')",0
+fixed_code,"l = [1,2,3]; if not l: print('Empty list'); else: print(max(l))",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This code has an off-by-one error. The loop should run from 0 to 9.",1
+fixed_code,"for i in range(len(list)):
+    if list[i] == 'a':
+        del list[i]
+        continue
+    else:
+        continue",0
+fixed_code,"if not isinstance(data, dict):
+    data = {}",0
+faulty_code,"for i in range(10): print(i+1)
+
+# This code misses printing the last value because of an off-by-one error",1
+faulty_code,for i in range(len(lst)): print(lst[i]),1
+faulty_code,"for i in range(5):
+    print(i)
+print('Next item')",1
+faulty_code,"import os
+with open('large_file.txt', 'r') as f:
+    data = f.read()
+print(data)",1
+fixed_code,"import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect(('localhost', 8000))",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This code has an off-by-one error; it should start at 0 to include 9.",1
+faulty_code,"for i in range(10):
+    print(i*2)
+
+# This code is incorrect because it doesn't collect user input properly.",1
+fixed_code,"my_list = [1, 2, 3]; print(my_list[2])",0
+faulty_code,"import random
+
+def normal(mean, var):
+    return (random.gauss(mean, var))",1
+faulty_code,"s = input().strip()
+print(s.split())",1
+fixed_code,"nums.pop(0)
+nums = [1,2,3]",0
+faulty_code,"for i in range(len(list)):
+    list[i] = 'new_value'
+
+# This code does not handle empty lists correctly",1
+faulty_code,"for i in range(5):
+    print(i+1)
+# Missing colon after for loop
+print(i+2)",1
+fixed_code,"for i in range(len(list)-1):
+    print(list[i+1])",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# Incorrectly not including last element due to off-by-one error",1
+fixed_code,"numbers = [1,2,3]
+print(numbers[1])",0
+fixed_code,"def sort_list(data):
+    sorted_data = []
+    for i in range(len(data)-1):
+        if data[i] > data[i+1]:
+            data[i], data[i+1] = data[i+1], data[i]
+    return data",0
+fixed_code,"for i in range(len(list)):
+    if list[i] == 'element':
+        print(f'Found element at index {i}')",0
+fixed_code,"for i in range(1, 11):
+    print(i*2)",0
+faulty_code,"for i in range(len(arr)-1):
+    arr[i], arr[i+1] = arr[i+1], arr[i]
+
+print('Sorted array:', arr)",1
+faulty_code,"try:
+    print(1/0)
+except ZeroDivisionError:
+    print('Denominator is zero')
+except Exception as e:
+    print(f'Unexpected error: {e}')",1
+faulty_code,"for i in range(5):
+    print(i)
+print('Loop ended')",1
+fixed_code,"for i in range(len(list)):
+    if i < len(list)-1:
+        print(list[i], list[i+1])",0
+fixed_code,"for i in range(1,6):
+    print(i)",0
+fixed_code,"def greet(name):
+    print('Hello, ' + name + '!')
+name = 'Alice'
+greet = greet('Alice')",0
+faulty_code,"my_list = [1,2,3]; print(my_list[5])",1
+faulty_code,"x = 5
+print(x + y)",1
+faulty_code,"my_list = [1,2]; print(my_list[3])",1
+faulty_code,"def greet(name, age):
+    print(""Hello, "" + name)",1
+faulty_code,"a = [1,2,3]
+a[4] = 'x'",1
+fixed_code,"nums = [1, 2, 3]
+squared = sum(x ** 2 for x in nums)",0
+fixed_code,"def calculate_average(numbers):
+    total = sum(numbers or [0])
+    count = len(numbers)
+    if count == 0:
+        return None
+    average = total / count
+    return average",0
+faulty_code,"for i in range(10):
+    print(i)
+print('Loop will never end')",1
+fixed_code,"for i in range(len(list)):
+    if i < len(list):
+        list[i] = 'new_value'
+",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop goes from 0 to 9, but prints i+1 which is 1 to 10. The bug is that the loop should go up to 10.",1
+faulty_code,"for i in range(10):
+    print(i)
+
+print('Missing')",1
+fixed_code,print(input()),0
+fixed_code,"a = [1,2,3]
+a.extend([4])
+print(a)",0
+fixed_code,for i in range(len(arr)-1)+1:,0
+fixed_code,"def greet(name):
+    print(f'Hello, {name}!')",0
+faulty_code,"for i in range(5):
+    print(i*2)
+",1
+fixed_code,"for i in range(len(arr)):
+    print(arr[i])
+
+# The loop now correctly iterates through all elements",0
+faulty_code,"def greet(name):
+    return f""Hello, {name}!""
+",1
+faulty_code,"a = [1,2,3]
+b = a
+print(a)
+print(b)",1
+fixed_code,"try:
+    print('File not found')
+except FileNotFoundError as e:
+    print(f'Error: {e}')
+finally:
+    print('Operation completed')
+
+# Exception suppressed
+try:
+    print('File operation completed')
+except Exception as e:
+    print(f'Error: {e}')
+",0
+fixed_code,"for i in range(len(arr)-1):
+    print(arr[i], arr[i+1])
+# Fixed by adding comment
+",0
+fixed_code,"for i in range(6):
+    if i < 5:
+        print(i)",0
+faulty_code,"l = [1,2,3]; print(max(l))",1
+faulty_code,sum(x for x in 5 if x % 2 ==0),1
+faulty_code,for i in range(len(list)-1):,1
+fixed_code,"
+a = [1,2,3]
+b = [4,5,6,7]
+for i in range(min(len(a), len(b)))
+    print(a[i] + b[i])",0
+fixed_code,"def greet(name):
+    print(f'Hello, {name}!')
+    print('How are you?', end='
+')",0
+fixed_code,"a = 0.1 + 0.2
+b = 0.3
+epsilon = 1e-10
+if abs(a - b) < epsilon:
+    print(""Equal within epsilon tolerance"")
+else:
+    print(""Not equal"")
+",0
+fixed_code,"x = [1,2,3]
+y = []
+for num in x:
+    y.append(num)
+print(y)",0
+faulty_code,"def greet(name):
+    print('Hello, ' + name + '!')
+    print('This is inside the function')",1
+faulty_code,"n = 3
+print(n + 5)",1
+fixed_code,"for i in range(len(list)):
+    print(list[0])",0
+fixed_code,"['for i in range(5): print(i)', ""import os\nif os.path.exists('nonexistentfile.txt'):\n    os.remove('nonexistentfile.txt')\nelse:\n    print('File not found')"", 'def factorial(n):\n    if n <= 1:\n        return 1\n    else:\n        return n * factorial(n-1)']",0
+faulty_code,"print('Hello, 'world!')",1
+faulty_code,if x > y: print('x is greater than y'),1
+faulty_code,"user_input = input().strip()
+if not user_input:
+    print('Please enter something')
+else:
+    print('Invalid input')",1
+fixed_code,"my_list = [1, 2, 3]
+try:
+    my_list.remove(4)
+except ValueError:
+    pass
+try:
+    my_list.remove(5)
+except ValueError:
+    pass
+my_list.pop()",0
+fixed_code,"for i in range(5):
+    print(i)
+print('Next item')
+",0
+fixed_code,"my_list = [1, 2, 3]
+if len(my_list) > 5:
+    print(my_list[5])
+else:
+    print('Index out of range')",0
+fixed_code,"my_list = [10, 20, 30]
+print(my_list.index(20))",0
+faulty_code,"for i in range(0, len(list)):
+    print(list[i])",1
+faulty_code,"if x == 'hello':
+    print('Hello!')
+else:
+    print('Not hello!')",1
+faulty_code,for key in d: print(key),1
+fixed_code,"x = [1,2,3]
+[elem for pair in zip(x,x[1:])for elem in pair]",0
+fixed_code,"for i in range(10,
+    print(i))",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+print('The loop ran from 0 to 9 inclusive.')",1
+faulty_code,"for i in range(10):
+    print(i)
+print('Loop finished')",1
+faulty_code,"for i in range(len(arr)-1):
+    arr[i], arr[i+1] = arr[i+1], arr[i]",1
+fixed_code,"for i in range(6):
+    my_list.append(i+1)",0
+faulty_code,"[""print('Hello, world!')"", 'from math import sqrt\nn = int(input())\nprint(sqrt(n))', ""\\n'.replace(r'\\\n', r'\n\\\\')""]",1
+faulty_code,"x = [1,2,3]
+x[0] = x[0] + 1",1
+faulty_code,"arr = [1,2,3]
+for i in range(len(arr)):
+    if arr[i] % 2 ==0:
+        print(i)",1
+faulty_code,"for i in range(0, n):
+    print(i)",1
+faulty_code,"my_list = [1]
+print(my_list[2])",1
+faulty_code,"try:
+    f = open('nonexistent.txt', 'r')
+    data = f.read()
+    print(data)
+except FileNotFoundError:
+    print('File not found')
+return",1
+faulty_code,"a = [1,2,3]
+a[0] = '1' + '
+' # This adds an extra newline
+print(a)",1
+faulty_code,"my_list = [1,2,3]
+print(my_list[5])",1
+fixed_code,"numbers = [1,2,3]
+popped = numbers.pop(1)
+print(popped)",0
+fixed_code,"for i in range(5):
+
+    print(i)",0
+faulty_code,"my_list = [1, 2, 3]
+
+my_list.append(4)",1
+faulty_code,"['short_faulty', 'medium_faulty', 'long_faulty']",1
+faulty_code,"['for i in range(3):\n    print(i)', ""with open('nonexistent.txt', 'w')"", ""if x == 'a':""]",1
+fixed_code,"['short fixed code', 'medium fixed code', 'long fixed code']",0
+fixed_code,sum(numbers[:2]),0
+faulty_code,"for i in range(len(list)-1):
+    print(list[i])",1
+faulty_code,"for i in range(0,len(primes)):
+    primes[i] = primes[i] + 1
+    print(primes)",1
+fixed_code,"import socket
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind(('localhost', 8000))
+s.listen(1)
+print('Server is listening on port 8000')
+s.accept() # Added accept() to block until a client connects
+# The faulty code does not accept incoming connections.",0
+faulty_code,"for i in range(10)
+    print(i)
+",1
+fixed_code,"def fib(n):
+    if n == 0:
+        return []
+    elif n == 1:
+        return [0,1]
+    else:
+        prev = fib(n-1)
+        return prev + [prev[-1]]
+print(fib(5))
+",0
+fixed_code,"for i in range(0,5-1):
+    print(i)",0
+faulty_code,"def outer_func(x):
+    def inner_func(y):
+        print(z)
+
+outer_func(5)",1
+faulty_code,"my_list = [5,3,7]
+for x in my_list:
+    print(x)
+print(list)",1
+fixed_code,"try:
+    with open('missingfile.txt', 'r', encoding='utf-8') as f:
+        print('File not found')
+except FileNotFoundError:
+    print('File not found or permission denied')",0
+faulty_code,"def calculate_average(numbers):
+    total = sum(numbers)
+    count = len(numbers)
+    average = total / count
+
+    return average",1
+fixed_code,"for i in range(5,6):
+    print(i)",0
+faulty_code,"lst = [1,2,3]
+for i in range(5):
+    print(lst[i])",1
+fixed_code,"import pandas as pd
+
+df = pd.DataFrame({'A': [1,2,3], 'B': ['a', 'b', 'c']})
+
+df.loc[0,'A'] = 5
+",0
+fixed_code,"for i in range(5):
+    print(i)
+
+# Comment
+print(i)",0
+faulty_code,"with open('file.txt', 'r') as f
+    f.write('new content')",1
+faulty_code,"print('Hello, world'')",1
+fixed_code,"a = [1,2,3]
+print(a[4])",0
+fixed_code,"for i in range(5):
+    print(i*2 if i<4 else 9)",0
+faulty_code,"my_list = [1,2,3]
+my_list.reverse()
+print(my_list[0])",1
+faulty_code,"for i in range(len(arr)-1):
+    print(arr[i])",1
+fixed_code,"for i in range(len(list)-1):
+    if list[i] == 'a':
+        break
+else:
+    print('Loop completed normally')",0
+faulty_code,"user_input = input().strip()
+password = user_input
+if password == 'secret':
+    print('Access granted!')
+else:
+    print('Incorrect password.')",1
+faulty_code,"my_list = ['a', 'b', 'c']
+    print(my_list[2])",1
+fixed_code,"def my_func(lst):
+    for i in range(len(lst)):
+        print(lst[i])",0
+fixed_code,"try:
+    os.remove('nonexistentfile.txt')
+except FileNotFoundError as e:
+    print(f'File not found: {e}')
+finally:
+    pass",0
+fixed_code,"a = [1,2,3]
+b = a.copy()
+print(a)
+print(b)",0
+faulty_code,"for i in range(len(arr)-1):
+    arr[i],arr[i+1]=arr[i+1],arr[i]
+arr.sort()
+print('Array sorted correctly')",1
+faulty_code,"['for i in range(5):', '    print(i+1)', ""try:\n    print(1/0)\nexcept ZeroDivisionError:\n    print('Denominator is zero')"", ""import os\nos.remove('test_file')\nexcept FileNotFoundError:\n    print('File not found')""]",1
+faulty_code,"for i in range(5):
+    if i < len(list):
+        print(list[i])",1
+faulty_code,"a = [1,2,3]
+a[3] = 4",1
+faulty_code,"for i in range(0,6,2):
+    print(i)",1
+faulty_code,"for i in range(5):
+    print(i+1)
+print(6)",1
+faulty_code,"sum(x and x*2 for x in [0,1])",1
+faulty_code,"""s = 'Hello'\ns[0] = 'H'""",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# Missing else clause",1
+faulty_code,"import pandas as pd
+df = pd.read_csv('data.csv', index_col=0)
+print(df['column'][3:7])",1
+fixed_code,"my_list = [1, 2, 3]
+new_list = list(my_list)
+
+# or 
+
+my_list.remove(2)",0
+faulty_code,for i in range(len(list)):\n    if list[i] == target:\n        print('Found!'),1
+fixed_code,"['for i in range(5): print(i + 1)', 'import math; print(math.sqrt(4))', ""try: list.index('a'); raise ValueError except: pass""]",0
+faulty_code,"a = 5
+print(b)",1
+faulty_code,"try:
+    print('Hello')
+except FileNotFoundError:
+    print('File not found')",1
+faulty_code,"for i in range(len(arr)-1):
+    arr[i], arr[i+1] = arr[i+1], arr[i]
+arr[-1]",1
+faulty_code,"my_list = [1,2,3]
+index = my_list[4]",1
+fixed_code,"my_list = [1,2,3]
+if len(my_list) > 5:
+    print(my_list[5])
+else:
+    print('Index out of range')",0
+fixed_code,corrected code,0
+fixed_code,"squares = (x**2 for x in range(10))
+print(5 in [num for num in squares])",0
+faulty_code,"for i in range(10):<br/>
+    print(i)",1
+fixed_code,"def greet(name):
+    print(""Hello, "" + name);
+fixed_code: def greet(name): print(""Hello, "" + str(name))",0
+fixed_code,"a = [1,2,3]
+b = a[:2][::-1]",0
+faulty_code,"print(10 // 3)
+print(10 % 3)
+print(10 / 3)  # Outputs '3.333...'",1
+fixed_code,"a = [1,2,3]
+b = a[:2]
+c = b[::-1]
+d = c[1:]",0
+faulty_code,"for i in range(5):
+    print(i * 2)
+
+try:
+    x = int(input('Enter a number'))
+except ValueError:
+    print(""Invalid input"")",1
+faulty_code,"def greet(name):
+    return f""Hello, {name}!""
+
+try:
+    greet('world')
+except ValueError as e:
+    print(e)
+except IndexError as e:
+    print('Index error')",1
+faulty_code,"my_list = [1,2,3]
+my_list.pop(0)
+my_list.pop(0)
+print(my_list[0])",1
+faulty_code,"lst = [1,2,3]; print(lst[5])",1
+fixed_code,"d = {'a': [1,2,3]}
+print(d['a'])",0
+faulty_code,s = 'hello'; print(s[5]),1
+faulty_code,"try:
+    raise ValueError('Test')
+except:
+    pass",1
+fixed_code,"x = 5
+x += 1",0
+faulty_code,"my_list = [1, 2, 3]
+print(my_list[5])",1
+fixed_code,"['for i in range(5):', '    print(i)', ""try:\n    print(1/(0+1))\nexcept ZeroDivisionError:\n    print('Denominator is zero')"", ""import os\nos.remove('test_file')\nexcept FileNotFoundError:\n    print('File not found').""]",0
+faulty_code,print(input(5)),1
+faulty_code,"a = [1,2,3]
+b = a[0:2]
+c = b[::-1]
+d = c + [4,5,6]
+print(d)",1
+fixed_code,"for i in range(len(arr)):
+    if i < len(arr)-1:
+        arr[i], arr[i+1] = arr[i+1], arr[i]
+
+# The loop now correctly compares and swaps all adjacent elements",0
+fixed_code,"for i in range(len(arr)-1):
+    temp = arr[i+1]
+    arr[i], arr[i+1] = arr[i+1], temp
+",0
+fixed_code,"a = [1,2,3]
+b = a[0] if len(a)>=1 else None
+print(b)",0
+faulty_code,"numbers = [1, 2, 3]
+sum = sum(numbers[0:3])
+print(sum)",1
+faulty_code,for x in range(5): print(x),1
+fixed_code,"def greet(name):
+    return f'Hello, {name}!'",0
+faulty_code,"squares = (x**2 for x in range(10))
+print(5 in squares)",1
+fixed_code,"try:
+    with open('nonexistent.txt', 'r') as f:
+        print('File was found')
+except FileNotFoundError:
+    print('File not found')",0
+faulty_code,"for i in range(5):
+    if i == 4:
+        print(i)
+
+my_list = []
+if my_list:
+    n = len(my_list)
+    for i in range(n):
+        print(my_list[i])",1
+fixed_code,"while True:
+    input()  # Press Enter to continue
+",0
+fixed_code,"for i in range(6):
+    print(i*2)
+",0
+faulty_code,"import socket
+
+s = socket.create_connection(('localhost', 8000))",1
+faulty_code,"exec(""print"")",1
+faulty_code,"def greet(name):
+    print('Hello, ' + name + '!')
+    print('How are you?', end='\n')",1
+faulty_code,"for i in range(len(list)):
+    list.pop(i)",1
+fixed_code,for key in d: print(key or ''),0
+fixed_code,"for i in range(10):
+    print(i+1)
+print('Loop completed, all items processed')
+",0
+fixed_code,"for i, x in enumerate([1,2,3]):
+    print(i)",0
+fixed_code,"a, b = [1,2], [3,4]",0
+faulty_code,"if x > 0:
+    print('Positive')",1
+fixed_code,"a = [1,2,3]
+a[-1] # This returns the last element of the list, which is 3",0
+fixed_code,"{'data': {'scores': [85, 92, 78]}, 'KEY': 'test_key'}",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This code misses the first iteration by one
+",1
+faulty_code,"print('Hello, world')",1
+fixed_code,"for i in range(len(numbers)):
+    if i == 0:
+        print(None)
+    else:
+        print(numbers[i-1])",0
+fixed_code,"for i in range(11):
+    print(i)
+
+# The loop now correctly runs from 0 to 10",0
+faulty_code,"{'data': {'scores': [85, 92, 78]}, 'key': 'test_key'}",1
+fixed_code,"def my_func(a, b):
+    if b == 0:
+        raise ValueError('Divisor cannot be zero')
+    return a % b
+    else:
+        return a // b",0
+fixed_code,"sum(x * 2 for x in [0,1])",0
+fixed_code,"for i in range(len(list)):
+    list.append(i+1)",0
+faulty_code,"try:
+    x = int(input('Enter a number: '))
+except ValueError:
+    print('Please enter a valid integer')
+except Exception as e:
+    print('An error occurred:', e)
+",1
+fixed_code,"my_list = [1,2,3]
+try:
+    print(my_list[5])
+except IndexError as e:
+    print(f'Index error: {e}')
+",0
+faulty_code,"def my_func():
+    x = 10
+    print(x)
+    x",1
+fixed_code,"def greet(name):
+    return 'Hello, ' + name",0
+faulty_code,"if x == y:
+    print('Equal')",1
+fixed_code,"for i in range(10, 20)
+    print(i)",0
+fixed_code,"for i in range(5):
+    print(i+1, end='\n')
+print('Next item', end='\n')",0
+faulty_code,"import pandas as pd
+df = pd.read_csv('data.csv', index_col=0)
+print(df[5:])",1
+fixed_code,"my_list = [1,2]
+my_list.extend([3])",0
+faulty_code,"for x in range(5):
+    print(x)
+
+print('Missing colon')",1
+faulty_code,print('''Hello'''),1
+fixed_code,"for i in range(10, -1, -1):
+    print(i)",0
+faulty_code,my_list = [1]; print(my_list[2]),1
+faulty_code,"a = [1,2,3]
+a[0] = 'one'
+print(a)",1
+fixed_code,"for i in enumerate(list):
+    print(i)",0
+faulty_code,"def greet(name):
+    print(""Hello, "" + name);
+fixed_code: greet(5)",1
+fixed_code,"try:
+    for i in range(len(list)):
+        print(list[i])
+except IndexError:
+    print('Index out of bounds')
+",0
+fixed_code,"a = 5
+b = 6
+print(b)",0
+faulty_code,"my_list = [1,2,3]; print(my_list[i+1])",1
+faulty_code,"a = [1,2,3]
+b = a.pop(0)
+print(a)",1
+faulty_code,"my_list = [1,2,3]; print(my_list.index(4))",1
+faulty_code,"for i in range(10):
+    print(i*2)
+
+# This loop runs from 0 to 9, which is correct. However, if the intention was to run from 1 to 10, this code is off-by-one.",1
+fixed_code,my_list = ['hello'],0
+faulty_code,"for i in range(5): print(i+1)
+",1
+fixed_code,"['my_list = [1, 2, 3]\nprint(my_list[4])', 'numbers = [10, 20, 30]\nsorted_numbers = sorted(numbers)\nprint(sorted_numbers)', ""\nfile = open('data.txt', 'r')\ncontent = file.read()\nprint(content)\nfile.close()"", ""my_dict = {'a': 1, 'b': 2}\nmy_list = [v for k, v in my_dict.items()]"", ""try:\n    x = int(input())\nexcept ValueError:\n    print('Please enter a valid number')"", ""import os\nos.remove('test_file.txt')"", ""\nstudents = ['Alice', 'Bob']\ngrades = {student: 0 for student in students}\nfor student in students:\n    grades[student] += 5"", 'my_list = [1, 2, 3]\nnew_list = []\nfor num in my_list:\n    new_list.append(num * 2)', ""\nwith open('data.txt', 'r') as f:\n    content = f.read()\nprint(content)"", ""def greet(name):\n    print('Hello, ' + name)"", ""my_list = [1, 2, 3]\ntry:\n    print(my_list[5])\nexcept IndexError:\n    print('Index out of range')"", ""\nstudents = ['Alice', 'Bob']\ngrades = {student: 0 for student in students}\nfor i in range(len(students)):\n    grades[students[i]] += 5""]",0
+fixed_code,"with open('file.txt', 'r') as f:
+    print(f.read())
+",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This code has an off-by-one error. It prints from 1 to 11 instead of 1 to 10.",1
+fixed_code,"import pandas as pd
+df = pd.read_csv('data.csv', index_col=0)
+print(df.loc[3:6, 'column'])",0
+faulty_code,"try:
+    print(math.sqrt(num))
+except ValueError:
+    print('Number is negative')",1
+fixed_code,"data = [{'name': 'Alice', 'age': 15}, {'name': 'Bob', 'age': 20}]
+result = [item['name'] for item in data if item.get('age') > 18 and item.get('age') % 2 == 0]
+print(result)",0
+fixed_code,"my_list = []
+if len(my_list) > 0:
+    print(my_list[0])",0
+fixed_code,<fixed code>,0
+fixed_code,"for i in range(len(list) - 1):
+    list[i] = something",0
+fixed_code,"try:
+    if os.path.exists('nonexistentfile.txt'):
+        open('nonexistentfile.txt')
+except:
+    print('File not found')
+",0
+fixed_code,"for i in range(len(list)-1):
+    print(list[i], end=' ')
+",0
+fixed_code,print('Hello' + ' World'),0
+fixed_code,"for i in range(len(list)):
+    if i < len(list)-1:
+        print(list[i])
+
+# Fixed version includes a check to prevent IndexError by ensuring we don't access the last element
+",0
+faulty_code,"lst = [1,2,3]
+for i in lst:
+    if i % 2 == 0:
+        del lst[i]",1
+fixed_code,"try:
+    with open('nonexistentfile.txt', 'r', FileNotFoundError) as f:
+        f.read()
+except FileNotFoundError:
+    print('File not found')",0
+faulty_code,"data = [
+    {'name': 'Alice', 'age': 30},
+    {'name': 'Bob', 'age': None},
+    {'name': 'Charlie'}
+]
+
+for entry in data:
+    if 'age' in entry:
+        print(entry['age'] + 1)
+",1
+faulty_code,"for i in range(len(list)-1):
+    if list[i] > list[i+1]:
+        swap list[i] and list[i+1]
+",1
+fixed_code,"['short fixed', 'medium fixed', 'long fixed']",0
+faulty_code,"for i in range(5)
+    print(i**2)
+print('Missing')",1
+fixed_code,"for i in range(10):
+    print(i)
+
+# The loop now correctly prints numbers from 0 to 9",0
+faulty_code,"s = input().strip()
+if s == '':
+    print('Enter a name')
+else:
+    print(s)",1
+faulty_code,"if x not in [1,2,3]:
+    print('Not found')",1
+faulty_code,"a = [1,2,3]
+b = [4,5,6]
+a + b",1
+fixed_code,"import os
+def process_file(filename):
+    with open(filename, 'rb') as f:
+        for chunk in f:
+            print(chunk.decode())
+process_file('large_file.txt)",0
+fixed_code,"a = [1,2,3]
+b = a.pop(0)
+a.insert(0, 4)
+print(a)",0
+faulty_code,"for x in lst:
+    if x is 2:
+        print('Found')",1
+fixed_code,"try:
+    i = 0
+    while i < 10:
+        print(i)
+        if i == 5:
+            break
+        i += 1
+except Exception as e:
+    print(f""Error: {e}"")",0
+fixed_code,"for i in range(5): print(i)
+
+# The corrected code now prints numbers from 0 to 4 as intended
+",0
+fixed_code,"['if x >= 5:\n', ""    print('x is greater than or equal to 5')\n""]",0
+faulty_code,"for i in range(10-1):
+    print(i)",1
+fixed_code,"try:
+    a = int(input('Enter a number: '))
+except ValueError as e:
+    print('Please enter a valid integer', file=e)
+except KeyboardInterrupt:
+    print('Operation cancelled by user')",0
+fixed_code,"lst = [1,2,3]; del lst[0]; print(lst[1])",0
+faulty_code,"for i in range(5):
+    print(i)
+
+sum = sum(range(0,5))",1
+fixed_code,"my_list = [1,2,3]",0
+fixed_code,"for i in range(10):
+    print(i)
+print('Loop finished')
+",0
+faulty_code,"for i in range(len(arr)):
+    print(arr[i])",1
+faulty_code,"open('data.txt', 'r')
+content = open('data.txt', 'r').read()
+print(content)",1
+faulty_code,print([x for x in range(5) if x < 4]),1
+fixed_code,"for i in range(len(list)):
+    if list[i] == target:
+        return list[i+1] if (i+1) < len(list) else None
+else:
+    return None",0
+faulty_code,"for i in range(5):
+    print(i+1)
+",1
+fixed_code,"for i in range(len(numbers)-1):
+    numbers.append(numbers[i] + numbers[i+1])",0
+fixed_code,"try:
+    x = int(input('Enter a number: '))
+except ValueError as e:
+    print(f'Invalid input: {e}')",0
+fixed_code,"def calculate_average(numbers):
+    total = sum(numbers)
+    if len(numbers) == 0:
+        return 0
+    return total / len(numbers)",0
+faulty_code,"for i in range(10):
+    print(i+1)",1
+faulty_code,"[""print('Hello, world!')"", 'for i in range(0, n):']",1
+fixed_code,"a = [1,2,3]; b = [4,5,6]; a.append(b.pop(0))",0
+fixed_code,"def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return factorial(n-1) * n
+
+print(factorial(5))",0
+faulty_code,"def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)",1
+faulty_code,"for i in range(10):
+    print(i+1)
+print(i)",1
+fixed_code,"try:
+    x = int(input())
+except ValueError as e:
+    print(f'Invalid input: {e}')
+",0
+faulty_code,"for i in range(len(list)):
+    if i == len(list)-1:
+        break
+",1
+fixed_code,"my_list = [1,2,3]
+if len(my_list) > 0:
+    print(my_list[2])",0
+faulty_code,s = 'Hello' + ' ' + 'world',1
+fixed_code,"my_list = []
+try:
+    my_list[0] = 'hello'
+except IndexError:
+    print('List is empty, cannot modify it')
+",0
+fixed_code,"x = [1,2,3]; print(x[2])",0
+faulty_code,"for i in range(10)
+    print(i*2)
+
+# This code is missing the proper termination condition for the loop",1
+faulty_code,"my_list = [1,2,3]
+print(my_list[0])",1
+fixed_code,"i = 0
+while i <= 4:
+    print(i)
+    i += 1",0
+faulty_code,"a = [1,2,3]
+a[5] = 'x'",1
+fixed_code,"for i in range(2,6):
+    print(i)",0
+fixed_code,"arr = [1,2,3]
+i=0
+while i < len(arr)-1:
+    print(arr[i+1])",0
+fixed_code,"while True:
+    print('Infinite loop!')
+    break",0
+faulty_code,"while i <= n+1:
+    i += 1",1
+faulty_code,"my_list = [1,2,3]
+index = my_list[2]
+print(index)",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This code runs from 1 to 5 (inclusive) but prints 2 to 6 instead",1
+fixed_code,"username = input('What's your username?')
+print(username)",0
+fixed_code,"for i in range(5):
+    print(i+1)
+
+# No missing colon",0
+faulty_code,"for i in range(1, len(prices)):\n    if prices[i] > current_price: \n        current_price = prices[i]",1
+fixed_code,"for i in range(10):
+    print(i + 1)
+
+print('The loop ran from 1 to 10 inclusive.')",0
+faulty_code,"arr = [1,2,3]
+print(arr[3])",1
+faulty_code,"for i in range(5):
+    print(i)
+lst = [10,20]
+print(lst[i])",1
+fixed_code,"if x > 5:
+    print('x is greater than 5')
+",0
+fixed_code,"import csv
+with open('data.csv', 'r') as f, open('output.csv', 'w') as out:
+    csv.reader(f)
+    writer = csv.writer(out)
+    next(reader)
+    for row in reader:
+        writer.writerow(row)",0
+faulty_code,"if x / 2 == 1:
+    print('Even number')",1
+fixed_code,"try:
+    if not os.path.exists('nonexistent.txt'):
+        raise FileNotFoundError
+    f = open('nonexistent.txt', 'r')
+except FileNotFoundError:
+    print('File not found')
+finally:
+    try:
+        f.close()
+    except IOError:
+        pass",0
+fixed_code,"for i in range(1, 6):
+    print(i)
+
+print('Missing value')",0
+faulty_code,def my_func(x): return x > 5,1
+faulty_code,"for i in range(50):
+    print(i+1)
+
+# This code is missing the last element, which should be 50.",1
+fixed_code,"['medium_snippet_with_fix', 'long_snippet_with_fix']",0
+faulty_code,"for i in range(6):
+    print(i-1)",1
+fixed_code,"[""print('Hello, world!')"", 'for i in range(10):\n    print(i)', ""def greet(name): return f'Hello, {name}!'""]",0
+faulty_code,"for i in range(len(list)):
+    if list[i] == 'a':
+        del list[i]
+
+# This removes all elements, not just those equal to 'a'
+",1
+fixed_code,"import os; print(os.path.join('\', '..', 'data.csv'))",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop runs from 0 to 9, but we want it to run from 1 to 10
+",1
+fixed_code,"a = [1,2,3]
+b = a[0:2][::-1]
+c = b + [4,5,6]
+print(c)",0
+fixed_code,"for i in range(len(arr)-1):
+    if arr[i] > arr[i+1]:
+        arr[i], arr[i+1] = arr[i+1], arr[i]",0
+faulty_code,"def outer_func():
+    def inner_func():
+        print(inner_func)",1
+faulty_code,"for i, item in enumerate(lst):
+    print(i)",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This code has an off-by-one error; it prints from 1 to 11 instead of 0 to 9.",1
+fixed_code,for i in range(len(s)): print(s[i-1] if i>0 else s[0]),0
+faulty_code,"my_list = [1,2,3]
+index = my_list.index(4)
+print(index)",1
+faulty_code,"def greet(name):
+    print('Hello, ' + name + '!')
+",1
+fixed_code,"for i in range(len(list)-1):
+    if list[i] == 'a':
+        break",0
+faulty_code,"try:
+    print(x)
+except Exception:
+    pass",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This is a medium-length example with an off-by-one error. The loop should run from 0 to 4 inclusive.",1
+faulty_code,"for i in range(10):
+    print(i*2)
+
+# This code is missing an 'else' clause after the loop.",1
+fixed_code,"try:
+    if x >= 0:
+        print(x ** 0.5)
+    else:
+        print('Cannot compute square root of negative number')
+except ValueError:
+    print('Invalid input value')
+finally:
+    print('Operation completed')",0
+faulty_code,for i in range(len(s)-1):,1
+faulty_code,"try:
+    f = open('nonexistentfile.txt', 'rb')
+except FileNotFoundError:
+    print('File not found')",1
+fixed_code,"def greet(name):
+    return f'Hello, {name}!'
+# This example is very simple; your code should be more realistic.",0
+faulty_code,"def process_list(lst):
+    for item in lst:
+        if isinstance(item, list)
+            print(len(item))",1
+fixed_code,def factorial(n): return n * factorial(n - 1) if n > 0 else 1,0
+faulty_code,open('nonexistent.txt'),1
+faulty_code,"numbers = [1,2,3]
+print(numbers[0])",1
+fixed_code,"import os
+os.path.join(os.getcwd(), '..', 'data')",0
+fixed_code,"my_list = ['one', 2, 3]",0
+fixed_code,"target = None
+list = [1,2,3]
+target = list[0]
+default = False
+if target in list:
+    return True
+else:
+    return default",0
+fixed_code,[x for x in range(10) if x%2 == 0],0
+fixed_code,"def calculate_average(numbers):
+    total = sum(numbers)
+    count = len(numbers)
+    if count == 0:
+        return None
+    return total / count",0
+fixed_code,"print('Hello, world!')
+
+print('This is a second line.')",0
+fixed_code,s = 'hello'; if len(s) > 5: print(s[5]) else: print('Index out of range'),0
+fixed_code,"for i in range(0,5)
+    print(i)",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This code will run infinitely because it lacks a condition to break out of the loop.",1
+fixed_code,"for i in range(10):
+    print(i)
+
+print('Loop completed after 10 iterations')",0
+faulty_code,"[""print('Hello, world!')"", '[x for x in range(5) if x > 3]', ""def calculate_score(letters):\n\ttotal = 0\n\tfor l in letters:\n\t\tif l.isupper():\n\t\t\ttotal += ord(l) - ord('A') +1\n\t\telif l.islower():\n\t\t\ttotal += ord(l) - ord('a') +1"", ""d = {'a':1}\nkeys, values = d.keys(), d.values()\nprint(keys[0])"", ""def calculate_score(letters):\n   total = 0\n   for char in letters:\n       if char.isupper():\n           total += ord(char) - ord('A') + 1\n       elif char.islower():\n           total += ord(char) - ord('a') + 1"", ""def calculate_score(letters):\n   total = 0\n   for l in letters:\n       if l.isupper():\n           total += ord(l) - ord('A') + 1\n       elif l.islower():\n           total += ord(l) - ord('a') + 1""]",1
+fixed_code,"for i in range(len(nums)-1):
+    nums[i], nums[i+1] = nums[i+1], nums[i]
+",0
+faulty_code,"for i in range(len(arr)-1):
+    if arr[i] > arr[i+1]:
+        swap = arr[i]
+        arr[i] = arr[i+1]
+        arr[i+1] = swap",1
+faulty_code,"['short_snippet', 'medium_snippet', 'long_snippet']",1
+faulty_code,"for i in range(len(data)-1):
+    print(data[i])",1
+faulty_code,"for i in range(10+1):
+    print(i)",1
+faulty_code,"lst = [1,2,3]
+lst += [4,5,6]",1
+fixed_code,"for x in range(5,10): print(x)",0
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# Missing colon after loop header",1
+fixed_code,"for i in range(5):
+    print(i+1)
+print('Loop ended')
+",0
+fixed_code,"a = [1,2,3]
+try:
+    print(a[-1])
+except IndexError:
+    print('Index out of range')",0
+fixed_code,"while True:
+    print(""Waiting...,\n"")
+    break
+",0
+fixed_code,"for i in range(len(arr)):
+    if i < len(arr)-1:
+        arr[i] = arr[i+1]
+",0
+fixed_code,"x = 5
+y = 10
+print(x + y)",0
+fixed_code,"n = 3
+print(n * 5)",0
+fixed_code,"def calculate_average(numbers):
+    total = sum(numbers)
+    count = len(numbers)
+    if count == 0:
+        return 0
+    return (total / count) * 100",0
+fixed_code,"a = [1,2,3]
+b = sum(a)",0
+faulty_code,"['short code snippet', 'medium code snippet', 'long code snippet']",1
+fixed_code,"for i in range(10, 11):
+    print(i)
+",0
+fixed_code,"try:
+    print(1/0)
+except ZeroDivisionError as e:
+    print(f'Caught: {str(e)}')
+",0
+fixed_code,"my_list = [1,2,3]
+my_list[2] = [1,2,3]",0
+fixed_code,"for i in range(11):
+    print(i)
+
+# Corrected to include 0 through 10",0
+fixed_code,"arr = [1,2,3]
+print(arr[2])",0
+fixed_code,"for i in range(0,10):
+    print(i)
+print(range(0,10))
+",0
+fixed_code,"for i in range(1,6): print(i)",0
+fixed_code,lst.append(5),0
+faulty_code,"for i in range(5-1):
+    print(i)",1
+fixed_code,"for i in range(5):
+    print(i+1)
+print(i+1)",0
+fixed_code,"for i in range(10, 20):
+    print(i-1)",0
+fixed_code,"import pandas as pd
+df = pd.read_csv('data.csv', na_values=[None])
+mean = df['values'].mean(skipna=True)
+if pd.isna(mean):
+    print('Mean could not be calculated due to missing values')",0
+fixed_code,if x ==5 and y ==10:,0
+faulty_code,"my_list = [1,2,3]
+print(my_list[-2])",1
+faulty_code,"for i in range(1,5):
+    print(i)
+
+a = [i for i in range(3)]
+    b = [j for j in range(3)]",1
+fixed_code,"def my_func(x=0):
+    print(x)
+
+my_func()",0
+fixed_code,"for i in range(5):
+    if i < 5:
+        print(i)",0
+faulty_code,"user = {'name': 'Alice', 'age': 30}; print(user['nonexistent_key'])",1
+fixed_code,for i in range(len(s)):,0
+fixed_code,"my_list = [1,2,3]
+try:
+    print(my_list[4])
+except IndexError:
+    print('Index out of range')
+",0
+faulty_code,"for i in range(len(list)):
+    if list[i] == target and (i % 2) == 0:
+        print('Found at index', i)",1
+faulty_code,"a = [1,2,3]
+b = a
+print(b)",1
+faulty_code,"def greet(name, age):
+    print('Hello, ' + name + '!'),
+    print('You are ' + str(age) + ' years old')",1
+fixed_code,for x in range(10):\n    print(x*2),0
+fixed_code,"for i in range(10):
+    print(i-1)",0
+fixed_code,sum(x for x in range(10) if x%2==1),0
+fixed_code,"nums = [1, 2, 3]
+even_nums = [n for n in nums if (n % 2 ==0) or (n >=6)]",0
+fixed_code,"my_list = [1,2,3]
+def get_element(lst):
+    return lst[i]",0
+fixed_code,"for i in range(1,6):
+    print(i+1)",0
+fixed_code,"for i in range(len(list)):
+    if i < len(list) - 1:
+        list[i], list[i+1] = list[i+1], list[i]
+list.sort()",0
+fixed_code,"n = int(input('Enter a number between 1 and 5: '))
+if not (1 <= n <= 5):
+    print('Invalid input')",0
+fixed_code,"a = [1]; b = [1]; if a == b: print(""same object"") else: print(""different objects"")",0
+fixed_code,"a = [1,2,3]
+b = sum(a[:2])",0
+fixed_code,"def greet(name):
+    print(f'Hello, {name}!')
+    return
+",0
+fixed_code,"print('Hello, world!')
+x = [1, 2, 3]
+sum_x = sum(x)
+print('Sum is', sum_x)",0
+fixed_code,"a = [1,2,3]
+a[2] = 'x'
+print(a)",0
+fixed_code,"my_list = [1,2,3]
+for i in range(len(my_list)):
+    my_list[i] += 1",0
+fixed_code,"x = [1,2,3]
+if x not in [1,2,3]:
+    print('Not found')",0
+faulty_code,"n = 5
+nums = [1,2,3]
+print(nums[n])",1
+faulty_code,"my_list = [1,2,3]
+my_list[0] = 'a string'",1
+faulty_code,"for i in range(10):
+    print(i)
+print('Loop completed')
+
+# This code has no bug; it prints numbers from 0 to 9 and then 'Loop completed'
+",1
+fixed_code,"my_list = [1,2,3]
+print(my_list[4:5])",0
+faulty_code,"def greet(name):
+    print(f'Hello, {name}!')
+    print('Welcome to the club')",1
+faulty_code,"my_list = [1,2,3]
+for i in range(len(my_list)):
+    my_list.append(i)",1
+faulty_code,"a = [1,2,3]
+b.append(4)
+a.pop(-1)",1
+fixed_code,"import os
+
+for file in os.listdir():
+    try:
+        with open(file, 'r') as f:
+            lines = f.readlines()
+            print(' '.join(lines[:-1]))
+    except Exception as e:
+        print(f'Error processing {file}: {e}')
+        continue",0
+fixed_code,"class A:
+    class B:
+    class C: pass",0
+fixed_code,"for i in range(10):
+    print(i)
+    print(i + 1)",0
+fixed_code,"for i in range(0,4):
+    print(i+1)",0
+faulty_code,"for i in range(4): print(i)
+
+s = 'Hello'; s[5:6]
+
+a = [1,2]; b = a; a.append(3); print(a[0],b[2])",1
+fixed_code,"for i in range(len(list)):
+    if i < len(list)-1:
+        print(list[i])
+
+# OR 
+
+for i in range(len(list)-1):
+    print(list[i])",0
+faulty_code,"import os
+os.path.join('folder', 'file.txt')",1
+fixed_code,"for i in range(len(list)):
+    if i < len(list):
+        print(list[i])",0
+fixed_code,"for i in range(len(prices)):
+    print(prices[i-1], prices[i])",0
+faulty_code,"def sum(n):
+    total = 0
+    for i in range(1,n): total +=i
+    return total",1
+fixed_code,"my_list = [1, 2, 3]
+fixed_index = [i for i in my_list if i > 2]",0
+fixed_code,"fruits = ['apple', 'banana', 'cherry']; for start, i, fruit in enumerate(fruits, start=0):
+    print(i)",0
+faulty_code,"def my_function():
+    global x
+    print(x)
+my_function()",1
+fixed_code,"lst = [1,2,3]
+cpy_lst = lst.copy()
+for i in cpy_lst:
+    if i % 2 == 0:
+        del cpy_lst[i]",0
+faulty_code,"for i in range(3):
+    print(list[i])",1
+faulty_code,"my_list = [1,2,3]
+def get_element(lst):
+    return lst{i}",1
+faulty_code,"[""print('Hello, world!')"", 'for i in range(5): print(i)', 'def factorial(n): return n * factorial(n-1)']",1
+fixed_code,"for i, num in enumerate(nums):
+    print(num)",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop prints numbers from 1 to 11 instead of 1 to 10",1
+faulty_code,"def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 2)",1
+fixed_code,"students = {'Alice': 'freshman', 'Bob': 'sophomore'}
+print(students.get('Charlie', 'unknown'))",0
+fixed_code,"arr = [1,2,3]
+for i in range(len(arr)):
+    print(arr[i])",0
+fixed_code,"def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n-1):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
+
+swap = arr[0]
+arr[0] = arr[-1]
+arr[-1] = swap",0
+faulty_code,"for i in range(len(list)):
+    list.append(i)
+",1
+fixed_code,"while True:
+    print('Hello')
+    break
+",0
+faulty_code,"for i in range(1,5):
+    print(i)
+
+print('Loop completed')",1
+faulty_code,"
+a = [1,2,3]
+b = [4,5,6,7]
+for i in range(len(a)):
+    print(a[i] + b[i])",1
+faulty_code,"s = 'Hello, world!'; print(s[5])",1
+faulty_code,"for i in range(10):
+    print(i*2)
+
+# This code prints even numbers from 0 to 18, but misses 20 because of an off-by-one error",1
+faulty_code,"my_list = [1,2,3]
+
+for i in my_list:
+    print(i)",1
+faulty_code,"arr = [1,2];
+print(arr[1])",1
+faulty_code,for i in range(len(lst)-1): print(lst[i]),1
+fixed_code,"for i in range(1,5): print(i ** 2)",0
+fixed_code,"a = [1,2,3]
+b = a.copy()",0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This code runs from 0 to 9, but we want it to run from 1 to 10.",1
+fixed_code,"print('Hello, world!')
+
+print('This is a second message.')",0
+faulty_code,"with open('file.txt', 'r') as f:
+    print(f.read())",1
+fixed_code,"for i in range(len(arr)):
+    print(arr[i], end=' ')
+",0
+faulty_code,"students = ('Alice', 'Bob');
+print(students[2])",1
+fixed_code,"try:
+    if not os.path.exists('nonexistentfile.txt'):
+        raise FileNotFoundError
+    open('nonexistentfile.txt', 'r')
+except FileNotFoundError as e:
+    print(f'FileNotFoundError: {e}')
+",0
+faulty_code,"a = [1,2,3]
+a.append('4')",1
+fixed_code,"def greet(name):
+    return f'Hello, {name}!'
+
+# Note: Using string formatting with f-strings is more modern and avoids the need for concatenation.",0
+faulty_code,"for i in range(10):
+    print(i*2)
+
+# This code is missing an indentation error.",1
+faulty_code,"for i in range(1, len(list)):
+    print(list[i-1])",1
+faulty_code,"a = [1,2,3]
+b = a[0:2]
+c = b[::-1]",1
+faulty_code,"x = [1,2,3]
+print(x[4])",1
+fixed_code,"for i in range(0, 20, 2):
+    print(i)",0
+fixed_code,"a = [1,2,3]
+b = a.copy()
+print(b)",0
+faulty_code,"for i in range(10):
+    print(i)
+
+print('Loop completed')",1
+faulty_code,"numbers = [1,2,3]
+sum = 0
+for i in range(len(numbers)):
+    sum += numbers[i] * (i+1)",1
+fixed_code,"for i in range(10, 11): 
+   print(i)",0
+faulty_code,"import os
+os.path.join('folder', 'nonexistentfile.txt')",1
+faulty_code,"result = []
+for i in range(len(list)):
+    result.append(list[i])",1
+faulty_code,"for i in range(0,1):
+    print(i)",1
+faulty_code,"def greet(name):
+    print('Hello, ' + name + '!')",1
+faulty_code,"['for i in range(10):', '    print(i)', 'sum = 0', 'for j in range(5):', '    sum += j']",1
+faulty_code,"for i in range(10):
+    print(i)
+
+print('Missing item')",1
+faulty_code,"for i in range(10):
+    print(i+1)
+",1
+faulty_code,"for i in range(10):
+    print(i)
+
+# Example of a common off-by-one error",1
+faulty_code,"for i in range(4):
+    print(i)",1
+fixed_code,"for i in range(5):
+    print(i)
+
+print('The loop did not run an extra time')
+",0
+fixed_code,"def greet(name):
+    print(f'Hello, {name}!')
+    print('How are you?')",0
+faulty_code,"for i in range(len(arr)-1):
+    if arr[i] > arr[i+1]:
+        arr[i],arr[i+1]=arr[i+1],arr[i]
+
+# This code sorts the array but has an off-by-one error",1
+faulty_code,"my_list = [1,2,3]
+print(my_list[4])",1
+faulty_code,"for i in range(3):
+    print(i+1)",1
+fixed_code,"my_list = [1,2]
+my_list.append(3)",0
+faulty_code,"for i in range(10, -1, -2):
+    print(i)",1
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This loop prints numbers from 2 to 11 instead of 1 to 10",1
+fixed_code,"a = [1,2,3]
+b = [4,5,6]
+avg = sum(a) / len(b)",0
+fixed_code,"d = {'a': 1}
+print(d.get('b', 0))",0
+fixed_code,"name = ""Alice""
+for friend_name in [""John"", ""Jane""]:
+    print(friend_name)",0
+fixed_code,"my_list = [1,2,3]
+if 4 < len(my_list):
+    print(my_list[4])
+else:
+    print(""Index out of range"")",0
+faulty_code,"[""print('Hello, world!')"", 'for i in range(5): print(i)', 'def greet(name):\n    return f""Hello, {name}!""']",1
+fixed_code,"try:
+    print('File not found')
+except FileNotFoundError:
+    print('File not found')
+else:
+    print('File exists')",0
+fixed_code,"try:
+    with open(file_name, 'r') as f:
+        print(f.read())
+except FileNotFoundError:
+    print(""File not found."")",0
+faulty_code,"for i in range(len(list)-2):
+    print(list[i])",1
+fixed_code,"def greet(name):
+    if not name:
+        return 'Hello'",0
+faulty_code,"try:
+    a = int(input('Enter a number: '))
+except ValueError:
+    print('Please enter a valid integer')",1
+fixed_code,"for i in range(10):
+    print(i+1)
+print('Loop ended', end=' ')",0
+faulty_code,"for i in range(5):
+    print(i*2)
+
+# This loop will run for i = 0 to 4 (inclusive), which is correct.",1
+fixed_code,for i in range(1000):,0
+fixed_code,"['short fixed', 'medium fixed']",0
+faulty_code,"my_list = [10, 20, 30]
+for i in range(len(my_list)):
+    my_list[i] = my_list[i+1]",1
+faulty_code,"def calculate_average(numbers):
+    sum = 0
+    for num in numbers:
+        sum += num
+    return sum / len(numbers)
+",1
+faulty_code,"def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+",1
+faulty_code,"my_list = [1,2,3]
+my_list[2] = 'a string'",1
+faulty_code,"for i in range(len(nums)-1):
+    print(nums[i])",1
+faulty_code,"x = 0.1 + 0.2
+print(x)
+while x < 1:
+    x += 0.1",1
+fixed_code,"lst = [1,2]
+lst.append(3)
+print(lst[2])",0
+faulty_code,"for i in range(len(list)):
+    if list[i] == target:
+        print('Found at index',i)
+        break",1
+faulty_code,"for i in range(len(arr)):
+    if arr[i] == 'a':
+        break",1
+fixed_code,"lst = [1, 2, 3]
+if 0 <= idx < len(lst):
+    print(lst[idx])
+else:
+    print('Index out of range')",0
+faulty_code,"def multiply(a,b):
+    for i in range(len(a)):
+        c[i] = a[i] * b[i]
+    return c",1
+fixed_code,"for i in range(10, 15)
+    print(i-4)
+
+print('Loop completed successfully')",0
+faulty_code,"def calculate_average(numbers):
+    total = sum(numbers)
+    return total / len(numbers) * (100 if numbers else 0)",1
+fixed_code,"for i in range(5, 15):
+    print(i)",0
+faulty_code,"[""print('Hello, world!')"", '# Incrementing a variable incorrectly\n# Example: i = 5\ni += 2', '\nmedium length faulty example:\nfor i in range(0, len(list)):\n    list.append(i)', ""\nlonger faulty example with incorrect string formatting:\nprint('The value is {0}', 10).format(5)""]",1
+fixed_code,"def calculate_average(numbers):
+    total = sum(numbers)
+    count = len(numbers)
+    return total / count if count else 0",0
+fixed_code,"['fixed_short', 'fixed_medium', 'fixed_long']",0
+fixed_code,"for x in lst:
+    if x in [2]:
+        print('Found')",0
+faulty_code,"def my_func():
+    print(x)
+
+my_func()",1
+fixed_code,"try:
+    with open('nonexistent.txt', 'r') as f:
+        print(f.read())
+except FileNotFoundError as e:
+    print(f'File {e.args[0]} not found')
+",0
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This loop prints numbers from 1 to 6 instead of 0 to 4",1
+fixed_code,for i in range(9): print(i),0
+faulty_code,"for i in range(len(nums)):
+    print(nums[i-1])",1
+faulty_code,"a = [1,2,3]
+b = [4,5,6]
+c = a + b
+print(c[0])",1
+faulty_code,"lst = [1,2,3]
+print(lst[len(lst)]",1
+faulty_code,"try: f = open('file.txt'); print(f); f.close() except IOError: print(""Error"")",1
+fixed_code,"def outer_func():
+    def inner_func():
+        print(outer_func)",0
+faulty_code,"a = [1,2,3]
+b = a[0:2]
+c = b[::-1]
+d = c.append(4)
+",1
+faulty_code,for i in range(len(list)-1): print(list[i]),1
+faulty_code,"['if x > 5:\n', ""    print('x is greater than 5')""]",1
+fixed_code,"a = 5
+b = 10
+print(a + b)",0
+fixed_code,"try:
+    lst = [1,2,3]
+    if index >= len(lst) or index < 0:
+        print('Index out of bounds')
+    else:
+        list.pop(index=index)
+except IndexError:
+    print('Index not found')
+print('List:', list)",0
+fixed_code,"lst = [1,2,3]; if len(lst) > i+1: print(lst[i+1]) else: pass",0
+fixed_code,"for i in range(10): print(i+1)
+
+# Fixed short version
+tmp = 10
+for i in range(tmp-1, tmp+1):
+    print(i)",0
+faulty_code,"a = [1,2,3]
+b = a.pop()
+a.remove(2)
+",1
+fixed_code,"import numpy as np
+
+a = np.array([[1,2,3],[4,5,6]])
+horizontal_edges = np.diff(a, axis=0)
+vertical_edges = np.diff(a, axis=1)",0
+faulty_code,"a = [1,2,3]
+a[3]",1
+faulty_code,"for i in range(3):
+    for j in range(3):
+        print(i)
+print(j)",1
+fixed_code,"my_list = [1,2,3]
+print(my_list[1])",0
+fixed_code,"import pandas as pd
+df = pd.read_csv('data.csv', index_col=0)
+if '5' not in df.index:
+    print('Index not found')
+else:
+    print(df[df.index >= 5])",0
+fixed_code,"['for i in range(9)', 'if index < len(arr): print(arr[index])', ""with open('nonexistent.txt', 'r') as f: try: f.read() except FileNotFoundError: pass""]",0
+fixed_code,"for i in range(10):
+    print(i)
+    print(i+2)",0
+faulty_code,"while True:
+    print('Hello, World!')
+",1
+faulty_code,"s = 5
+print(s.capitalize())",1
+faulty_code,"for i in range(len(nums)):
+    if nums[i] > 0:
+        print(nums[i])",1
+faulty_code,for i in range(3):\n    print(i),1
+fixed_code,"my_list = [1,2]; print(my_list[2])",0
+fixed_code,"lst = [1,2,3]; print(lst[3])",0
+fixed_code,"for i in range(10):
+    print(i*2)
+
+print('The loop ran', i)",0
+fixed_code,"def calculate_grades(grades):
+    total = sum(grades)
+    average = total / len(grades)
+    return average",0
+faulty_code,"print('Hello, world!')",1
+fixed_code,"for i in range(len(arr)):
+    if arr[i] > arr[i+1]:
+        arr[i],arr[i+1]=arr[i+1],arr[i]",0
+faulty_code,"def calculate_average(numbers):
+    total = sum(numbers)
+    return total / len(numbers) if len(numbers) !=0 else 0",1
+faulty_code,"for i in range(len(arr)):
+    if arr[i] % 2 == 0:
+        print('even')
+    else:
+        print('odd')",1
+fixed_code,"for i in range(10, 2, -1):
+    print(i)",0
+faulty_code,"total = sum
+sum += total",1
+faulty_code,"my_list = [1,2,3]
+print(my_list[9])",1
+faulty_code,"for i in range(5+1):
+    print(i)",1
+faulty_code,"for i in range(len(arr)-1):
+    if arr[i] > arr[i+1]:
+        arr[i], arr[i+1] = arr[i+1], arr[i]
+
+# This code sorts the array but has an off-by-one error",1
+faulty_code,"import math
+sum = [1,2,3]
+avg = sum / len(sum)",1
+faulty_code,"for i in range(3):
+    print(i+1)
+",1
+fixed_code,"lst = [1,2,3]
+for i in range(len(lst)):
+    print(lst[i])",0
+faulty_code,"def outer():
+    def inner():
+        print('Outer function')
+
+inner()
+",1
+faulty_code,"for i in range(len(arr)-1):
+    print(arr[i])
+
+# This loop misses the last element of the array",1
+faulty_code,"for i in range(len(list)+1):
+    print(list[i])",1
+faulty_code,"with open('file.txt') as f:
+    print(f.read())
+raise ValueError",1
+fixed_code,"with open('file.txt', 'r') as f:
+    f.seek(0)",0
+fixed_code,range(6),0
+fixed_code,"def outer(x):
+    print('Outer:', x)
+
+def inner():
+    def nested(y):
+        nonlocal x
+    inner.x =5
+    nested(3)",0
+fixed_code,for i in range(len(list)): print(i),0
+faulty_code,"try:
+    x = int(input())
+except ValueError:
+    print('Invalid input')",1
+fixed_code,"a = [1, 2, 3]
+b.append(4)
+c.pop()",0
+fixed_code,"my_list = [1,2,3]
+if -4 >= -(len(my_list)):
+    print('Index out of range')
+else:
+    print(my_list[-4])",0
+fixed_code,"numbers = [1,2,3]
+numbers.sort(reverse=True)
+print(numbers[-1])",0
+faulty_code,"def calculate_average(numbers):
+    total = sum(numbers)
+    count = len(numbers)
+    return total / count",1
+fixed_code,"try:
+    print(1/(0+1))
+except ZeroDivisionError:
+    print('Denominator is zero')",0
+faulty_code,"i = 0
+while i < 5:
+    print(i)
+    i += 1",1
+faulty_code,"for i in range(n+1):
+    print(i)
+
+def my_func(arr):
+    for i in range(len(arr)):
+        if arr[i] == 'a':
+            return arr[i+1]
+
+# Long code here",1
+faulty_code,"a = [1,2,3]
+b = a[0:2]
+print(b.append(4))",1
+fixed_code,os.remove(os.path.abspath('nonexistentfile.txt')),0
+faulty_code,"try:
+    print(1/0)
+except ZeroDivisionError:
+    print('Cannot divide by zero')",1
+faulty_code,"for i in range(len(list)):
+    list.append(i)",1
+fixed_code,"with open('test.txt', 'wb') as f: f.write(b'Hello, world!')",0
+fixed_code,s = 'hello'; print(s[2]),0
+faulty_code,"with open('data.txt', 'r') as f:
+    f.write('content')
+    f.write('more content')",1
+fixed_code,"for i in range(len(lst)-1):
+    print(i)",0
+faulty_code,"print(5 + ""Hello"")",1
+fixed_code,print('Hello world'),0
+faulty_code,"for i in range(10):
+    print(i+1)
+
+# This code has an off-by-one error. The loop runs from 0 to 9, but it prints i+1 which starts at 1 and ends at 10.",1
+faulty_code,"for i in range(5):
+    print(i+1)
+
+# This code prints numbers from 1 to 5,
+# but it should print numbers from 1 to 6.
+",1
+faulty_code,"a = [1,2,3]; print(a[5])",1
+faulty_code,"with open('data.txt', 'r') as f:
+    f.seek(0)
+    data = f.read().splitlines()
+    print(data.count('line'))",1
+fixed_code,"def find_index(lst, target):
+    for i in range(len(lst)):
+        if lst[i] == target:
+            return i
+    return -1",0
+faulty_code,"while True:
+    print('Infinite loop!')",1
+fixed_code,"['short fixed example', 'medium fixed example', 'long fixed example']",0
+faulty_code,"for i in range(1,20):
+    print(i*5)
+
+# This code prints multiples of 5 from 5 to 19 but misses 20 because the range stops at 19.",1
+faulty_code,"x = [1,2,3]; print(x[3])",1
+fixed_code,"s = 'hello'
+print(s[5] if len(s) > 5 else '')",0
+faulty_code,"file_name = ""nonexistent_file.txt""
+with open(file_name, 'r') as f:
+    print(f.read())",1
+faulty_code,my_list = [x for x in range(5) if not (x % 2 == 0)],1
+fixed_code,"for i, x in enumerate([1,2,3]):
+    print(i, x)",0
+fixed_code,"for i in range(len(lst)):
+    if i < len(lst)-1:
+        print(lst[i])
+
+# OR 
+
+for i in range(len(lst)-1):
+    print(lst[i])",0
+faulty_code,"nums = [1,2,3]
+nums.append(4)
+print(nums)",1
+faulty_code,"for i in range(len(list)-1):
+    print(i)",1
+fixed_code,"try:
+    with open('nonexistentfile.txt', 'r') as f:
+        print('Successfully read file')
+except FileNotFoundError:
+    print('File not found')
+finally:
+    print('Finished handling the file operation')",0
+fixed_code,"a = [1,2,3]
+b = a[:2]
+c = b[::-1]
+d = c + [4]",0
+faulty_code,"my_list = [10, 20, 30]
+print(my_list.index('20'))",1
+fixed_code,"try:
+    with open('nonexistentfile.txt', 'w') as f:
+        f.write('Hello')
+except IOError as e:
+    print(f'Error: {e}')
+",0
+faulty_code,"for i in range(5):
+    print(i)
+
+for j in range(6):
+    print(j)",1
+fixed_code,"if not l: return
+else: l[0]",0
+fixed_code,for i in range(6):,0
+faulty_code,"my_list = [1, 2, 3]
+print(my_list[8])",1
+fixed_code,"a = [1,2,3,4]; print(a[3])",0
+faulty_code,"for i in range(5):
+    print(i)
+
+print('Missing last element')",1
+fixed_code,"s = 'Hello World'
+if s.islower() and all(c.islower() for c in s):
+    print('Lowercase')",0
+faulty_code,"while i < len(list):
+    print(list[i])
+",1
+faulty_code,"a = [1,2,3]
+a[4] = 5",1
+fixed_code,"x = [1, 2]
+if len(x) > y:
+    print('Index out of range')
+else:
+    y = x[y]",0
+faulty_code,"for i in range(10):
+    print(i+1)
+# This loop prints numbers from 2 to 11 instead of 0 to 9.",1
+fixed_code,"s = 'Hello'
+print(s[:3])",0
+fixed_code,"a = [1,2,3]
+a.pop()
+print(a)",0
+fixed_code,"try:
+    with open('nonexistentfile.txt', 'r') as f:
+        print(f.read())
+except FileNotFoundError:
+    print('File not found')",0
+fixed_code,"data = [(1, 'one'), (2, 'two'), (3, 'three')]
+
+# Accessing an existing index
+print(data[4][0])",0
+faulty_code,"print('Hello, world!')
+
+# This example is very simple; your code should be more realistic.",1
+fixed_code,"with open('data/file.txt', 'r+b') as f:
+    f.write(b'New content')",0
+fixed_code,"for i in range(len(primes)):
+    if i < len(primes)-1 and primes[i] > primes[i+1]:
+        primes[i], primes[i+1] = primes[i+1], primes[i]
+
+primes.pop() or primes.remove(max(primes))
+",0
