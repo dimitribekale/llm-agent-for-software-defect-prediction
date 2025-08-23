@@ -1,13 +1,9 @@
 
-import os
-import json
-import tempfile
 import requests
-import subprocess
 import pandas as pd
 from tqdm import tqdm
 from prompts import AGENT_ONLY_EVAL_SYSTEM_PROMPT
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 from agent.agent import DefectPredictionAgent
 from sklearn.metrics import (accuracy_score,
                              precision_score,
@@ -31,31 +27,6 @@ def query_ollama(prompt: str, model: str = None, temperature: float = 0.1, max_t
     response = requests.post(OLLAMA_API_URL, json=payload)
     response.raise_for_status()
     return response.json()["response"]
-
-def run_semgrep_on_code(code: str, language: str = "python") -> List[Dict[str, Any]]:
-    # Use a temporary file for analysis
-    with tempfile.NamedTemporaryFile(mode="w+", suffix=".py", delete=False, encoding="utf-8") as tmp:
-        tmp.write(code)
-        tmp_path = tmp.name
-    try:
-        result = subprocess.run(
-            ["semgrep", "--json", tmp_path],
-            capture_output=True, text=True
-        )
-        findings = json.loads(result.stdout)
-        return findings.get("results", [])
-    except Exception as e:
-        return [{"error": str(e)}]
-    finally:
-        os.remove(tmp_path)
-
-def format_semgrep_findings(findings: List[Dict[str, Any]]) -> str:
-    if not findings:
-        return "No static analysis findings."
-    return "\n".join(
-        f"- {f.get('check_id', 'N/A')}: {f.get('extra', {}).get('message', '')} (line {f.get('start', {}).get('line', '?')})"
-        for f in findings
-    )
 
 def evaluate_agent(
     agent: DefectPredictionAgent,
