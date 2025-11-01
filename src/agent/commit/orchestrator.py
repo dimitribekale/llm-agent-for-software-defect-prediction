@@ -75,6 +75,7 @@ class CommitDefectOrchestrator:
         self.config = config or SystemConfig.default()
         self.config.agent.verbose = verbose
         self.verbose = verbose
+        self.tools = {}  # Registered tools
 
         # Initialize components
         self.llm_client = LLMClientFactory.create("ollama", self.config.llm)
@@ -83,6 +84,18 @@ class CommitDefectOrchestrator:
 
         # Use commit-specific system prompt
         self.system_prompt = PromptTemplates.COMMIT_ANALYSIS_SYSTEM_PROMPT
+
+    def register_tool(self, tool):
+        """
+        Register a tool for use during analysis.
+
+        Args:
+            tool: Tool instance to register
+        """
+        tool_name = tool.get_metadata().name
+        self.tools[tool_name] = tool
+        if self.verbose:
+            print(f"  Registered tool: {tool_name}")
 
     def predict_commit(self, commit_data: CommitData) -> CommitDefectResult:
         """
@@ -124,7 +137,7 @@ class CommitDefectOrchestrator:
         if self.verbose:
             print("\n[Step 3/3] Predicting defects...")
 
-        prediction = self._predict(prompt)
+        prediction = self._predict(prompt, commit_data)
 
         if self.verbose:
             print(f"\n{'='*70}")
@@ -166,12 +179,13 @@ class CommitDefectOrchestrator:
             stats=commit_data.stats
         )
 
-    def _predict(self, prompt: str) -> DefectPrediction:
+    def _predict(self, prompt: str, commit_data: CommitData = None) -> DefectPrediction:
         """
         Get defect prediction from LLM.
 
         Args:
             prompt: Analysis prompt
+            commit_data: Optional commit data for tool usage analysis
 
         Returns:
             DefectPrediction
@@ -186,6 +200,10 @@ class CommitDefectOrchestrator:
             # Parse prediction
             prediction = DefectPredictionParser.parse(response.content)
 
+            # Check if we should use tools to verify uncertain predictions
+            if self.tools and commit_data:
+                prediction = self._verify_with_tools(prediction, commit_data)
+
             return prediction
 
         except Exception as e:
@@ -198,3 +216,148 @@ class CommitDefectOrchestrator:
                 confidence=0.0,
                 explanation=f"Error during prediction: {str(e)}"
             )
+
+    def _verify_with_tools(self, prediction: DefectPrediction, commit_data: CommitData) -> DefectPrediction:
+        """
+        Use tools to verify uncertain predictions.
+
+        Args:
+            prediction: Initial prediction
+            commit_data: Commit data
+
+        Returns:
+            Updated prediction with tool insights
+        """
+        # Decision: Use tools if confidence is low or code has import/package usage
+        should_use_tools = (
+            prediction.confidence < 0.75 or  # Low confidence
+            self._has_package_usage(commit_data)  # Uses external packages
+        )
+
+        if not should_use_tools:
+            return prediction
+
+        if self.verbose:
+            print(f"\n  🔍 Low confidence ({prediction.confidence:.2f}) or package usage detected")
+            print(f"  Decision: Using external tools to verify prediction...")
+
+        tool_insights = []
+
+        # Use documentation search for package/API verification
+        if "documentation_search" in self.tools:
+            doc_insights = self._use_documentation_search(commit_data)
+            if doc_insights:
+                tool_insights.append(doc_insights)
+
+        # Use web search for broader context
+        if "web_search" in self.tools and prediction.confidence < 0.6:
+            web_insights = self._use_web_search(commit_data, prediction)
+            if web_insights:
+                tool_insights.append(web_insights)
+
+        # Update prediction with tool insights
+        if tool_insights:
+            updated_explanation = self._integrate_tool_insights(
+                prediction.explanation,
+                tool_insights
+            )
+            prediction.explanation = updated_explanation
+
+        return prediction
+
+    def _has_package_usage(self, commit_data: CommitData) -> bool:
+        """Check if code uses external packages."""
+        import_keywords = ['import ', 'from ', 'require(', 'include ', '#include']
+
+        for line in commit_data.added_lines[:50]:  # Check first 50 lines
+            if any(keyword in line for keyword in import_keywords):
+                return True
+        return False
+
+    def _use_documentation_search(self, commit_data: CommitData) -> Optional[str]:
+        """Use documentation search to verify package APIs."""
+        tool = self.tools.get("documentation_search")
+        if not tool:
+            return None
+
+        # Extract package names from imports
+        packages = self._extract_packages(commit_data.added_lines)
+        if not packages:
+            return None
+
+        for package in packages[:2]:  # Check top 2 packages
+            query = f"{package} API documentation latest version"
+
+            if self.verbose:
+                print(f"\n  📚 Documentation Search:")
+                print(f"     Query: \"{query}\"")
+
+            try:
+                result = tool.execute(query=query)
+
+                if result and self.verbose:
+                    summary = result[:200] + "..." if len(result) > 200 else result
+                    print(f"     Summary: {summary}")
+
+                return f"Documentation check for {package}: {result[:300]}"
+
+            except Exception as e:
+                if self.verbose:
+                    print(f"     Error: {str(e)}")
+
+        return None
+
+    def _use_web_search(self, commit_data: CommitData, prediction: DefectPrediction) -> Optional[str]:
+        """Use web search for additional context."""
+        tool = self.tools.get("web_search")
+        if not tool:
+            return None
+
+        # Build query based on defect types or code patterns
+        if prediction.defect_types:
+            query = f"{prediction.defect_types[0]} common causes and solutions"
+        else:
+            query = "common software defects in code changes"
+
+        if self.verbose:
+            print(f"\n  🌐 Web Search:")
+            print(f"     Query: \"{query}\"")
+
+        try:
+            result = tool.execute(query=query)
+
+            if result and self.verbose:
+                summary = result[:200] + "..." if len(result) > 200 else result
+                print(f"     Summary: {summary}")
+
+            return f"Web search insights: {result[:300]}"
+
+        except Exception as e:
+            if self.verbose:
+                print(f"     Error: {str(e)}")
+            return None
+
+    def _extract_packages(self, lines: list) -> list:
+        """Extract package names from import statements."""
+        packages = []
+        import_patterns = [
+            'import ',
+            'from ',
+        ]
+
+        for line in lines[:50]:  # Check first 50 lines
+            for pattern in import_patterns:
+                if pattern in line:
+                    # Simple extraction - get word after keyword
+                    parts = line.split(pattern)
+                    if len(parts) > 1:
+                        pkg = parts[1].split()[0].split('.')[0].strip()
+                        if pkg and pkg not in packages:
+                            packages.append(pkg)
+
+        return packages[:5]  # Return top 5
+
+    def _integrate_tool_insights(self, original_explanation: str, insights: list) -> str:
+        """Integrate tool insights into explanation."""
+        insights_text = "\n\nVerified with external tools:\n" + "\n".join(f"- {insight}" for insight in insights)
+        return original_explanation + insights_text

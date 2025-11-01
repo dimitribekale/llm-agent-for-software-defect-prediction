@@ -5,7 +5,6 @@ Git repository tool for extracting commits and code changes.
 import os
 from typing import Any, List, Dict, Optional
 from datetime import datetime
-from pathlib import Path
 from tqdm import tqdm
 
 try:

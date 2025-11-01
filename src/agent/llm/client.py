@@ -1,7 +1,3 @@
-"""
-LLM client abstraction with robust error handling and retry logic.
-"""
-
 import time
 import requests
 from typing import Optional, Dict, Any, List

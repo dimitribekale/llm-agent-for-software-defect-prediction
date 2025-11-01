@@ -10,7 +10,7 @@ from tqdm import tqdm
 from datetime import datetime
 
 from ..config import SystemConfig
-from ..tools.implementations import GitRepositoryTool, CommitData
+from ..tools.implementations import GitRepositoryTool
 from .orchestrator import CommitDefectOrchestrator, CommitDefectResult
 
 
@@ -35,10 +35,22 @@ class RepositoryAnalysisPipeline:
         """
         self.config = config or SystemConfig.default()
         self.verbose = verbose
+        self.tools = []  # Additional tools for the orchestrator
 
         # Initialize components
         self.git_tool = GitRepositoryTool()
         self.orchestrator = CommitDefectOrchestrator(config, verbose=False)  # Suppress per-commit verbosity
+
+    def register_tool(self, tool):
+        """
+        Register a tool for use during analysis.
+
+        Args:
+            tool: Tool instance to register
+        """
+        self.tools.append(tool)
+        # Register tool with the orchestrator
+        self.orchestrator.register_tool(tool)
 
     def analyze_repository(
         self,
