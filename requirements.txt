@@ -1,116 +1,18 @@
-# ============================================================================
-# SDP-LLM-Agent Requirements
-# Software Defect Prediction using Large Language Models
-# ============================================================================
-
-# Core Dependencies
-# ============================================================================
-
-# HTTP client for API requests and web scraping
 requests>=2.31.0
-
-# Git integration for repository analysis
 GitPython>=3.1.40
-
-# Data processing and analysis
 pandas>=2.0.0
 numpy>=1.24.0
-
-# Machine learning metrics and utilities
 scikit-learn>=1.3.0
-
-# Progress bars for long-running operations
 tqdm>=4.66.0
-
-# Web Search and Content Extraction
-# ============================================================================
-
-# DuckDuckGo search API
 duckduckgo-search>=4.0.0
-
-# Web content extraction and cleaning
 trafilatura>=1.6.0
-
-# HTML parsing
 beautifulsoup4>=4.12.0
 lxml>=4.9.0
-
-# Document Processing
-# ============================================================================
-
-# PDF processing and extraction
 PyMuPDF>=1.23.0
-
-# Advanced document conversion (optional)
 docling>=1.0.0
-
-# LLM Integration
-# ============================================================================
-
-# Ollama Python client
 # Note: Requires Ollama to be installed separately (https://ollama.ai)
 ollama>=0.1.0
-
-# HuggingFace Datasets (for SWE-bench and other benchmarks)
-# ============================================================================
-
 datasets>=2.14.0
-
-# Optional Dependencies
-# ============================================================================
-
-# OpenAI client (if using OpenAI models)
-# openai>=1.0.0
-
-# Jupyter notebook support
-# ipython>=8.12.0
-# jupyter>=1.0.0
-
-# Development Dependencies (Optional)
-# ============================================================================
-
-# Code formatting
-# black>=23.0.0
-# isort>=5.12.0
-
-# Linting
-# pylint>=3.0.0
-# flake8>=6.0.0
-
-# Type checking
-# mypy>=1.5.0
-
-# Testing
-# pytest>=7.4.0
-# pytest-cov>=4.1.0
-# pytest-asyncio>=0.21.0
-
-# Documentation
-# sphinx>=7.0.0
-# sphinx-rtd-theme>=1.3.0
-
-# Python Version
-# ============================================================================
-# Requires Python 3.8 or higher
-# Recommended: Python 3.10+
-
-# Installation Instructions
-# ============================================================================
-#
-# Basic installation:
-#   pip install -r requirements.txt
-#
-# Development installation:
-#   pip install -r requirements.txt -r requirements-dev.txt
-#
-# With optional dependencies:
-#   pip install -r requirements.txt openai ipython jupyter
-#
-# Prerequisites:
-#   1. Install Ollama from https://ollama.ai
-#   2. Pull required models:
-#      ollama pull codegemma:7b
-#      ollama pull deepseek-r1:7b
-#      ollama pull codellama:7b
-#
-# ============================================================================
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11

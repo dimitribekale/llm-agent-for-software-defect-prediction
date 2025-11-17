@@ -1,6 +1,6 @@
 import re
 
-def _is_safe_identifier(name:str) -> bool:
+def is_safe_identifier(name:str) -> bool:
     """
     Validate that the name is a safe Python identifier.
     
@@ -41,7 +41,7 @@ def _is_safe_identifier(name:str) -> bool:
         
     return True
 
-def _get_safe_builtin_modules() -> set:
+def get_safe_builtin_modules() -> set:
     """
     Get a set of safe Python built-in modules.
     

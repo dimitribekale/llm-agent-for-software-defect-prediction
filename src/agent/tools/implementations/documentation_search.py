@@ -1,11 +1,11 @@
 """
 Documentation search tool for retrieving official language documentation.
 """
+import re
 import inspect
 import builtins
 import importlib
 from typing import Any
-from utils import _is_safe_identifier, _get_safe_builtin_modules
 from ..base import DocumentationTool, ToolMetadata, ToolValidationException
 
 
@@ -25,6 +25,11 @@ class DocumentationSearchTool(DocumentationTool):
             "cpp": "https://en.cppreference.com/w/",
             "rust": "https://doc.rust-lang.org/std/",
             "c": "https://en.cppreference.com/w/c"
+        }
+        self.safe_modules = {
+            'str', 'int', 'float', 'bool', 'list', 'dict',
+            'set', 'tuple', 'bytes', 'math', 'json', 're',
+            'datetime', 'collections', 'itertools',
         }
 
     def get_metadata(self) -> ToolMetadata:
@@ -79,6 +84,61 @@ class DocumentationSearchTool(DocumentationTool):
             return self._search_python(method_name)
         else:
             return self._search_other(method_name, language)
+        
+    def _is_safe_identifier(self, name:str) -> bool:
+        """
+        Validate that the name is a safe Python identifier.
+        
+        Only allows:
+        - Letters, numbers, underscores, and dots
+        - No special characters or expressions
+        - No dunder methods that could be dangerous
+        
+        Args:
+            name: The method/module name to validate
+            
+        Returns:
+            True if safe, False otherwise
+        """
+        if not name or not isinstance(name, str):
+            return False
+        
+        # Prevent long suspicious inputs.
+        if len(name)> 200:
+            return
+        
+        # Only allow alphanumeric, underscore, and dot
+        # This prevents expressions like __import__('os').system('...')
+        if not re.match(r'^[a-zA-Z0-9_.]+$', name):
+            return False
+        
+        dangerous_patterns = [
+            '__import__',     # Dynamic imports
+            'eval',
+            'exec',
+            'compile',
+            'open',            # File operations
+            '__',              # Double underscore methods
+        ]
+        for pattern in dangerous_patterns:
+            if pattern in name.lower():
+                return False
+            
+        return True
+
+    def _get_safe_builtin_modules(self) -> set:
+        """
+        Get a set of safe Python built-in modules.
+        
+        Returns:
+            Set of safe module names
+        """
+        return {
+            'str', 'int', 'float', 'bool', 'list', 'dict', 'set', 'tuple',
+            'bytes', 'bytearray', 'frozenset', 'complex', 'math', 'random',
+            'datetime', 'json', 're', 'collections', 'itertools', 'functools',
+            'typing', 'enum', 'dataclasses', 'string'
+        }
 
     def _search_python(self, method_name: str) -> str:
         """
@@ -90,7 +150,7 @@ class DocumentationSearchTool(DocumentationTool):
         Returns:
             Documentation text
         """
-        if not _is_safe_identifier(method_name):
+        if not self._is_safe_identifier(method_name):
             return (
               f"Invalid or potentially unsafe identifier:'{method_name}'\n\n"
               f"Only simple module and method names are allowed.\n"
@@ -102,7 +162,7 @@ class DocumentationSearchTool(DocumentationTool):
         base_module = parts[0]
 
         # Check that it's a safe built-in type or module
-        safe_modules = _get_safe_builtin_modules()
+        safe_modules = self._get_safe_builtin_modules()
 
         if base_module not in safe_modules:
             return (
