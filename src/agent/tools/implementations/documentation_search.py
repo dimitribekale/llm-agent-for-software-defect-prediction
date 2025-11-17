@@ -1,9 +1,11 @@
 """
 Documentation search tool for retrieving official language documentation.
 """
-
-import pydoc
+import inspect
+import builtins
+import importlib
 from typing import Any
+from utils import _is_safe_identifier, _get_safe_builtin_modules
 from ..base import DocumentationTool, ToolMetadata, ToolValidationException
 
 
@@ -80,7 +82,7 @@ class DocumentationSearchTool(DocumentationTool):
 
     def _search_python(self, method_name: str) -> str:
         """
-        Search Python documentation using pydoc.
+        Search Python documentation using safe methods only.
 
         Args:
             method_name: Python method/class/module name
@@ -88,18 +90,83 @@ class DocumentationSearchTool(DocumentationTool):
         Returns:
             Documentation text
         """
-        try:
-            # Try to get documentation
-            doc = pydoc.render_doc(method_name, "Help on %s")
-            return doc
-        except Exception as e:
-            # Fallback to help link
+        if not _is_safe_identifier(method_name):
             return (
-                f"Could not retrieve documentation for '{method_name}' using pydoc.\n"
-                f"Error: {str(e)}\n\n"
+              f"Invalid or potentially unsafe identifier:'{method_name}'\n\n"
+              f"Only simple module and method names are allowed.\n"
+              f"Forbidden: expressions, special characters, __dunder__ methods"
+            )
+        
+        # Extract base module name
+        parts = method_name.split('.')
+        base_module = parts[0]
+
+        # Check that it's a safe built-in type or module
+        safe_modules = _get_safe_builtin_modules()
+
+        if base_module not in safe_modules:
+            return (
+                f"Module '{base_module}' is not in the safe module list.\n\n"
+                f"For security reasons, only built-in Python modules are supported.\n"
+                f"Supported modules: {', '.join(sorted(safe_modules))}\n\n"
+                f"For other modules, please refer to: {self.official_docs['python']}\n"
+                f"Search for: {method_name}"
+            )
+        
+        try:
+            obj = None
+
+            if hasattr(builtins, base_module):
+                obj = getattr(builtins, base_module)
+
+                # If there are more parts
+                for part in parts[1:]:
+                    if hasattr(obj, part):
+                        obj = getattr(obj, part)
+                    else:
+                        return f"'{method_name}' not found in built-in types."
+            else:
+                # Try importing the module (only if it's in safe list)
+                try:
+                    module = importlib.import_module(base_module)
+                    obj = module
+
+                    # Traverse the rest of the path
+                    for part in parts[1:]:
+                        if hasattr(obj, part):
+                            obj = getattr(obj, part)
+                        else:
+                            return f"'{method_name}' not found."
+                except ImportError:
+                    return f"Module '{base_module}' could not be imported."
+            
+            # Get documentation using inspect
+            if obj is not None:
+                doc = inspect.getdoc(obj)
+                if doc:
+                    # Format 
+                    result = f"Documentation for '{method_name}':\n\n{doc}\n\n"
+
+                    # Add signature if available
+                    try:
+                        if callable(obj):
+                            signature = inspect.signature(obj)
+                            result += f"Signature: {method_name}{signature}\n"
+                    except(ValueError, TypeError):
+                        pass
+
+                    return result
+                
+                else:
+                    return f"No documentation found for '{method_name}'."
+                
+        except Exception as e:
+            return (
+                f"Could not retrieve documentation for '{method_name}'.\n\n"
                 f"Please refer to: {self.official_docs['python']}\n"
                 f"Search for: {method_name}"
             )
+
 
     def _search_other(self, method_name: str, language: str) -> str:
         """
